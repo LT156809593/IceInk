@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "erTn83amdtW+grOul2V/pmWLa8vnClOcIZSgxP1ftINXmJS8QLXQX3sxBThTUavLDnvGFp34YMBgl7Ls4GOx2w==",
+  "dgSpecHash": "PLCmdleOfVoR76KPs0EMCqhYH1S0EzEevDQFCVS9607749XZ8yWdcCBW1tpTQULYGNzz/EqcftNt5VlvC7Mdpg==",
   "success": true,
-  "projectFilePath": "E:\\_LT_Projects\\_VSProjects\\_IceInk\\01-IceInk\\IceInk\\IceInk.csproj",
+  "projectFilePath": "E:\\_IceInkFramework\\IceInk\\IceInk\\IceInk.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.7\\microsoft.aspnet.webapi.client.5.2.7.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",

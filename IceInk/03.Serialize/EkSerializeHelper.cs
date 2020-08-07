@@ -36,13 +36,14 @@ namespace IceInk
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="obj"></param>
+        /// <param name="referenceLoopHandling">默认移除对象之间循环引用，避免序列化出错</param>
         /// <returns></returns>
-        public static string ToJson<T>(this T obj) where T : class
+        public static string ToJson<T>(this T obj, ReferenceLoopHandling referenceLoopHandling = ReferenceLoopHandling.Ignore) where T : class
         {
             //移除循环引用
             JsonSerializerSettings setting = new JsonSerializerSettings
             {
-                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                ReferenceLoopHandling = referenceLoopHandling
             };
 
             return JsonConvert.SerializeObject(obj, setting);
@@ -63,7 +64,7 @@ namespace IceInk
             }
             catch (Exception e)
             {
-               fromT = null;
+                fromT = null;
             }
             return fromT;
         }

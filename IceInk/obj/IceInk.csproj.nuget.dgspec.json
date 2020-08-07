@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\_LT_Projects\\_VSProjects\\_IceInk\\01-IceInk\\IceInk\\IceInk.csproj": {}
+    "E:\\_IceInkFramework\\IceInk\\IceInk\\IceInk.csproj": {}
   },
   "projects": {
-    "E:\\_LT_Projects\\_VSProjects\\_IceInk\\01-IceInk\\IceInk\\IceInk.csproj": {
+    "E:\\_IceInkFramework\\IceInk\\IceInk\\IceInk.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\_LT_Projects\\_VSProjects\\_IceInk\\01-IceInk\\IceInk\\IceInk.csproj",
+        "projectUniqueName": "E:\\_IceInkFramework\\IceInk\\IceInk\\IceInk.csproj",
         "projectName": "IceInk",
-        "projectPath": "E:\\_LT_Projects\\_VSProjects\\_IceInk\\01-IceInk\\IceInk\\IceInk.csproj",
+        "projectPath": "E:\\_IceInkFramework\\IceInk\\IceInk\\IceInk.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "E:\\_LT_Projects\\_VSProjects\\_IceInk\\01-IceInk\\IceInk\\obj\\",
+        "outputPath": "E:\\_IceInkFramework\\IceInk\\IceInk\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
