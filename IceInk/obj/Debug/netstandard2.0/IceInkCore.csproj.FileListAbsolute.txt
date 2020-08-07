@@ -1,0 +1,6 @@
+E:\_LT_Projects\_VSProjects\_IceInk\01-IceInkCore\IceInkCore\bin\Debug\netstandard2.0\IceInkCore.deps.json
+E:\_LT_Projects\_VSProjects\_IceInk\01-IceInkCore\IceInkCore\bin\Debug\netstandard2.0\IceInkCore.dll
+E:\_LT_Projects\_VSProjects\_IceInk\01-IceInkCore\IceInkCore\obj\Debug\netstandard2.0\IceInkCore.csprojAssemblyReference.cache
+E:\_LT_Projects\_VSProjects\_IceInk\01-IceInkCore\IceInkCore\obj\Debug\netstandard2.0\IceInkCore.AssemblyInfoInputs.cache
+E:\_LT_Projects\_VSProjects\_IceInk\01-IceInkCore\IceInkCore\obj\Debug\netstandard2.0\IceInkCore.AssemblyInfo.cs
+E:\_LT_Projects\_VSProjects\_IceInk\01-IceInkCore\IceInkCore\obj\Debug\netstandard2.0\IceInkCore.csproj.CoreCompileInputs.cache
