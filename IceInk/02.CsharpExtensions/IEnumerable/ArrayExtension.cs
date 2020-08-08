@@ -16,23 +16,95 @@
 
 using System;
 using System.Collections.Generic;
+
 namespace IceInk.Extension
 {
-    public static partial class ArrayExtension
+    public static class ArrayExtension
     {
-        public static T[] ForEach<T>(this T[] selfArray, Action<T> action)
+        /// <summary>
+        /// 遍历数组
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="selfArray"></param>
+        /// <param name="action"></param>
+        /// <returns>返回自己</returns>
+        public static T[] EkForEach<T>(this T[] selfArray, Action<T> action)
         {
-            Array.ForEach(selfArray, action);
+            foreach (T item in selfArray)
+                action.Invoke(item);
+            return selfArray;
+        }
+        /// <summary>
+        /// 遍历数组 (可获取索引)
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="selfArray"></param>
+        /// <param name="action"></param>
+        /// <returns>返回自己</returns>
+        public static T[] EkForEach<T>(this T[] selfArray, Action<T, int> action)
+        {
+            if (selfArray == null) throw new ArgumentException();
+            int length = selfArray.Length;
+            for (int i = 0; i < length; i++)
+            {
+                int index = i;
+                action.Invoke(selfArray[index], index);
+            }
             return selfArray;
         }
 
-        public static IEnumerable<T> ForEach<T>(this IEnumerable<T> selfArray, Action<T> action)
+        /// <summary>
+        /// 倒序遍历数组 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="selfArray"></param>
+        /// <param name="action"></param>
+        /// <returns>返回自己</returns>
+        public static T[] EkForEachReverse<T>(this T[] selfArray, Action<T> action)
+        {
+            if (selfArray == null) throw new ArgumentException();
+            int length = selfArray.Length;
+            for (int i = length - 1; i >= 0; i--)
+            {
+                int index = i;
+                action.Invoke(selfArray[index]);
+            }
+            return selfArray;
+        }
+
+
+        /// <summary>
+        /// 倒序遍历数组 (可获取索引)
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="selfArray"></param>
+        /// <param name="action"></param>
+        /// <returns>返回自己</returns>
+        public static T[] EkForEachReverse<T>(this T[] selfArray, Action<T, int> action)
+        {
+            if (selfArray == null) throw new ArgumentException();
+            int length = selfArray.Length;
+            for (int i = length - 1; i >= 0; i--)
+            {
+                int index = i;
+                action.Invoke(selfArray[index], index);
+            }
+            return selfArray;
+        }
+
+
+        /// <summary>
+        /// 遍历 IEnumerable
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="selfArray"></param>
+        /// <param name="action"></param>
+        /// <returns>返回自己</returns>
+        public static IEnumerable<T> EkForEach<T>(this IEnumerable<T> selfArray, Action<T> action)
         {
             if (action == null) throw new ArgumentException();
             foreach (var item in selfArray)
-            {
                 action(item);
-            }
             return selfArray;
         }
     }

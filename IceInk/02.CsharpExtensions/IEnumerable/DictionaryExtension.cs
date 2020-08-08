@@ -19,15 +19,33 @@ using System.Collections.Generic;
 using System.Linq;
 namespace IceInk.Extension
 {
-    public static partial class DictionaryExtension
+    public static class DictionaryExtension
     {
-        public static Dictionary<TKey, TValue> Merge<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, params Dictionary<TKey, TValue>[] dictionaries)
+        /// <summary>
+        /// 合并字典
+        /// </summary>
+        /// <typeparam name="TKey"></typeparam>
+        /// <typeparam name="TValue"></typeparam>
+        /// <param name="dictionary"></param>
+        /// <param name="dictionaries"></param>
+        /// <returns>返回合并后后的字典</returns>
+        public static Dictionary<TKey, TValue> EkMerge<TKey, TValue>(this Dictionary<TKey, TValue> dictionary,
+            params Dictionary<TKey, TValue>[] dictionaries)
         {
             return dictionaries.Aggregate(dictionary,
-                (current, self) => current.Union(self).ToDictionary(kv => kv.Key, kv => kv.Value));
+                (current, self) 
+                    => current.Union(self)
+                        .ToDictionary(kv => kv.Key, kv => kv.Value));
         }
 
-        public static void ForEach<K, V>(this Dictionary<K, V> self, Action<K, V> action)
+        /// <summary>
+        /// 遍历字典
+        /// </summary>
+        /// <typeparam name="K"></typeparam>
+        /// <typeparam name="V"></typeparam>
+        /// <param name="self"></param>
+        /// <param name="action"></param>
+        public static void EkForEach<K, V>(this Dictionary<K, V> self, Action<K, V> action)
         {
             var dictE = self.GetEnumerator();
             while (dictE.MoveNext())
@@ -39,7 +57,15 @@ namespace IceInk.Extension
             dictE.Dispose();
         }
 
-        public static void AddRange<K, V>(this Dictionary<K, V> self, Dictionary<K, V> addInDict, bool isOverride = false)
+        /// <summary>
+        /// 字典添加新的词典
+        /// </summary>
+        /// <typeparam name="K"></typeparam>
+        /// <typeparam name="V"></typeparam>
+        /// <param name="self"></param>
+        /// <param name="addInDict"></param>
+        /// <param name="isOverride"></param>
+        public static void EkAddRange<K, V>(this Dictionary<K, V> self, Dictionary<K, V> addInDict, bool isOverride = false)
         {
             var dictE = addInDict.GetEnumerator();
 
