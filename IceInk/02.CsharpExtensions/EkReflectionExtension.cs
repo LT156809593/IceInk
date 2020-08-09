@@ -14,7 +14,7 @@
 using System;
 using System.Reflection;
 
-namespace IceInk._02.CsharpExtensions
+namespace IceInk.Extension
 {
     /// <summary>
     /// 反射扩展
