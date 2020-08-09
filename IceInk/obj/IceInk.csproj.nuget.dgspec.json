@@ -10,14 +10,11 @@
         "projectUniqueName": "E:\\_IceInkFramework\\IceInk\\IceInk\\IceInk.csproj",
         "projectName": "IceInk",
         "projectPath": "E:\\_IceInkFramework\\IceInk\\IceInk\\IceInk.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\YanJie\\.nuget\\packages\\",
         "outputPath": "E:\\_IceInkFramework\\IceInk\\IceInk\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\YanJie\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -58,6 +55,10 @@
             "SharpZipLib": {
               "target": "Package",
               "version": "[1.2.0, )"
+            },
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[4.7.0, )"
             }
           },
           "imports": [
