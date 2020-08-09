@@ -7,7 +7,7 @@
 // ===============================================================
 // 功能描述：
 //		事件系统
-//          使用 枚举 类型注册
+//          使用 枚举 注册
 //----------------------------------------------------------------*/
 #endregion
 
@@ -28,7 +28,7 @@ namespace IceInk
     }
 
 
-    public class TypeEventUnregister<T> : IDisposable
+    public class TypeEventUnRegister<T> : IDisposable
     {
         public Action<T> OnReceive;
 
@@ -43,7 +43,7 @@ namespace IceInk
         /// <summary>
         /// 接口 只负责存储在字典中
         /// </summary>
-        interface IRegisterations : IDisposable
+        interface IRegisterAtions : IDisposable
         {
 
         }
@@ -52,7 +52,7 @@ namespace IceInk
         /// <summary>
         /// 多个注册
         /// </summary>
-        class Registerations<T> : IRegisterations
+        class RegisterAtions<T> : IRegisterAtions
         {
             /// <summary>
             /// 接收Action
@@ -74,7 +74,7 @@ namespace IceInk
         /// <summary>
         /// 
         /// </summary>
-        private Dictionary<Type, IRegisterations> mTypeEventDic = new Dictionary<Type, IRegisterations>();
+        private Dictionary<Type, IRegisterAtions> mTypeEventDic = new Dictionary<Type, IRegisterAtions>();
 
         /// <summary>
         /// 注册事件
@@ -120,33 +120,33 @@ namespace IceInk
         {
             var type = typeof(T);
 
-            IRegisterations registerations;
+            IRegisterAtions registerAtions;
 
-            if (mTypeEventDic.TryGetValue(type, out registerations))
+            if (mTypeEventDic.TryGetValue(type, out registerAtions))
             {
-                var reg = registerations as Registerations<T>;
+                var reg = registerAtions as RegisterAtions<T>;
                 reg.OnReceives += onReceive;
             }
             else
             {
-                Registerations<T> reg = new Registerations<T>();
+                RegisterAtions<T> reg = new RegisterAtions<T>();
                 reg.OnReceives += onReceive;
                 mTypeEventDic.Add(type, reg);
             }
 
-            return new TypeEventUnregister<T> { OnReceive = onReceive };
+            return new TypeEventUnRegister<T> { OnReceive = onReceive };
         }
 
         public void UnRegisterEvent<T>(Action<T> onReceive)
         {
             var type = typeof(T);
 
-            IRegisterations registerations;
+            IRegisterAtions registerAtions;
 
-            if (mTypeEventDic.TryGetValue(type, out registerations))
+            if (mTypeEventDic.TryGetValue(type, out registerAtions))
             {
-                Registerations<T> reg = registerations as Registerations<T>;
-                reg.OnReceives -= onReceive;
+                RegisterAtions<T> reg = registerAtions as RegisterAtions<T>;
+                if (reg != null) reg.OnReceives -= onReceive;
             }
         }
 
@@ -154,12 +154,12 @@ namespace IceInk
         {
             var type = typeof(T);
 
-            IRegisterations registerations;
+            IRegisterAtions registerAtions;
 
-            if (mTypeEventDic.TryGetValue(type, out registerations))
+            if (mTypeEventDic.TryGetValue(type, out registerAtions))
             {
-                Registerations<T> reg = registerations as Registerations<T>;
-                reg.OnReceives(new T());
+                RegisterAtions<T> reg = registerAtions as RegisterAtions<T>;
+                reg?.OnReceives(new T());
             }
         }
 
@@ -167,12 +167,12 @@ namespace IceInk
         {
             var type = typeof(T);
 
-            IRegisterations registerations;
+            IRegisterAtions registerAtions;
 
-            if (mTypeEventDic.TryGetValue(type, out registerations))
+            if (mTypeEventDic.TryGetValue(type, out registerAtions))
             {
-                Registerations<T> reg = registerations as Registerations<T>;
-                reg.OnReceives(e);
+                RegisterAtions<T> reg = registerAtions as RegisterAtions<T>;
+                reg?.OnReceives(e);
             }
         }
 
