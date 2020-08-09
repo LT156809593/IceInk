@@ -385,19 +385,11 @@ namespace IceInk.Extension
             }
 
             //计算两个字符是否一样，计算左上的值  
-            int temp;
             for (int i = 1; i <= len1; i++)
             {
                 for (int j = 1; j <= len2; j++)
                 {
-                    if (selfStr[i - 1] == otherStr[j - 1])
-                    {
-                        temp = 0;
-                    }
-                    else
-                    {
-                        temp = 1;
-                    }
+                    var temp = (selfStr[i - 1] == otherStr[j - 1]) ? 0 : 1;
 
                     //取三个值中最小的  
                     dif[i, j] = Math.Min(Math.Min(dif[i - 1, j - 1] + temp, dif[i, j - 1] + 1), dif[i - 1, j] + 1);
@@ -500,7 +492,8 @@ namespace IceInk.Extension
     {
         /// <summary>
         /// 创建新的文件夹,如果存在则不创建
-        /// <code>
+        ///  <code>
+        ///  示例
         /// var testDir = "Assets/TestFolder";
         /// testDir.CreateDirIfNotExists();
         /// // 结果为，在 Assets 目录下创建 TestFolder
@@ -518,7 +511,7 @@ namespace IceInk.Extension
 
         /// <summary>
         /// 删除文件夹，如果存在
-        /// <code>
+        /// <code> 示例
         /// var testDir = "Assets/TestFolder";
         /// testDir.DeleteDirIfExists();
         /// // 结果为，在 Assets 目录下删除了 TestFolder
@@ -564,13 +557,10 @@ namespace IceInk.Extension
         /// <returns> 是否进行了删除操作 </returns>
         public static bool DeleteFileIfExists(this string fileFullPath)
         {
-            if (File.Exists(fileFullPath))
-            {
-                File.Delete(fileFullPath);
-                return true;
-            }
+            if (!File.Exists(fileFullPath)) return false;
+            File.Delete(fileFullPath);
+            return true;
 
-            return false;
         }
 
         /// <summary>
@@ -587,17 +577,16 @@ namespace IceInk.Extension
         {
             return Path.Combine(selfPath, toCombinePath);
         }
-
-        #region 未经过测试
+        
 
         /// <summary>
         /// 读取文本
         /// </summary>
-        /// <param name="file"></param>
+        /// <param name="fileFullPath"></param>
         /// <returns></returns>
         public static string ReadText(this string fileFullPath)
         {
-            var result = string.Empty;
+            string result;
 
             using (var fs = new FileStream(fileFullPath, FileMode.Open, FileAccess.Read))
             {
@@ -666,9 +655,7 @@ namespace IceInk.Extension
         /// <returns></returns>
         public static string GetFilePathWithoutExtension(string fileName)
         {
-            if (fileName.Contains("."))
-                return fileName.Substring(0, fileName.LastIndexOf('.'));
-            return fileName;
+            return fileName.Contains(".") ? fileName.Substring(0, fileName.LastIndexOf('.')) : fileName;
         }
 
         /// <summary>
@@ -703,7 +690,7 @@ namespace IceInk.Extension
         /// <returns></returns>
         public static string Combine(params string[] paths)
         {
-            string result = "";
+            string result = string.Empty;
             foreach (string path in paths)
             {
                 result = Path.Combine(result, path);
@@ -720,12 +707,7 @@ namespace IceInk.Extension
         /// <returns></returns>
         public static string GetPathParentFolder(string path)
         {
-            if (string.IsNullOrEmpty(path))
-            {
-                return string.Empty;
-            }
-
-            return Path.GetDirectoryName(path);
+            return string.IsNullOrEmpty(path) ? string.Empty : Path.GetDirectoryName(path);
         }
 
 
@@ -828,7 +810,6 @@ namespace IceInk.Extension
             return absOrAssetsPath.EndsWith("/") ? dirs[dirs.Length - 2] : dirs[dirs.Length - 1];
         }
 
-        #endregion
     }
 
 }
