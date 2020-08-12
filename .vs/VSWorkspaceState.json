@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\IceInk"
+    "\\IceInk",
+    "\\IceInk\\04.Http",
+    "\\IceInk\\bin",
+    "\\IceInk\\obj"
   ],
   "SelectedNode": "\\IceInk\\IceInk.sln",
   "PreviewInSolutionExplorer": false
