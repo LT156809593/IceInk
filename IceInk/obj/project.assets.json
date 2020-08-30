@@ -1022,21 +1022,17 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Administrator\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Administrator\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\_IceInkFramework\\IceInk\\IceInk\\IceInk.csproj",
+      "projectUniqueName": "E:\\_IceInk\\IceInk\\IceInk\\IceInk.csproj",
       "projectName": "IceInk",
-      "projectPath": "E:\\_IceInkFramework\\IceInk\\IceInk\\IceInk.csproj",
+      "projectPath": "E:\\_IceInk\\IceInk\\IceInk\\IceInk.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "E:\\_IceInkFramework\\IceInk\\IceInk\\obj\\",
+      "outputPath": "E:\\_IceInk\\IceInk\\IceInk\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
         "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -1046,6 +1042,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "http://192.168.1.102:8999/nuget/": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
