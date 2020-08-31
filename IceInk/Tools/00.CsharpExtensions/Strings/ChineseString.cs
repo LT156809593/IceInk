@@ -19,11 +19,12 @@ namespace IceInk
     /// 中文字符工具类
     /// </summary>
     public static class ChineseString
-    {/// <summary>
-     /// 转为简体
-     /// </summary>
-     /// <param name="text">源字符串</param>
-     /// <returns></returns>
+    {
+        /// <summary>
+        /// 转为简体
+        /// </summary>
+        /// <param name="text">源字符串</param>
+        /// <returns></returns>
         public static string ToSimplified(this string text)
         {
             return ConvertCore(text);

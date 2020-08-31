@@ -15,3 +15,12 @@ E:\_IceInkFramework\IceInk\IceInk\obj\Debug\netstandard2.0\IceInk.AssemblyInfo.c
 E:\_IceInkFramework\IceInk\IceInk\obj\Debug\netstandard2.0\IceInk.dll
 E:\_IceInkFramework\IceInk\IceInk\obj\Debug\netstandard2.0\IceInk.pdb
 E:\_IceInkFramework\IceInk\IceInk\obj\Debug\netstandard2.0\IceInk.csproj.CoreCompileInputs.cache
+E:\_IceInk\IceInk\IceInk\bin\Debug\netstandard2.0\IceInk.deps.json
+E:\_IceInk\IceInk\IceInk\bin\Debug\netstandard2.0\IceInk.dll
+E:\_IceInk\IceInk\IceInk\bin\Debug\netstandard2.0\IceInk.pdb
+E:\_IceInk\IceInk\IceInk\obj\Debug\netstandard2.0\IceInk.csprojAssemblyReference.cache
+E:\_IceInk\IceInk\IceInk\obj\Debug\netstandard2.0\IceInk.AssemblyInfoInputs.cache
+E:\_IceInk\IceInk\IceInk\obj\Debug\netstandard2.0\IceInk.AssemblyInfo.cs
+E:\_IceInk\IceInk\IceInk\obj\Debug\netstandard2.0\IceInk.csproj.CoreCompileInputs.cache
+E:\_IceInk\IceInk\IceInk\obj\Debug\netstandard2.0\IceInk.dll
+E:\_IceInk\IceInk\IceInk\obj\Debug\netstandard2.0\IceInk.pdb

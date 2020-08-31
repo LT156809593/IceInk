@@ -240,9 +240,9 @@ namespace IceInk
         /// <param name="selfStr"></param>
         /// <param name="defaultValue"></param>
         /// <returns></returns>
-        public static int ToInt(this string selfStr, int defaultValue = int.MinValue)
+        public static int ToInt(this string selfStr)
         {
-            return int.TryParse(selfStr, out int retValue) ? retValue : defaultValue;
+            return int.TryParse(selfStr, out int retValue) ? retValue : throw new Exception("该字符串不能转换为int类型");
         }
 
         /// <summary>
@@ -251,9 +251,9 @@ namespace IceInk
         /// <param name="selfStr"></param>
         /// <param name="defaultValue"></param>
         /// <returns></returns>
-        public static float ToFloat(this string selfStr, float defaultValue = float.MinValue)
+        public static float ToFloat(this string selfStr)
         {
-            return float.TryParse(selfStr, out float retValue) ? retValue : defaultValue;
+            return float.TryParse(selfStr, out float retValue) ? retValue : throw new Exception("该字符串不能转换为float类型");
         }
 
         /// <summary>
@@ -262,9 +262,9 @@ namespace IceInk
         /// <param name="selfStr"></param>
         /// <param name="defaultValue"></param>
         /// <returns></returns>
-        public static double ToDouble(this string selfStr, double defaultValue = double.MinValue)
+        public static double ToDouble(this string selfStr)
         {
-            return double.TryParse(selfStr, out double retValue) ? retValue : defaultValue;
+            return double.TryParse(selfStr, out double retValue) ? retValue : throw new Exception("该字符串不能转换为double类型");
         }
 
 
@@ -274,9 +274,9 @@ namespace IceInk
         /// <param name="selfStr"></param>
         /// <param name="defaultValue"></param>
         /// <returns></returns>
-        public static DateTime ToDateTime(this string selfStr, DateTime defaultValue = default(DateTime))
+        public static DateTime ToDateTime(this string selfStr)
         {
-            return DateTime.TryParse(selfStr, out DateTime retValue) ? retValue : defaultValue;
+            return DateTime.TryParse(selfStr, out DateTime retValue) ? retValue : throw new Exception("该字符串不能转换为DateTime类型");
         }
 
         /// <summary>
