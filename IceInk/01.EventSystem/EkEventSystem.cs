@@ -43,7 +43,7 @@ namespace IceInk
         /// <summary>
         /// 接口 只负责存储在字典中
         /// </summary>
-        interface IRegisterAtions : IDisposable
+        interface IRegisterActions : IDisposable
         {
 
         }
@@ -52,7 +52,7 @@ namespace IceInk
         /// <summary>
         /// 多个注册
         /// </summary>
-        class RegisterAtions<T> : IRegisterAtions
+        class RegisterActions<T> : IRegisterActions
         {
             /// <summary>
             /// 接收Action
@@ -74,7 +74,7 @@ namespace IceInk
         /// <summary>
         /// 
         /// </summary>
-        private Dictionary<Type, IRegisterAtions> mTypeEventDic = new Dictionary<Type, IRegisterAtions>();
+        private Dictionary<Type, IRegisterActions> mTypeEventDic = new Dictionary<Type, IRegisterActions>();
 
         /// <summary>
         /// 注册事件
@@ -120,16 +120,16 @@ namespace IceInk
         {
             var type = typeof(T);
 
-            IRegisterAtions registerAtions;
+            IRegisterActions registerActions;
 
-            if (mTypeEventDic.TryGetValue(type, out registerAtions))
+            if (mTypeEventDic.TryGetValue(type, out registerActions))
             {
-                var reg = registerAtions as RegisterAtions<T>;
+                var reg = registerActions as RegisterActions<T>;
                 reg.OnReceives += onReceive;
             }
             else
             {
-                RegisterAtions<T> reg = new RegisterAtions<T>();
+                RegisterActions<T> reg = new RegisterActions<T>();
                 reg.OnReceives += onReceive;
                 mTypeEventDic.Add(type, reg);
             }
@@ -141,11 +141,11 @@ namespace IceInk
         {
             var type = typeof(T);
 
-            IRegisterAtions registerAtions;
+            IRegisterActions registerActions;
 
-            if (mTypeEventDic.TryGetValue(type, out registerAtions))
+            if (mTypeEventDic.TryGetValue(type, out registerActions))
             {
-                RegisterAtions<T> reg = registerAtions as RegisterAtions<T>;
+                RegisterActions<T> reg = registerActions as RegisterActions<T>;
                 if (reg != null) reg.OnReceives -= onReceive;
             }
         }
@@ -154,11 +154,11 @@ namespace IceInk
         {
             var type = typeof(T);
 
-            IRegisterAtions registerAtions;
+            IRegisterActions registerActions;
 
-            if (mTypeEventDic.TryGetValue(type, out registerAtions))
+            if (mTypeEventDic.TryGetValue(type, out registerActions))
             {
-                RegisterAtions<T> reg = registerAtions as RegisterAtions<T>;
+                RegisterActions<T> reg = registerActions as RegisterActions<T>;
                 reg?.OnReceives(new T());
             }
         }
@@ -167,11 +167,11 @@ namespace IceInk
         {
             var type = typeof(T);
 
-            IRegisterAtions registerAtions;
+            IRegisterActions registerActions;
 
-            if (mTypeEventDic.TryGetValue(type, out registerAtions))
+            if (mTypeEventDic.TryGetValue(type, out registerActions))
             {
-                RegisterAtions<T> reg = registerAtions as RegisterAtions<T>;
+                RegisterActions<T> reg = registerActions as RegisterActions<T>;
                 reg?.OnReceives(e);
             }
         }
