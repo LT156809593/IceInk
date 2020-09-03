@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "nchUOi6/THijxySdIebZVW2UzwEIg5bB1gyEbTLQrDi34/l3MRemaG1IEDkKgbzSjMhsfgD/BOykwrimjy069A==",
+  "dgSpecHash": "9748MxxC02fCeDWBq+RH4Edihp/aCmAYKdC1R8mvQ+BYif4HmGjB8fBJFz2VurekOY7XFvuGfcJq5QYgFtDX9A==",
   "success": true,
   "projectFilePath": "E:\\_IceInk\\IceInk\\IceInk\\IceInk.csproj",
   "expectedPackageFiles": [
@@ -14,8 +14,11 @@
     "C:\\Users\\Administrator\\.nuget\\packages\\newtonsoft.json.bson\\1.0.1\\newtonsoft.json.bson.1.0.1.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\sharpziplib\\1.2.0\\sharpziplib.1.2.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\system.buffers\\4.4.0\\system.buffers.4.4.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\system.codedom\\4.7.0\\system.codedom.4.7.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\system.configuration.configurationmanager\\4.7.0\\system.configuration.configurationmanager.4.7.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\system.diagnostics.performancecounter\\4.7.0\\system.diagnostics.performancecounter.4.7.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\system.drawing.common\\4.7.0\\system.drawing.common.4.7.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\system.management\\4.7.0\\system.management.4.7.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\system.numerics.vectors\\4.4.0\\system.numerics.vectors.4.4.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
