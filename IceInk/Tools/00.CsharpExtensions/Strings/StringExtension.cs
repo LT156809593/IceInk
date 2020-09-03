@@ -125,17 +125,13 @@ namespace IceInk
         /// <param name="input">源字符串</param>
         /// <param name="compare">用于比较的字符串</param>
         /// <returns>字符串compare 在 input字符串中出现的次数</returns>
-        private static int GetStringCount(string input, string compare)
+        private static int GetStringCount(this string input, string compare)
         {
-            int index = input.IndexOf(compare);
+            int index = input.IndexOf(compare, StringComparison.Ordinal);
             if (index != -1)
-            {
                 return 1 + GetStringCount(input.Substring(index + compare.Length), compare);
-            }
             else
-            {
                 return 0;
-            }
 
         }
 
@@ -183,9 +179,7 @@ namespace IceInk
         public static string Mask(this string s, char mask = '*')
         {
             if (string.IsNullOrWhiteSpace(s?.Trim()))
-            {
                 return s;
-            }
             s = s.Trim();
             string masks = mask.ToString().PadLeft(4, mask);
             return s.Length switch
@@ -233,12 +227,10 @@ namespace IceInk
 
         #region  转换到其他类型
 
-
         /// <summary>
         /// 解析到 Int 类型
         /// </summary>
         /// <param name="selfStr"></param>
-        /// <param name="defaultValue"></param>
         /// <returns></returns>
         public static int ToInt(this string selfStr)
         {
@@ -249,7 +241,6 @@ namespace IceInk
         /// 解析到 Float 类型
         /// </summary>
         /// <param name="selfStr"></param>
-        /// <param name="defaultValue"></param>
         /// <returns></returns>
         public static float ToFloat(this string selfStr)
         {
@@ -260,7 +251,6 @@ namespace IceInk
         /// 解析到 Double 类型
         /// </summary>
         /// <param name="selfStr"></param>
-        /// <param name="defaultValue"></param>
         /// <returns></returns>
         public static double ToDouble(this string selfStr)
         {
@@ -272,7 +262,6 @@ namespace IceInk
         /// 解析到时间类型
         /// </summary>
         /// <param name="selfStr"></param>
-        /// <param name="defaultValue"></param>
         /// <returns></returns>
         public static DateTime ToDateTime(this string selfStr)
         {
@@ -667,7 +656,7 @@ namespace IceInk
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public static bool IsNumber(string input)
+        public static bool IsNumber(this string input)
         {
             string pattern = "^-?\\d+$|^(-?\\d+)(\\.\\d+)?$";
             Regex regex = new Regex(pattern);
@@ -679,7 +668,7 @@ namespace IceInk
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public static bool IsUint(string input)
+        public static bool IsUint(this string input)
         {
             Regex regex = new Regex("^[0-9]*[1-9][0-9]*$");
             return regex.IsMatch(input);
@@ -690,7 +679,7 @@ namespace IceInk
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public static bool IsEnglishCh(string input)
+        public static bool IsEnglishCh(this string input)
         {
             Regex regex = new Regex("^[A-Za-z]+$");
             return regex.IsMatch(input);
@@ -701,7 +690,7 @@ namespace IceInk
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public static bool IsNumAndEnCh(string input)
+        public static bool IsNumAndEnCh(this string input)
         {
             string pattern = @"^[A-Za-z0-9]+$";
             Regex regex = new Regex(pattern);
