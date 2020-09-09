@@ -38,7 +38,7 @@ namespace IceInk
 
         static EkLogManager()
         {
-            var writeTask = new Task(obj =>
+            Task writeTask = new Task(obj =>
             {
                 while (true)
                 {
@@ -83,9 +83,7 @@ namespace IceInk
         public static string LogDirectory
         {
             get => Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory).Any(s => s.Contains("Web.config")) ? AppDomain.CurrentDomain.BaseDirectory + @"App_Data\Logs\" : Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "logs");
-            set
-            {
-            }
+            set { }
         }
 
         /// <summary>

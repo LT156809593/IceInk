@@ -54,7 +54,7 @@ namespace IceInk
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="json"></param>
-        /// <returns>返回反序列化后的实体类，如果失败则返回null</returns>
+        /// <returns>返回反序列化后的实体类，如果失败则抛异常l</returns>
         public static T FromJson<T>(this string json) where T : class
         {
             T fromT;
@@ -64,7 +64,7 @@ namespace IceInk
             }
             catch (Exception e)
             {
-                fromT = null;
+                throw new Exception(e.Message);
             }
             return fromT;
         }
