@@ -60,6 +60,10 @@
               "target": "Package",
               "version": "[1.2.0, )"
             },
+            "StackExchange.Redis": {
+              "target": "Package",
+              "version": "[2.1.58, )"
+            },
             "System.Configuration.ConfigurationManager": {
               "target": "Package",
               "version": "[4.7.0, )"
