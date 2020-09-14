@@ -47,11 +47,15 @@ namespace IceInk
         {
             _lazy = new Lazy<T>(() => new T());
 
+            #region 控制台输出创建单例的名称
+            
             Console.WriteLine("----------------------------------------------------------------");
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine($"创建单例: {typeof(T).FullName}");
             Console.ResetColor();
             Console.WriteLine("----------------------------------------------------------------");
+            
+            #endregion
         }
 
         #endregion
