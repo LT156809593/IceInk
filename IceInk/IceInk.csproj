@@ -18,4 +18,17 @@
     <PackageReference Include="System.Reflection.Emit" Version="4.7.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Tools\08.SingleTon\**" />
+    <Compile Include="Tools\08.Singleton\EkSingletonBase.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Tools\08.SingleTon\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Tools\08.SingleTon\**" />
+  </ItemGroup>
+
 </Project>

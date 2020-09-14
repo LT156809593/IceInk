@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Administrator\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Administrator\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_IceInk.-1513897032.00" t="ExcludeRecursive" />
+    <e p="E:\_IceInk\IceInk\IceInk" t="IncludeRecursive">
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="EventSystem" t="Include">
+        <e p="EkEventSystem.cs" t="Include" />
+      </e>
+      <e p="IceInk.csproj" t="IncludeRecursive" />
+      <e p="IceInk.sln" t="IncludeFlat" />
+      <e p="NoSql" t="Include">
+        <e p="EkRedisHelper.cs" t="Include" />
+      </e>
+      <e p="obj" t="ExcludeRecursive">
+        <e p="Debug" t="Include">
+          <e p="netstandard2.0" t="Include">
+            <e p="IceInk.AssemblyInfo.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Tools" t="Include">
+        <e p="00.CsharpExtensions" t="Include">
+          <e p="DateTimeExt" t="Include">
+            <e p="ChineseCalendar.cs" t="Include" />
+            <e p="DateInfoStruct.cs" t="Include" />
+            <e p="DateTimeHelper.cs" t="Include" />
+            <e p="DateUtil.cs" t="Include" />
+            <e p="TimeHelper.cs" t="Include" />
+            <e p="WeekHolidayStruct.cs" t="Include" />
+          </e>
+          <e p="IEnumerable" t="Include">
+            <e p="ArrayExtension.cs" t="Include" />
+            <e p="DictionaryExtension.cs" t="Include" />
+            <e p="ListExtension.cs" t="Include" />
+          </e>
+          <e p="IntExtension.cs" t="Include" />
+          <e p="IOExtension.cs" t="Include" />
+          <e p="ObjectExtension.cs" t="Include" />
+          <e p="Strings" t="Include">
+            <e p="ChineseString.cs" t="Include" />
+            <e p="NumberFormater.cs" t="Include" />
+            <e p="StringExtension.cs" t="Include" />
+            <e p="ValidateCode.cs" t="Include" />
+          </e>
+        </e>
+        <e p="01.Serialize" t="Include">
+          <e p="EkSerializeHelper.cs" t="Include" />
+        </e>
+        <e p="02.Net" t="Include">
+          <e p="EkChangeContentType.cs" t="Include" />
+          <e p="EkHttpClientHelper.cs" t="Include" />
+          <e p="EkHttpContentType.cs" t="Include" />
+          <e p="EkHttpStatusCode.cs" t="Include" />
+          <e p="EkHttpStatusCodeDescriptionAttribute.cs" t="Include" />
+        </e>
+        <e p="03.Encrypt" t="Include">
+          <e p="EkDesEncrypt.cs" t="Include" />
+          <e p="EkMd5Encrypt.cs" t="Include" />
+          <e p="EkRsaEncrypt.cs" t="Include" />
+        </e>
+        <e p="04.Random" t="Include">
+          <e p="EkRandomHelper.cs" t="Include" />
+        </e>
+        <e p="05.Refletion" t="Include">
+          <e p="ClassHelper.cs" t="Include" />
+          <e p="EkReflectionExtension.cs" t="Include" />
+          <e p="ReflectHelper.cs" t="Include" />
+          <e p="ReflectionUtil.cs" t="Include" />
+        </e>
+        <e p="06.HardwareInfo" t="Include">
+          <e p="CPU_INFO.cs" t="Include" />
+          <e p="DiskData.cs" t="Include" />
+          <e p="EkCpuInfo.cs" t="Include" />
+          <e p="EkMemoryInfo.cs" t="Include" />
+          <e p="EkNetData.cs" t="Include" />
+          <e p="EkRamInfo.cs" t="Include" />
+          <e p="EkSystemInfo.cs" t="Include" />
+          <e p="EkSystemTimeInfo.cs" t="Include" />
+          <e p="EkUnit.cs" t="Include" />
+        </e>
+        <e p="07.Logging" t="Include">
+          <e p="EkLogInfo.cs" t="Include" />
+          <e p="EkLogLevel.cs" t="Include" />
+          <e p="EkLogManager.cs" t="Include" />
+        </e>
+        <e p="08.SingleTon" t="Include">
+          <e p="EkSingletonBase.cs" t="Include" />
+        </e>
+      </e>
+    </e>
+    <e p="E:\_LT_Projects\_VSProjects\Test\TestIceInk" t="IncludeRecursive">
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive">
+        <e p="Debug" t="Include">
+          <e p="netcoreapp3.1" t="Include">
+            <e p="TestIceInk.AssemblyInfo.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="Person.cs" t="Include" />
+      <e p="Program.cs" t="Include" />
+      <e p="SingletonTest.cs" t="Include" />
+      <e p="TestIceInk.csproj" t="IncludeRecursive" />
+    </e>
+  </component>
+</project>
