@@ -45,10 +45,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/NoSql/EkRedisHelper.cs" />
         <option value="$PROJECT_DIR$/../../../_LT_Projects/_VSProjects/Test/TestIceInk/Program.cs" />
         <option value="$PROJECT_DIR$/../../../_LT_Projects/_VSProjects/Test/TestIceInk/SingletonTest.cs" />
         <option value="$PROJECT_DIR$/Tools/08.Singleton/EkSingletonBase.cs" />
+        <option value="$PROJECT_DIR$/NoSql/EkRedisHelper.cs" />
       </list>
     </option>
   </component>
@@ -105,7 +105,7 @@
       <workItem from="1600051321665" duration="597000" />
       <workItem from="1600052130111" duration="137000" />
       <workItem from="1600052305686" duration="177000" />
-      <workItem from="1600052510714" duration="1004000" />
+      <workItem from="1600052510714" duration="2345000" />
     </task>
     <servers />
   </component>
