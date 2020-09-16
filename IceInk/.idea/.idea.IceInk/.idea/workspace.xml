@@ -41,6 +41,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Tools/08.Singleton/EkSingletonBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6DADD22E-0197-42CE-80AA-EFEF99855BE0/2d/0d7fbfef/Lazy`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6DADD22E-0197-42CE-80AA-EFEF99855BE0/57/0c876f6c/Lazy`1.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -105,7 +106,8 @@
       <workItem from="1600051321665" duration="597000" />
       <workItem from="1600052130111" duration="137000" />
       <workItem from="1600052305686" duration="177000" />
-      <workItem from="1600052510714" duration="2345000" />
+      <workItem from="1600052510714" duration="3893000" />
+      <workItem from="1600218988146" duration="290000" />
     </task>
     <servers />
   </component>
@@ -159,10 +161,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1600051923520" />
-    <state x="773" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1600052533331">
+    <state x="773" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1600055116558">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="773" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1600052533331" />
+    <state x="773" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1600055116558" />
     <state x="758" y="419" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1600051728905">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
