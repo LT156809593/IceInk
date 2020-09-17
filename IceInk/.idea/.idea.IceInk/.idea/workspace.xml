@@ -44,6 +44,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/31F94AF4-0455-4C4C-BD4F-AB58A9F2D1BF/7d/7d7db714/Enumerable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Tools/08.Singleton/EkSingletonBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8B5ACF9F-E1FE-4B8E-9CF7-2399012BD56E/90/e85dc1ef/Regex.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/28935DDA-2822-48FE-B003-5F96D5D90AA3/d3/3d918d03/AuthenticationLevel.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6DADD22E-0197-42CE-80AA-EFEF99855BE0/85/43b5237d/DateTime.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AD61CA47-F8B7-4CC6-93A0-BA44CC73B5C7/73/7e582aa1/DateTime.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6DADD22E-0197-42CE-80AA-EFEF99855BE0/8f/a1327e05/ConcurrentQueue`1.cs" root0="SKIP_HIGHLIGHTING" />
@@ -62,6 +63,7 @@
         <option value="$PROJECT_DIR$/Tools/07.Logging/EkLogInfo.cs" />
         <option value="$PROJECT_DIR$/../../../_LT_Projects/_VSProjects/Test/TestIceInk/Program.cs" />
         <option value="$PROJECT_DIR$/Tools/07.Logging/EkLogManager.cs" />
+        <option value="$PROJECT_DIR$/Tools/06.HardwareInfo/EkMemoryInfo.cs" />
         <option value="$PROJECT_DIR$/Tools/06.HardwareInfo/EkSystemInfo.cs" />
       </list>
     </option>
@@ -83,7 +85,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Publish to folder.Iceink">
@@ -134,7 +136,8 @@
       <workItem from="1600218988146" duration="3286000" />
       <workItem from="1600241860213" duration="4479000" />
       <workItem from="1600305398482" duration="724000" />
-      <workItem from="1600306466143" duration="322000" />
+      <workItem from="1600306466143" duration="2373000" />
+      <workItem from="1600309375677" duration="1607000" />
     </task>
     <servers />
   </component>
@@ -164,10 +167,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="344" key="#Notifications/0.0.1920.1040@0.0.1920.1040" timestamp="1600052519941" />
-    <state x="716" y="398" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1" timestamp="1600306491908">
+    <state x="716" y="398" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1" timestamp="1600307987318">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="716" y="398" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1/0.0.1920.1040@0.0.1920.1040" timestamp="1600306491908" />
+    <state x="716" y="398" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1/0.0.1920.1040@0.0.1920.1040" timestamp="1600307987318" />
     <state width="818" height="464" key="DebuggerActiveHint" timestamp="1600244758580">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -252,10 +255,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="216" key="GridCell.Tab.4.right/0.0.1920.1040@0.0.1920.1040" timestamp="1600258880607" />
-    <state x="461" y="164" key="SettingsEditor" timestamp="1600052423172">
+    <state x="552" y="251" key="Rider.ProjectTemplateDialog.Size" timestamp="1600307374098">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1600052423172" />
+    <state x="552" y="251" key="Rider.ProjectTemplateDialog.Size/0.0.1920.1040@0.0.1920.1040" timestamp="1600307374098" />
+    <state x="461" y="164" key="SettingsEditor" timestamp="1600310029477">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1600310029477" />
     <state width="968" height="528" key="XDebugger.FullValuePopup" timestamp="1600244730802">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -272,9 +279,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="758" y="419" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1600051728905" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1600049683266">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1600308612056">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1600049683266" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1600308612056" />
   </component>
 </project>

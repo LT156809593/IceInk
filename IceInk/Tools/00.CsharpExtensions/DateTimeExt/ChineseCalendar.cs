@@ -1069,7 +1069,9 @@ namespace IceInk
                 var ts = Date - ChineseConstellationReferDay;
                 var offset = ts.Days;
                 var modStarDay = offset % 28;
-                return modStarDay >= 0 ? ChineseConstellationName[modStarDay] : ChineseConstellationName[27 + modStarDay];
+                return modStarDay >= 0
+                    ? ChineseConstellationName[modStarDay]
+                    : ChineseConstellationName[27 + modStarDay];
             }
         }
 

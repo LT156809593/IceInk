@@ -1,4 +1,5 @@
 ﻿#region << 文 件 说 明 >>
+
 /*----------------------------------------------------------------
 // 文件名称：EkDesEncrypt
 // 创 建 者：IceInk
@@ -13,6 +14,7 @@
 
 //		
 //----------------------------------------------------------------*/
+
 #endregion
 
 using System;
@@ -44,13 +46,14 @@ namespace IceInk.Tools._03.Encrypt
             var dsp = new DESCryptoServiceProvider();
             using (var memStream = new MemoryStream())
             {
-                var crypStream = new CryptoStream(memStream, dsp.CreateEncryptor(_rgbKey, _rgbIV), CryptoStreamMode.Write);
+                var crypStream = new CryptoStream(memStream, dsp.CreateEncryptor(_rgbKey, _rgbIV),
+                    CryptoStreamMode.Write);
                 var sWriter = new StreamWriter(crypStream);
                 sWriter.Write(text);
                 sWriter.Flush();
                 crypStream.FlushFinalBlock();
                 memStream.Flush();
-                return Convert.ToBase64String(memStream.GetBuffer(), 0, (int)memStream.Length);
+                return Convert.ToBase64String(memStream.GetBuffer(), 0, (int) memStream.Length);
             }
         }
 
@@ -66,7 +69,8 @@ namespace IceInk.Tools._03.Encrypt
 
             using (var memStream = new MemoryStream())
             {
-                var crypStream = new CryptoStream(memStream, dsp.CreateDecryptor(_rgbKey, _rgbIV), CryptoStreamMode.Write);
+                var crypStream = new CryptoStream(memStream, dsp.CreateDecryptor(_rgbKey, _rgbIV),
+                    CryptoStreamMode.Write);
                 crypStream.Write(buffer, 0, buffer.Length);
                 crypStream.FlushFinalBlock();
                 return Encoding.UTF8.GetString(memStream.ToArray());
@@ -81,7 +85,7 @@ namespace IceInk.Tools._03.Encrypt
             private static T AppSettings<T>(string key, T defaultValue)
             {
                 var v = ConfigurationManager.AppSettings[key];
-                return string.IsNullOrEmpty(v) ? defaultValue : (T)Convert.ChangeType(v, typeof(T));
+                return string.IsNullOrEmpty(v) ? defaultValue : (T) Convert.ChangeType(v, typeof(T));
             }
         }
     }

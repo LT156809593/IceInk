@@ -17,7 +17,7 @@
 namespace IceInk
 {
     /// <summary>
-    ///     字节单位枚举
+    /// 字节单位枚举
     /// </summary>
     internal enum EkUnit
     {

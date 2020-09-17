@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 namespace IceInk
 {
     /// <summary>
-    ///     日期时间帮助类
+    /// 日期时间帮助类
     /// </summary>
     public static class DateTimeHelper
     {
         /// <summary>
-        ///     获取某一年有多少周
+        /// 获取某一年有多少周
         /// </summary>
         /// <param name="_"></param>
         /// <param name="year">年份</param>
@@ -23,7 +23,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     返回年度第几个星期   默认星期日是第一天
+        /// 返回年度第几个星期   默认星期日是第一天
         /// </summary>
         /// <param name="date">时间</param>
         /// <returns>第几周</returns>
@@ -34,7 +34,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     返回年度第几个星期
+        /// 返回年度第几个星期
         /// </summary>
         /// <param name="date">时间</param>
         /// <param name="week">一周的开始日期</param>
@@ -46,11 +46,11 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     得到一年中的某周的起始日和截止日
-        ///     年 nYear
-        ///     周数 nNumWeek
-        ///     周始 out dtWeekStart
-        ///     周终 out dtWeekeEnd
+        /// 得到一年中的某周的起始日和截止日
+        /// 年 nYear
+        /// 周数 nNumWeek
+        /// 周始 out dtWeekStart
+        /// 周终 out dtWeekeEnd
         /// </summary>
         /// <param name="_"></param>
         /// <param name="nYear">年份</param>
@@ -67,7 +67,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     得到一年中的某周的起始日和截止日    周一到周五  工作日
+        /// 得到一年中的某周的起始日和截止日    周一到周五  工作日
         /// </summary>
         /// <param name="_"></param>
         /// <param name="nYear">年份</param>
@@ -102,7 +102,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     设置本地计算机时间
+        /// 设置本地计算机时间
         /// </summary>
         /// <param name="dt">DateTime对象</param>
         public static void SetLocalTime(this DateTime dt)

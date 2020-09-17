@@ -22,7 +22,7 @@ namespace IceInk
         #region 定义CPU的信息结构
 
         /// <summary>
-        ///     定义CPU的信息结构
+        /// 定义CPU的信息结构
         /// </summary>
         [StructLayout(LayoutKind.Sequential)]
         public struct CPU_INFO

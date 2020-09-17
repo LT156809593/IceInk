@@ -22,7 +22,7 @@ namespace IceInk.Extension
     public static class ArrayExtension
     {
         /// <summary>
-        ///     遍历数组
+        /// 遍历数组
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="selfArray"></param>
@@ -36,7 +36,7 @@ namespace IceInk.Extension
         }
 
         /// <summary>
-        ///     遍历数组 (可获取索引)
+        /// 遍历数组 (可获取索引)
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="selfArray"></param>
@@ -56,7 +56,7 @@ namespace IceInk.Extension
         }
 
         /// <summary>
-        ///     倒序遍历数组
+        /// 倒序遍历数组
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="selfArray"></param>
@@ -77,7 +77,7 @@ namespace IceInk.Extension
 
 
         /// <summary>
-        ///     倒序遍历数组 (可获取索引)
+        /// 倒序遍历数组 (可获取索引)
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="selfArray"></param>
@@ -98,7 +98,7 @@ namespace IceInk.Extension
 
 
         /// <summary>
-        ///     遍历 IEnumerable
+        /// 遍历 IEnumerable
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="selfArray"></param>

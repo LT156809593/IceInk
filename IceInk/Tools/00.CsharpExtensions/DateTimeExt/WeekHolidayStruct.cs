@@ -1,32 +1,32 @@
 ﻿namespace IceInk
 {
     /// <summary>
-    ///     节假日信息
+    /// 节假日信息
     /// </summary>
     public struct WeekHolidayStruct
     {
         /// <summary>
-        ///     月
+        /// 月
         /// </summary>
         public readonly int Month;
 
         /// <summary>
-        ///     这个月第几周
+        /// 这个月第几周
         /// </summary>
         public readonly int WeekAtMonth;
 
         /// <summary>
-        ///     周末日
+        /// 周末日
         /// </summary>
         public readonly int WeekDay;
 
         /// <summary>
-        ///     假日名
+        /// 假日名
         /// </summary>
         public readonly string HolidayName;
 
         /// <summary>
-        ///     节假日信息
+        /// 节假日信息
         /// </summary>
         /// <param name="month"></param>
         /// <param name="weekAtMonth"></param>

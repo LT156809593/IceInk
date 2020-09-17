@@ -20,7 +20,7 @@ using System;
 namespace IceInk
 {
     /// <summary>
-    ///     单例模式父类，需要使用单利模式的类继承此类即可
+    /// 单例模式父类，需要使用单利模式的类继承此类即可
     /// </summary>
     public class EkSingletonBase<T> where T : class, new()
     {
@@ -32,7 +32,7 @@ namespace IceInk
         private static Lazy<T> _lazy;
 
         /// <summary>
-        ///     单例
+        /// 单例
         /// </summary>
         /// <param name="forceInit">强制更新实例</param>
         /// <returns></returns>

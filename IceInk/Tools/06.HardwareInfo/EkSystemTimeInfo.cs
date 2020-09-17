@@ -18,7 +18,7 @@ using System.Runtime.InteropServices;
 namespace IceInk
 {
     /// <summary>
-    ///     定义系统时间的信息结构
+    /// 定义系统时间的信息结构
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct EkSystemTimeInfo

@@ -26,12 +26,12 @@ using System.Threading;
 namespace IceInk
 {
     /// <summary>
-    ///     随机数生成帮助工具,极大概率保证生成的随机数不重复
+    /// 随机数生成帮助工具,极大概率保证生成的随机数不重复
     /// </summary>
     public static class EkRandomHelper
     {
         /// <summary>
-        ///     随机获取数字并等待1~2s
+        /// 随机获取数字并等待1~2s
         /// </summary>
         /// <returns></returns>
         public static int GetRandomNumberDelay(int min, int max)
@@ -41,7 +41,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取随机数(int)，解决重复问题
+        /// 获取随机数(int)，解决重复问题
         /// </summary>
         /// <param name="min">随机区间最小值(包含)</param>
         /// <param name="max">随机区间最大值(不包含)</param>
@@ -53,7 +53,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取随机数(double)，解决重复问题
+        /// 获取随机数(double)，解决重复问题
         /// </summary>
         /// <param name="min">随机区间最小值(包含)</param>
         /// <param name="max">随机区间最大值(不包含)</param>
@@ -65,7 +65,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     创建随机种子，极大概率保证同一时刻随机种子不相同
+        /// 创建随机种子，极大概率保证同一时刻随机种子不相同
         /// </summary>
         /// <returns></returns>
         private static int CreateSeed()

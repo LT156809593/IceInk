@@ -23,18 +23,18 @@ using System.Text;
 namespace IceInk
 {
     /// <summary>
-    ///     MD5加密 不可逆加密
-    ///     1 防止被篡改
-    ///     2 防止明文存储
-    ///     3 防止抵赖，数字签名
+    /// MD5加密 不可逆加密
+    /// 1 防止被篡改
+    /// 2 防止明文存储
+    /// 3 防止抵赖，数字签名
     /// </summary>
     public class EkMd5Encrypt
     {
         #region MD5
 
         /// <summary>
-        ///     MD5加密,和动网上的16/32位MD5加密结果相同,
-        ///     使用的UTF8编码
+        /// MD5加密,和动网上的16/32位MD5加密结果相同,
+        /// 使用的UTF8编码
         /// </summary>
         /// <param name="source">待加密字串</param>
         /// <param name="length">16或32值之一,其它则采用.net默认MD5加密算法</param>
@@ -67,7 +67,7 @@ namespace IceInk
         #region MD5摘要
 
         /// <summary>
-        ///     获取文件的MD5摘要
+        /// 获取文件的MD5摘要
         /// </summary>
         /// <param name="fullFileName">文件路径</param>
         /// <returns></returns>
@@ -80,7 +80,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     根据stream获取文件摘要
+        /// 根据stream获取文件摘要
         /// </summary>
         /// <param name="stream"></param>
         /// <returns></returns>

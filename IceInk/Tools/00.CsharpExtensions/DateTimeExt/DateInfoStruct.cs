@@ -1,32 +1,32 @@
 ﻿namespace IceInk
 {
     /// <summary>
-    ///     日期信息
+    /// 日期信息
     /// </summary>
     public struct DateInfoStruct
     {
         /// <summary>
-        ///     月
+        /// 月
         /// </summary>
         public readonly int Month;
 
         /// <summary>
-        ///     日
+        /// 日
         /// </summary>
         public readonly int Day;
 
         /// <summary>
-        ///     假期长度
+        /// 假期长度
         /// </summary>
         public readonly int Recess;
 
         /// <summary>
-        ///     节假日名
+        /// 节假日名
         /// </summary>
         public readonly string HolidayName;
 
         /// <summary>
-        ///     日期信息
+        /// 日期信息
         /// </summary>
         /// <param name="month"></param>
         /// <param name="day"></param>

@@ -9,14 +9,14 @@ using System.Text;
 namespace IceInk
 {
     /// <summary>
-    ///     反射辅助类
+    /// 反射辅助类
     /// </summary>
     public static class ReflectHelper
     {
         #region 成员读写
 
         /// <summary>
-        ///     获取实体相关属性的值
+        /// 获取实体相关属性的值
         /// </summary>
         /// <param name="obj">反射对象</param>
         /// <param name="propertyName">属性名</param>
@@ -38,7 +38,7 @@ namespace IceInk
         #region 方法调用
 
         /// <summary>
-        ///     直接调用内部对象的方法/函数或获取属性(支持重载调用)
+        /// 直接调用内部对象的方法/函数或获取属性(支持重载调用)
         /// </summary>
         /// <typeparam name="T">泛型T</typeparam>
         /// <param name="refType">目标数据类型</param>
@@ -161,7 +161,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     调用相关实体类型的函数方法
+        /// 调用相关实体类型的函数方法
         /// </summary>
         /// <typeparam name="T">泛型T</typeparam>
         /// <param name="refType">实体类型</param>
@@ -178,7 +178,7 @@ namespace IceInk
         #region 资源获取
 
         /// <summary>
-        ///     获取程序集资源的位图资源
+        /// 获取程序集资源的位图资源
         /// </summary>
         /// <param name="assemblyType">程序集中的某一对象类型</param>
         /// <param name="resourceHolder">资源的根名称。例如，名为“MyResource.en-US.resources”的资源文件的根名称为“MyResource”。</param>
@@ -191,7 +191,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取程序集资源的文本资源
+        /// 获取程序集资源的文本资源
         /// </summary>
         /// <param name="assemblyType">程序集中的某一对象类型</param>
         /// <param name="resName">资源项名称</param>
@@ -204,7 +204,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取程序集嵌入资源的文本形式
+        /// 获取程序集嵌入资源的文本形式
         /// </summary>
         /// <param name="assemblyType">程序集中的某一对象类型</param>
         /// <param name="charset">字符集编码</param>

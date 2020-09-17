@@ -18,8 +18,8 @@ using System;
 namespace IceInk
 {
     /// <summary>
-    ///     用于标记 HttpStatusCode
-    ///     添加描述
+    /// 用于标记 HttpStatusCode
+    /// 添加描述
     /// </summary>
     [AttributeUsage(AttributeTargets.Field)]
     public class EkHttpStatusCodeDescriptionAttribute : Attribute
@@ -30,7 +30,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     状态描述
+        /// 状态描述
         /// </summary>
         public string Description { get; }
     }

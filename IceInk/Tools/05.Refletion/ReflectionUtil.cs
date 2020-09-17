@@ -12,7 +12,7 @@ using System.Text;
 namespace IceInk
 {
     /// <summary>
-    ///     反射操作辅助类，如获取或设置字段、属性的值等反射信息。
+    /// 反射操作辅助类，如获取或设置字段、属性的值等反射信息。
     /// </summary>
     public static class ReflectionUtil
     {
@@ -24,7 +24,7 @@ namespace IceInk
 #pragma warning restore 1591
 
         /// <summary>
-        ///     执行方法
+        /// 执行方法
         /// </summary>
         /// <param name="obj">反射对象</param>
         /// <param name="methodName">方法名，区分大小写</param>
@@ -39,7 +39,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     设置字段
+        /// 设置字段
         /// </summary>
         /// <param name="obj">反射对象</param>
         /// <param name="name">字段名</param>
@@ -51,7 +51,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取字段
+        /// 获取字段
         /// </summary>
         /// <param name="obj">反射对象</param>
         /// <param name="name">字段名</param>
@@ -64,7 +64,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取所有的字段信息
+        /// 获取所有的字段信息
         /// </summary>
         /// <param name="obj">反射对象</param>
         /// <returns>字段信息</returns>
@@ -75,7 +75,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     设置属性
+        /// 设置属性
         /// </summary>
         /// <param name="obj">反射对象</param>
         /// <param name="name">属性名</param>
@@ -88,7 +88,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取属性
+        /// 获取属性
         /// </summary>
         /// <param name="obj">反射对象</param>
         /// <param name="name">属性名</param>
@@ -101,7 +101,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取所有的属性信息
+        /// 获取所有的属性信息
         /// </summary>
         /// <param name="obj">反射对象</param>
         /// <returns>属性信息</returns>
@@ -116,7 +116,7 @@ namespace IceInk
         #region 获取Description
 
         /// <summary>
-        ///     获取枚举成员的Description信息
+        /// 获取枚举成员的Description信息
         /// </summary>
         /// <param name="value">枚举值</param>
         /// <returns>返回枚举的Description或ToString</returns>
@@ -126,7 +126,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取枚举值的Description信息
+        /// 获取枚举值的Description信息
         /// </summary>
         /// <param name="value">枚举值</param>
         /// <param name="args">要格式化的对象</param>
@@ -144,7 +144,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     根据成员信息获取Description信息
+        /// 根据成员信息获取Description信息
         /// </summary>
         /// <param name="member">成员信息</param>
         /// <returns>如果未找到DescriptionAttribute则返回null或返回类型描述</returns>
@@ -154,7 +154,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     根据成员信息获取Description信息
+        /// 根据成员信息获取Description信息
         /// </summary>
         /// <param name="member">成员信息</param>
         /// <param name="args">格式化占位对象</param>
@@ -186,7 +186,7 @@ namespace IceInk
         #region 获取Attribute信息
 
         /// <summary>
-        ///     获取对象的Attributes
+        /// 获取对象的Attributes
         /// </summary>
         /// <param name="attributeType">Type类型</param>
         /// <param name="assembly">程序集信息</param>
@@ -207,7 +207,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取对象的Attributes
+        /// 获取对象的Attributes
         /// </summary>
         /// <param name="attributeType">Type类型</param>
         /// <param name="type">成员信息</param>
@@ -218,7 +218,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取对象的Attributes
+        /// 获取对象的Attributes
         /// </summary>
         /// <param name="attributeType">Type类型</param>
         /// <param name="type">成员信息</param>
@@ -241,7 +241,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取对象的Attributes
+        /// 获取对象的Attributes
         /// </summary>
         /// <param name="attributeType">Type类型</param>
         /// <param name="type">成员信息</param>
@@ -252,7 +252,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取对象的Attributes
+        /// 获取对象的Attributes
         /// </summary>
         /// <param name="attributeType">Type类型</param>
         /// <param name="type">成员信息</param>
@@ -274,7 +274,7 @@ namespace IceInk
         #region 资源获取
 
         /// <summary>
-        ///     根据资源名称获取图片资源流
+        /// 根据资源名称获取图片资源流
         /// </summary>
         /// <param name="_"></param>
         /// <param name="resourceName">资源的名称</param>
@@ -286,7 +286,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取程序集资源的位图资源
+        /// 获取程序集资源的位图资源
         /// </summary>
         /// <param name="assemblyType">程序集中的某一对象类型</param>
         /// <param name="resourceHolder">资源的根名称。例如，名为“MyResource.en-US.resources”的资源文件的根名称为“MyResource”。</param>
@@ -299,7 +299,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取程序集资源的文本资源
+        /// 获取程序集资源的文本资源
         /// </summary>
         /// <param name="assemblyType">程序集中的某一对象类型</param>
         /// <param name="resName">资源项名称</param>
@@ -312,7 +312,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取程序集嵌入资源的文本形式
+        /// 获取程序集嵌入资源的文本形式
         /// </summary>
         /// <param name="assemblyType">程序集中的某一对象类型</param>
         /// <param name="charset">字符集编码</param>
@@ -336,7 +336,7 @@ namespace IceInk
         #region 创建实例
 
         /// <summary>
-        ///     获取默认实例
+        /// 获取默认实例
         /// </summary>
         /// <param name="type">类型</param>
         /// <returns></returns>
@@ -346,7 +346,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取默认实例
+        /// 获取默认实例
         /// </summary>
         /// <param name="type">类型</param>
         /// <returns></returns>
@@ -356,7 +356,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取默认实例
+        /// 获取默认实例
         /// </summary>
         /// <param name="type">类型</param>
         /// <returns></returns>
@@ -366,7 +366,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取默认实例
+        /// 获取默认实例
         /// </summary>
         /// <param name="type">类型</param>
         /// <returns></returns>
@@ -376,7 +376,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取一个构造参数的实例
+        /// 获取一个构造参数的实例
         /// </summary>
         /// <typeparam name="TArg">参数类型</typeparam>
         /// <typeparam name="T"></typeparam>
@@ -389,7 +389,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取一个构造参数的实例
+        /// 获取一个构造参数的实例
         /// </summary>
         /// <typeparam name="TArg">参数类型</typeparam>
         /// <typeparam name="T"></typeparam>
@@ -402,7 +402,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取2个构造参数的实例
+        /// 获取2个构造参数的实例
         /// </summary>
         /// <typeparam name="TArg1">参数类型</typeparam>
         /// <typeparam name="TArg2">参数类型</typeparam>
@@ -418,7 +418,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取2个构造参数的实例
+        /// 获取2个构造参数的实例
         /// </summary>
         /// <typeparam name="TArg1">参数类型</typeparam>
         /// <typeparam name="TArg2">参数类型</typeparam>
@@ -434,7 +434,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取3个构造参数的实例
+        /// 获取3个构造参数的实例
         /// </summary>
         /// <typeparam name="TArg1">参数类型</typeparam>
         /// <typeparam name="TArg2">参数类型</typeparam>
@@ -453,7 +453,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取3个构造参数的实例
+        /// 获取3个构造参数的实例
         /// </summary>
         /// <typeparam name="TArg1">参数类型</typeparam>
         /// <typeparam name="TArg2">参数类型</typeparam>

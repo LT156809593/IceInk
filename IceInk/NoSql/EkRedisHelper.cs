@@ -63,14 +63,14 @@ using StackExchange.Redis;
 namespace IceInk
 {
     /// <summary>
-    ///     Redis操作帮助
+    /// Redis操作帮助
     /// </summary>
     public class EkRedisHelper : IDisposable
     {
         private ConnectionMultiplexer _conn;
 
         /// <summary>
-        ///     自定义键
+        /// 自定义键
         /// </summary>
         public string CustomKey;
 
@@ -81,7 +81,7 @@ namespace IceInk
             "127.0.0.1:6379,allowadmin=true,abortConnect=false,connectTimeout=1000,connectRetry=1,syncTimeout=20000";
 
         /// <summary>
-        ///     静态连接池
+        /// 静态连接池
         /// </summary>
         public static ConcurrentDictionary<string, ConnectionMultiplexer> ConnectionCache { get; set; } =
             new ConcurrentDictionary<string, ConnectionMultiplexer>();
@@ -101,32 +101,32 @@ namespace IceInk
         #region 自定义事件
 
         /// <summary>
-        ///     连接失败 ， 如果重新连接成功你将不会收到这个通知
+        /// 连接失败 ， 如果重新连接成功你将不会收到这个通知
         /// </summary>
         public event EventHandler<ConnectionFailedEventArgs> ConnectionFailed;
 
         /// <summary>
-        ///     重新建立连接之前的错误
+        /// 重新建立连接之前的错误
         /// </summary>
         public event EventHandler<ConnectionFailedEventArgs> ConnectionRestored;
 
         /// <summary>
-        ///     发生错误时
+        /// 发生错误时
         /// </summary>
         public event EventHandler<RedisErrorEventArgs> ErrorMessage;
 
         /// <summary>
-        ///     配置更改时
+        /// 配置更改时
         /// </summary>
         public event EventHandler<EndPointEventArgs> ConfigurationChanged;
 
         /// <summary>
-        ///     更改集群时
+        /// 更改集群时
         /// </summary>
         public event EventHandler<HashSlotMovedEventArgs> HashSlotMoved;
 
         /// <summary>
-        ///     redis类库错误时
+        /// redis类库错误时
         /// </summary>
         public event EventHandler<InternalErrorEventArgs> InternalError;
 
@@ -136,11 +136,11 @@ namespace IceInk
         #region 构造函数
 
         /// <summary>
-        ///     构造函数，使用该构造函数需要先在config中配置链接字符串，连接字符串在config配置文件中的ConnectionStrings节下配置，name固定为RedisHosts，值的格式：127.0.0.1:6379,allowadmin=true，若未正确配置，将按默认值“127.0.0.1:6379,allowadmin=true,abortConnect=false”进行操作，如：
-        ///     <br />
-        ///     &lt;connectionStrings&gt;<br />
-        ///     &lt;add name = "RedisHosts" connectionString="127.0.0.1:6379,allowadmin=true,abortConnect=false"/&gt;<br />
-        ///     &lt;/connectionStrings&gt;
+        /// 构造函数，使用该构造函数需要先在config中配置链接字符串，连接字符串在config配置文件中的ConnectionStrings节下配置，name固定为RedisHosts，值的格式：127.0.0.1:6379,allowadmin=true，若未正确配置，将按默认值“127.0.0.1:6379,allowadmin=true,abortConnect=false”进行操作，如：
+        /// <br />
+        /// &lt;connectionStrings&gt;<br />
+        /// &lt;add name = "RedisHosts" connectionString="127.0.0.1:6379,allowadmin=true,abortConnect=false"/&gt;<br />
+        /// &lt;/connectionStrings&gt;
         /// </summary>
         /// <param name="dbNum">数据库编号</param>
         public EkRedisHelper(int dbNum = 0) : this(null, dbNum)
@@ -148,7 +148,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     构造函数
+        /// 构造函数
         /// </summary>
         /// <param name="readWriteHosts">Redis服务器连接字符串，格式：127.0.0.1:6379,allowadmin=true,abortConnect=false</param>
         /// <param name="dbNum">数据库的编号</param>
@@ -173,7 +173,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     构造函数
+        /// 构造函数
         /// </summary>
         /// <param name="readWriteHosts">Redis服务器连接字符串，格式：127.0.0.1:6379,allowadmin=true,abortConnect=false</param>
         /// <param name="dbNum">数据库的编号</param>
@@ -199,7 +199,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取新实例
+        /// 获取新实例
         /// </summary>
         /// <param name="db">数据库的编号</param>
         /// <returns></returns>
@@ -209,7 +209,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取单例
+        /// 获取单例
         /// </summary>
         /// <param name="db">数据库的编号</param>
         /// <returns></returns>
@@ -219,7 +219,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     从对象池获取默认实例
+        /// 从对象池获取默认实例
         /// </summary>
         /// <param name="conn">Redis服务器连接字符串，格式：127.0.0.1:6379,allowadmin=true,abortConnect=false</param>
         /// <param name="db">数据库的编号</param>
@@ -230,7 +230,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取单例
+        /// 获取单例
         /// </summary>
         /// <param name="conn">Redis服务器连接字符串，格式：127.0.0.1:6379,allowadmin=true,abortConnect=false</param>
         /// <param name="db">数据库的编号</param>
@@ -247,7 +247,7 @@ namespace IceInk
         #region 同步方法
 
         /// <summary>
-        ///     保存单个key value
+        /// 保存单个key value
         /// </summary>
         /// <param name="key">Redis Key</param>
         /// <param name="value">保存的值</param>
@@ -260,7 +260,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     保存多个key value
+        /// 保存多个key value
         /// </summary>
         /// <param name="keyValues">键值对</param>
         /// <returns>是否保存成功</returns>
@@ -272,7 +272,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     保存一个对象
+        /// 保存一个对象
         /// </summary>
         /// <typeparam name="T">对象类型</typeparam>
         /// <param name="key">键</param>
@@ -287,7 +287,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取单个key的值
+        /// 获取单个key的值
         /// </summary>
         /// <param name="key">键</param>
         /// <returns>值</returns>
@@ -303,7 +303,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取多个Key
+        /// 获取多个Key
         /// </summary>
         /// <param name="listKey">键集合</param>
         /// <returns>值集合</returns>
@@ -314,7 +314,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取一个key的对象
+        /// 获取一个key的对象
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -331,7 +331,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     为数字增长val
+        /// 为数字增长val
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="val">可以为负</param>
@@ -343,7 +343,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     为数字减少val
+        /// 为数字减少val
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="val">可以为负</param>
@@ -359,7 +359,7 @@ namespace IceInk
         #region 异步方法
 
         /// <summary>
-        ///     保存单个key value
+        /// 保存单个key value
         /// </summary>
         /// <param name="key">Redis Key</param>
         /// <param name="value">保存的值</param>
@@ -372,7 +372,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     保存多个key value
+        /// 保存多个key value
         /// </summary>
         /// <param name="keyValues">键值对</param>
         /// <returns>是否保存成功</returns>
@@ -384,7 +384,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     保存一个对象
+        /// 保存一个对象
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -399,7 +399,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取单个key的值
+        /// 获取单个key的值
         /// </summary>
         /// <param name="key">键</param>
         /// <returns>值</returns>
@@ -415,7 +415,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取多个Key
+        /// 获取多个Key
         /// </summary>
         /// <param name="listKey">键集合</param>
         /// <returns>值集合</returns>
@@ -426,7 +426,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取一个key的对象
+        /// 获取一个key的对象
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -444,7 +444,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     为数字增长val
+        /// 为数字增长val
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="val">可以为负</param>
@@ -456,7 +456,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     为数字减少val
+        /// 为数字减少val
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="val">可以为负</param>
@@ -476,7 +476,7 @@ namespace IceInk
         #region 同步方法
 
         /// <summary>
-        ///     判断某个数据是否已经被缓存
+        /// 判断某个数据是否已经被缓存
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="dataKey">对象的字段</param>
@@ -488,7 +488,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     存储数据到hash表
+        /// 存储数据到hash表
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -506,7 +506,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     存储数据到hash表
+        /// 存储数据到hash表
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -522,7 +522,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     移除hash中的某值
+        /// 移除hash中的某值
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="dataKey">对象的字段</param>
@@ -534,7 +534,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     移除hash中的多个值
+        /// 移除hash中的多个值
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="dataKeys">对象的字段集合</param>
@@ -546,7 +546,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     从hash表获取数据
+        /// 从hash表获取数据
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -568,7 +568,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     为数字增长val
+        /// 为数字增长val
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="dataKey">对象的字段</param>
@@ -581,7 +581,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     为数字减少val
+        /// 为数字减少val
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="dataKey">对象的字段</param>
@@ -594,7 +594,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取hashkey所有Redis key
+        /// 获取hashkey所有Redis key
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -614,7 +614,7 @@ namespace IceInk
         #region 异步方法
 
         /// <summary>
-        ///     判断某个数据是否已经被缓存
+        /// 判断某个数据是否已经被缓存
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="dataKey">对象的字段</param>
@@ -626,7 +626,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     存储数据到hash表
+        /// 存储数据到hash表
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -644,7 +644,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     存储数据到hash表
+        /// 存储数据到hash表
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -660,7 +660,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     移除hash中的某值
+        /// 移除hash中的某值
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="dataKey">对象的字段</param>
@@ -672,7 +672,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     移除hash中的多个值
+        /// 移除hash中的多个值
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="dataKeys">对象的字段集合</param>
@@ -684,7 +684,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     从hash表获取数据
+        /// 从hash表获取数据
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -703,7 +703,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     为数字增长val
+        /// 为数字增长val
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="dataKey">对象的字段</param>
@@ -716,7 +716,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     为数字减少val
+        /// 为数字减少val
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="dataKey">对象的字段</param>
@@ -729,7 +729,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取hashkey所有Redis key
+        /// 获取hashkey所有Redis key
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -750,7 +750,7 @@ namespace IceInk
         #region 同步方法
 
         /// <summary>
-        ///     移除指定ListId的内部List的值
+        /// 移除指定ListId的内部List的值
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -762,7 +762,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取指定key的List
+        /// 获取指定key的List
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -783,7 +783,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     入队
+        /// 入队
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -795,7 +795,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     出队
+        /// 出队
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -816,7 +816,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     入栈
+        /// 入栈
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -828,7 +828,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     出栈
+        /// 出栈
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -849,7 +849,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取集合中的数量
+        /// 获取集合中的数量
         /// </summary>
         /// <param name="key">键</param>
         /// <returns>数量</returns>
@@ -864,7 +864,7 @@ namespace IceInk
         #region 异步方法
 
         /// <summary>
-        ///     移除指定ListId的内部List的值
+        /// 移除指定ListId的内部List的值
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="value">值</param>
@@ -875,7 +875,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取指定key的List
+        /// 获取指定key的List
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -893,7 +893,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     入队
+        /// 入队
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -905,7 +905,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     出队
+        /// 出队
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -923,7 +923,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     入栈
+        /// 入栈
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -935,7 +935,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     出栈
+        /// 出栈
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -953,7 +953,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取集合中的数量
+        /// 获取集合中的数量
         /// </summary>
         /// <param name="key">键</param>
         /// <returns>数量</returns>
@@ -972,7 +972,7 @@ namespace IceInk
         #region 同步方法
 
         /// <summary>
-        ///     添加
+        /// 添加
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="value">值</param>
@@ -984,7 +984,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     删除
+        /// 删除
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="value">值</param>
@@ -995,7 +995,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取全部
+        /// 获取全部
         /// </summary>
         /// <param name="key">键</param>
         /// <returns>数据集合</returns>
@@ -1015,7 +1015,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取集合中的数量
+        /// 获取集合中的数量
         /// </summary>
         /// <param name="key">键</param>
         /// <returns>数量</returns>
@@ -1030,7 +1030,7 @@ namespace IceInk
         #region 异步方法
 
         /// <summary>
-        ///     添加
+        /// 添加
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="value">值</param>
@@ -1042,7 +1042,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     删除
+        /// 删除
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="value">值</param>
@@ -1053,7 +1053,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取全部
+        /// 获取全部
         /// </summary>
         /// <param name="key">键</param>
         /// <returns>数据集合</returns>
@@ -1070,7 +1070,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取集合中的数量
+        /// 获取集合中的数量
         /// </summary>
         /// <param name="key">键</param>
         /// <returns>数量</returns>
@@ -1087,7 +1087,7 @@ namespace IceInk
         #region key
 
         /// <summary>
-        ///     删除单个key
+        /// 删除单个key
         /// </summary>
         /// <param name="key">redis key</param>
         /// <returns>是否删除成功</returns>
@@ -1098,7 +1098,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     删除单个key
+        /// 删除单个key
         /// </summary>
         /// <param name="key">redis key</param>
         /// <returns>是否删除成功</returns>
@@ -1109,7 +1109,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     删除多个key
+        /// 删除多个key
         /// </summary>
         /// <param name="keys">rediskey</param>
         /// <returns>成功删除的个数</returns>
@@ -1120,7 +1120,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     判断key是否存储
+        /// 判断key是否存储
         /// </summary>
         /// <param name="key">键</param>
         /// <returns>是否存储成功</returns>
@@ -1131,7 +1131,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     重新命名key
+        /// 重新命名key
         /// </summary>
         /// <param name="key">旧的键</param>
         /// <param name="newKey">新的键</param>
@@ -1143,7 +1143,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     设置Key的过期时间
+        /// 设置Key的过期时间
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="expiry">过期时间</param>
@@ -1155,7 +1155,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     设置Key的过期时间
+        /// 设置Key的过期时间
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="expiry">过期时间</param>
@@ -1171,7 +1171,7 @@ namespace IceInk
         #region 发布订阅
 
         /// <summary>
-        ///     Redis发布订阅  订阅
+        /// Redis发布订阅  订阅
         /// </summary>
         /// <param name="subChannel">订阅频道</param>
         /// <param name="handler">处理过程</param>
@@ -1188,7 +1188,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     Redis发布订阅  发布
+        /// Redis发布订阅  发布
         /// </summary>
         /// <typeparam name="T">消息对象</typeparam>
         /// <param name="channel">发布频道</param>
@@ -1201,7 +1201,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     Redis发布订阅  取消订阅
+        /// Redis发布订阅  取消订阅
         /// </summary>
         /// <param name="channel">频道</param>
         public void Unsubscribe(string channel)
@@ -1211,7 +1211,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     Redis发布订阅  取消全部订阅
+        /// Redis发布订阅  取消全部订阅
         /// </summary>
         public void UnsubscribeAll()
         {
@@ -1224,7 +1224,7 @@ namespace IceInk
         #region 其他
 
         /// <summary>
-        ///     创建一个事务
+        /// 创建一个事务
         /// </summary>
         /// <returns>事务对象</returns>
         public ITransaction CreateTransaction()
@@ -1233,7 +1233,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获得一个数据库实例
+        /// 获得一个数据库实例
         /// </summary>
         /// <returns>数据库实例</returns>
         public IDatabase GetDatabase()
@@ -1242,7 +1242,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获得一个服务器实例
+        /// 获得一个服务器实例
         /// </summary>
         /// <param name="hostAndPort">服务器地址</param>
         /// <returns>服务器实例</returns>
@@ -1253,7 +1253,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     设置前缀
+        /// 设置前缀
         /// </summary>
         /// <param name="customKey">前缀</param>
         public void SetSysCustomKey(string customKey)

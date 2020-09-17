@@ -23,7 +23,7 @@ namespace IceInk.Extension
     public static class DictionaryExtension
     {
         /// <summary>
-        ///     合并字典
+        /// 合并字典
         /// </summary>
         /// <typeparam name="TKey"></typeparam>
         /// <typeparam name="TValue"></typeparam>
@@ -40,7 +40,7 @@ namespace IceInk.Extension
         }
 
         /// <summary>
-        ///     遍历字典
+        /// 遍历字典
         /// </summary>
         /// <typeparam name="K"></typeparam>
         /// <typeparam name="V"></typeparam>
@@ -59,7 +59,7 @@ namespace IceInk.Extension
         }
 
         /// <summary>
-        ///     字典添加新的词典
+        /// 字典添加新的词典
         /// </summary>
         /// <typeparam name="K"></typeparam>
         /// <typeparam name="V"></typeparam>

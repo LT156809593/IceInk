@@ -22,5 +22,4 @@ E:\_IceInk\IceInk\IceInk\obj\Debug\netstandard2.0\IceInk.AssemblyInfoInputs.cach
 E:\_IceInk\IceInk\IceInk\obj\Debug\netstandard2.0\IceInk.AssemblyInfo.cs
 E:\_IceInk\IceInk\IceInk\obj\Debug\netstandard2.0\IceInk.dll
 E:\_IceInk\IceInk\IceInk\obj\Debug\netstandard2.0\IceInk.pdb
-E:\_IceInk\IceInk\IceInk\obj\Debug\netstandard2.0\IceInk.csprojAssemblyReference.cache
 E:\_IceInk\IceInk\IceInk\obj\Debug\netstandard2.0\IceInk.csproj.CoreCompileInputs.cache

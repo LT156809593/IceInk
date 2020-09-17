@@ -18,7 +18,7 @@ using System.Runtime.InteropServices;
 namespace IceInk
 {
     /// <summary>
-    ///     定义内存的信息结构
+    /// 定义内存的信息结构
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct EkMemoryInfo

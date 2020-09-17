@@ -4,14 +4,14 @@ using System.Globalization;
 namespace IceInk
 {
     /// <summary>
-    ///     时间相关操作帮助类
+    /// 时间相关操作帮助类
     /// </summary>
     public static class TimeHelper
     {
         #region 返回每月的第一天和最后一天
 
         /// <summary>
-        ///     返回每月的第一天和最后一天
+        /// 返回每月的第一天和最后一天
         /// </summary>
         /// <param name="_"></param>
         /// <param name="month">月份</param>
@@ -82,7 +82,7 @@ namespace IceInk
         #region 将时间格式化成 年月日 的形式,如果时间为null，返回当前系统时间
 
         /// <summary>
-        ///     将时间格式化成 年月日 的形式,如果时间为null，返回当前系统时间
+        /// 将时间格式化成 年月日 的形式,如果时间为null，返回当前系统时间
         /// </summary>
         /// <param name="dt">年月日分隔符</param>
         /// <param name="separator">分隔符</param>
@@ -100,7 +100,7 @@ namespace IceInk
         #region 将时间格式化成 时分秒 的形式,如果时间为null，返回当前系统时间
 
         /// <summary>
-        ///     将时间格式化成 时分秒 的形式,如果时间为null，返回当前系统时间
+        /// 将时间格式化成 时分秒 的形式,如果时间为null，返回当前系统时间
         /// </summary>
         /// <param name="dt">当前日期时间对象</param>
         /// <param name="separator">分隔符</param>
@@ -118,7 +118,7 @@ namespace IceInk
         #region 把秒转换成分钟
 
         /// <summary>
-        ///     把秒转换成分钟
+        /// 把秒转换成分钟
         /// </summary>
         /// <param name="_"></param>
         /// <param name="second">秒数</param>
@@ -134,7 +134,7 @@ namespace IceInk
         #region 返回某年某月最后一天
 
         /// <summary>
-        ///     返回某年某月最后一天
+        /// 返回某年某月最后一天
         /// </summary>
         /// <param name="_"></param>
         /// <param name="year">年份</param>
@@ -152,14 +152,14 @@ namespace IceInk
         #region 获得两个日期的间隔
 
         /// <summary>
-        ///     获得两个日期的间隔
+        /// 获得两个日期的间隔
         /// </summary>
         /// <param name="dateTime1">日期一。</param>
         /// <param name="dateTime2">日期二。</param>
         /// <returns>日期间隔TimeSpan。</returns>
         /// <exception cref="OverflowException">
-        ///     The return value is less than <see cref="F:System.TimeSpan.MinValue" /> or greater
-        ///     than <see cref="F:System.TimeSpan.MaxValue" />.
+        /// The return value is less than <see cref="F:System.TimeSpan.MinValue" /> or greater
+        /// than <see cref="F:System.TimeSpan.MaxValue" />.
         /// </exception>
         public static TimeSpan DateDiff2(this DateTime dateTime1, DateTime dateTime2)
         {
@@ -171,7 +171,7 @@ namespace IceInk
         #region 得到随机日期
 
         /// <summary>
-        ///     得到随机日期
+        /// 得到随机日期
         /// </summary>
         /// <param name="time1">起始日期</param>
         /// <param name="time2">结束日期</param>
@@ -206,7 +206,7 @@ namespace IceInk
         #region Rss日期时间转换，将时间全部转换为GMT时间
 
         /// <summary>
-        ///     Rss日期时间转换，将时间全部转换为GMT时间
+        /// Rss日期时间转换，将时间全部转换为GMT时间
         /// </summary>
         /// <param name="strDateTime">Rss中读取的时间</param>
         /// <returns>处理后的标准时间格式</returns>
@@ -239,7 +239,7 @@ namespace IceInk
         #region 时间相关操作类
 
         /// <summary>
-        ///     获得一段时间内有多少小时
+        /// 获得一段时间内有多少小时
         /// </summary>
         /// <param name="dtStar">起始时间</param>
         /// <param name="dtEnd">终止时间</param>
@@ -254,7 +254,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获得8位时间整型数字
+        /// 获得8位时间整型数字
         /// </summary>
         /// <param name="dt">当前的日期时间对象</param>
         /// <returns>8位时间整型数字</returns>
@@ -268,7 +268,7 @@ namespace IceInk
         #region 返回时间差
 
         /// <summary>
-        ///     返回时间差
+        /// 返回时间差
         /// </summary>
         /// <param name="dateTime1">时间1</param>
         /// <param name="dateTime2">时间2</param>
@@ -286,7 +286,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     时间差
+        /// 时间差
         /// </summary>
         /// <param name="beginTime">开始时间</param>
         /// <param name="endTime">结束时间</param>
@@ -298,7 +298,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     计算2个时间差
+        /// 计算2个时间差
         /// </summary>
         /// <param name="beginTime">开始时间</param>
         /// <param name="endTime">结束时间</param>
@@ -357,7 +357,7 @@ namespace IceInk
         #region 时间其他转换静态方法
 
         /// <summary>
-        ///     C#的时间到Javascript的时间的转换
+        /// C#的时间到Javascript的时间的转换
         /// </summary>
         /// <param name="theDate">C#的时间</param>
         /// <returns>Javascript的时间</returns>
@@ -370,7 +370,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     PHP的时间转换成C#中的DateTime
+        /// PHP的时间转换成C#中的DateTime
         /// </summary>
         /// <param name="_"></param>
         /// <param name="time">php的时间</param>
@@ -383,7 +383,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     C#中的DateTime转换成PHP的时间
+        /// C#中的DateTime转换成PHP的时间
         /// </summary>
         /// <param name="time">C#时间</param>
         /// <returns>php时间</returns>

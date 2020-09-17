@@ -23,12 +23,12 @@ using System.Text.RegularExpressions;
 namespace IceInk
 {
     /// <summary>
-    ///     数制格式化器
+    /// 数制格式化器
     /// </summary>
     public class NumberFormater
     {
         /// <summary>
-        ///     数制格式化器
+        /// 数制格式化器
         /// </summary>
         public NumberFormater()
         {
@@ -36,7 +36,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     数制格式化器
+        /// 数制格式化器
         /// </summary>
         /// <param name="characters">进制转换</param>
         public NumberFormater(string characters)
@@ -45,7 +45,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     数制格式化器
+        /// 数制格式化器
         /// </summary>
         /// <param name="bin">进制</param>
         public NumberFormater(int bin)
@@ -58,17 +58,17 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     数制表示字符集
+        /// 数制表示字符集
         /// </summary>
         private string Characters { get; }
 
         /// <summary>
-        ///     进制长度
+        /// 进制长度
         /// </summary>
         public int Length => Characters?.Length ?? 0;
 
         /// <summary>
-        ///     数字转换为指定的进制形式字符串
+        /// 数字转换为指定的进制形式字符串
         /// </summary>
         /// <param name="number"></param>
         /// <returns></returns>
@@ -95,7 +95,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     数字转换为指定的进制形式字符串
+        /// 数字转换为指定的进制形式字符串
         /// </summary>
         /// <param name="number"></param>
         /// <returns></returns>
@@ -122,7 +122,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     指定字符串转换为指定进制的数字形式
+        /// 指定字符串转换为指定进制的数字形式
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
@@ -134,7 +134,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     指定字符串转换为指定进制的大数形式
+        /// 指定字符串转换为指定进制的大数形式
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
@@ -229,7 +229,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     转换为中文数字格式
+        /// 转换为中文数字格式
         /// </summary>
         /// <param name="num">123.45</param>
         /// <returns></returns>
@@ -259,7 +259,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     数字转中文金额大写
+        /// 数字转中文金额大写
         /// </summary>
         /// <param name="number">22.22</param>
         /// <returns></returns>

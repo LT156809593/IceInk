@@ -22,13 +22,13 @@ using System.Linq;
 namespace IceInk
 {
     /// <summary>
-    ///     对 System.IO 的一些扩展
+    /// 对 System.IO 的一些扩展
     /// </summary>
     public static class IOExtension
     {
         /// <summary>
-        ///     创建新的文件夹,如果存在则不创建
-        ///     <code>
+        /// 创建新的文件夹,如果存在则不创建
+        /// <code>
         ///  示例
         /// var testDir = "Assets/TestFolder";
         /// testDir.CreateDirIfNotExists();
@@ -43,8 +43,8 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     删除文件夹，如果存在
-        ///     <code> 示例
+        /// 删除文件夹，如果存在
+        /// <code> 示例
         /// var testDir = "Assets/TestFolder";
         /// testDir.DeleteDirIfExists();
         /// // 结果为，在 Assets 目录下删除了 TestFolder
@@ -56,8 +56,8 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     清空 Dir（保留目录),如果存在。
-        ///     <code>
+        /// 清空 Dir（保留目录),如果存在。
+        /// <code>
         /// var testDir = "Assets/TestFolder";
         /// testDir.EmptyDirIfExists();
         /// // 结果为，清空了 TestFolder 里的内容
@@ -71,8 +71,8 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     删除文件 如果存在
-        ///     <code>
+        /// 删除文件 如果存在
+        /// <code>
         /// // 示例
         /// var filePath = "Assets/Test.txt";
         /// File.Create("Assets/Test);
@@ -90,8 +90,8 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     合并路径
-        ///     <code>
+        /// 合并路径
+        /// <code>
         /// // 示例：
         /// Application.dataPath.CombinePath("Resources").LogInfo();  // /projectPath/Assets/Resources
         /// </code>
@@ -106,7 +106,7 @@ namespace IceInk
 
 
         /// <summary>
-        ///     读取文本
+        /// 读取文本
         /// </summary>
         /// <param name="fileFullPath"></param>
         /// <returns></returns>
@@ -141,7 +141,7 @@ namespace IceInk
 #endif
 
         /// <summary>
-        ///     获取文件夹名
+        /// 获取文件夹名
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns></returns>
@@ -152,7 +152,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取文件名
+        /// 获取文件名
         /// </summary>
         /// <param name="path"></param>
         /// <param name="separator"></param>
@@ -164,7 +164,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取不带后缀的文件名
+        /// 获取不带后缀的文件名
         /// </summary>
         /// <param name="fileName"></param>
         /// <param name="separator"></param>
@@ -175,7 +175,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取不带后缀的文件路径
+        /// 获取不带后缀的文件路径
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns></returns>
@@ -185,7 +185,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     使目录存在,Path可以是目录名必须是文件名
+        /// 使目录存在,Path可以是目录名必须是文件名
         /// </summary>
         /// <param name="path"></param>
         public static void MakeFileDirectoryExist(string path)
@@ -195,7 +195,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     使目录存在
+        /// 使目录存在
         /// </summary>
         /// <param name="path"></param>
         public static void MakeDirectoryExist(string path)
@@ -204,7 +204,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     结合目录
+        /// 结合目录
         /// </summary>
         /// <param name="paths"></param>
         /// <returns></returns>
@@ -218,7 +218,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取父文件夹
+        /// 获取父文件夹
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
@@ -229,7 +229,7 @@ namespace IceInk
 
 
         /// <summary>
-        ///     使路径标准化，去除空格并将所有'\'转换为'/'
+        /// 使路径标准化，去除空格并将所有'\'转换为'/'
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>

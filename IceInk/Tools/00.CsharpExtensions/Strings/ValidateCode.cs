@@ -130,12 +130,12 @@ using Microsoft.AspNetCore.Http;
 namespace IceInk
 {
     /// <summary>
-    ///     画验证码
+    /// 画验证码
     /// </summary>
     public static class ValidateCode
     {
         /// <summary>
-        ///     生成验证码
+        /// 生成验证码
         /// </summary>
         /// <param name="length">指定验证码的长度</param>
         /// <returns>验证码字符串</returns>
@@ -153,7 +153,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     创建验证码的图片
+        /// 创建验证码的图片
         /// </summary>
         /// <param name="validateCode">验证码序列</param>
         /// <param name="context">当前的HttpContext上下文对象</param>

@@ -9,7 +9,7 @@
 // 功能描述：
 //		硬件信息，部分功能需要C++支持
 // 仅支持windows
-//
+//    (有些情况下不能用,需要注意dll的引用)
 //----------------------------------------------------------------*/
 
 #endregion
@@ -28,15 +28,15 @@ using System.Text;
 namespace IceInk
 {
     /// <summary>
-    ///     硬件信息，部分功能需要C++支持
-    ///     仅支持windows
+    /// 硬件信息，部分功能需要C++支持
+    /// 仅支持windows
     /// </summary>
     public static partial class SystemInfo
     {
         #region 构造函数
 
         /// <summary>
-        ///     静态构造函数
+        /// 静态构造函数
         /// </summary>
         static SystemInfo()
         {
@@ -85,7 +85,7 @@ namespace IceInk
         #region CPU核心
 
         /// <summary>
-        ///     获取CPU核心数
+        /// 获取CPU核心数
         /// </summary>
         public static int ProcessorCount { get; }
 
@@ -94,7 +94,7 @@ namespace IceInk
         #region CPU占用率
 
         /// <summary>
-        ///     获取CPU占用率 %
+        /// 获取CPU占用率 %
         /// </summary>
         public static float CpuLoad => PcCpuLoad.NextValue();
 
@@ -103,7 +103,7 @@ namespace IceInk
         #region 可用内存
 
         /// <summary>
-        ///     获取可用内存
+        /// 获取可用内存
         /// </summary>
         public static long MemoryAvailable
         {
@@ -130,7 +130,7 @@ namespace IceInk
         #region 物理内存
 
         /// <summary>
-        ///     获取物理内存
+        /// 获取物理内存
         /// </summary>
         public static long PhysicalMemory { get; }
 
@@ -139,7 +139,7 @@ namespace IceInk
         #region 查找所有应用程序标题
 
         /// <summary>
-        ///     查找所有应用程序标题
+        /// 查找所有应用程序标题
         /// </summary>
         /// <param name="handle">应用程序标题范型</param>
         /// <returns>所有应用程序集合</returns>
@@ -173,7 +173,7 @@ namespace IceInk
         #region 获取CPU的数量
 
         /// <summary>
-        ///     获取CPU的数量
+        /// 获取CPU的数量
         /// </summary>
         /// <returns>CPU的数量</returns>
         public static int GetCpuCount()
@@ -195,7 +195,7 @@ namespace IceInk
         #region 获取内存信息
 
         /// <summary>
-        ///     获取内存信息
+        /// 获取内存信息
         /// </summary>
         /// <returns>内存信息</returns>
         public static EkRamInfo GetRamInfo()
@@ -217,7 +217,7 @@ namespace IceInk
         #region 获取CPU温度
 
         /// <summary>
-        ///     获取CPU温度
+        /// 获取CPU温度
         /// </summary>
         /// <returns>CPU温度</returns>
         public static double GetCPUTemperature()
@@ -245,7 +245,7 @@ namespace IceInk
         #region WMI接口获取CPU使用率
 
         /// <summary>
-        ///     WMI接口获取CPU使用率
+        /// WMI接口获取CPU使用率
         /// </summary>
         /// <returns></returns>
         public static string GetProcessorData()
@@ -259,7 +259,7 @@ namespace IceInk
         #region 获取硬盘的读写速率
 
         /// <summary>
-        ///     获取硬盘的读写速率
+        /// 获取硬盘的读写速率
         /// </summary>
         /// <param name="dd">读或写</param>
         /// <returns></returns>
@@ -280,7 +280,7 @@ namespace IceInk
         #region 获取网络的传输速率
 
         /// <summary>
-        ///     获取网络的传输速率
+        /// 获取网络的传输速率
         /// </summary>
         /// <param name="nd">上传或下载</param>
         /// <returns></returns>
@@ -317,7 +317,7 @@ namespace IceInk
         #endregion
 
         /// <summary>
-        ///     获取网卡硬件地址
+        /// 获取网卡硬件地址
         /// </summary>
         /// <returns></returns>
         public static IList<string> GetMacAddress()
@@ -341,7 +341,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取当前使用的IP
+        /// 获取当前使用的IP
         /// </summary>
         /// <returns></returns>
         public static IPAddress GetLocalUsedIP()
@@ -353,7 +353,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取本机所有的ip地址
+        /// 获取本机所有的ip地址
         /// </summary>
         /// <returns></returns>
         public static List<UnicastIPAddressInformation> GetLocalIPs()
@@ -367,7 +367,7 @@ namespace IceInk
         #region 将速度值格式化成字节单位
 
         /// <summary>
-        ///     将速度值格式化成字节单位
+        /// 将速度值格式化成字节单位
         /// </summary>
         /// <param name="bytes"></param>
         /// <returns></returns>
@@ -389,7 +389,7 @@ namespace IceInk
         #region 获取环境变量
 
         /// <summary>
-        ///     获取环境变量
+        /// 获取环境变量
         /// </summary>
         /// <param name="type">环境变量名</param>
         /// <returns></returns>
@@ -434,7 +434,7 @@ namespace IceInk
         private static List<ManagementBaseObject> _cpuObjects;
 
         /// <summary>
-        ///     获取CPU信息
+        /// 获取CPU信息
         /// </summary>
         /// <returns>CPU信息</returns>
         public static List<EkCpuInfo> GetCpuInfo()
@@ -469,7 +469,7 @@ namespace IceInk
         #region 获取虚拟内存使用率详情
 
         /// <summary>
-        ///     获取虚拟内存使用率详情
+        ///获取虚拟内存使用率详情
         /// </summary>
         /// <returns></returns>
         public static string GetMemoryVData()
@@ -485,7 +485,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取虚拟内存使用率
+        /// 获取虚拟内存使用率
         /// </summary>
         /// <returns></returns>
         public static double GetUsageVirtualMemory()
@@ -494,7 +494,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取虚拟内存已用大小
+        /// 获取虚拟内存已用大小
         /// </summary>
         /// <returns></returns>
         public static double GetUsedVirtualMemory()
@@ -503,7 +503,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取虚拟内存总大小
+        /// 获取虚拟内存总大小
         /// </summary>
         /// <returns></returns>
         public static double GetTotalVirtualMemory()
@@ -516,7 +516,7 @@ namespace IceInk
         #region 获取物理内存使用率详情
 
         /// <summary>
-        ///     获取物理内存使用率详情描述
+        /// 获取物理内存使用率详情描述
         /// </summary>
         /// <returns></returns>
         public static string GetMemoryPData()
@@ -534,7 +534,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取物理内存总数，单位B
+        /// 获取物理内存总数，单位B
         /// </summary>
         /// <returns></returns>
         public static double GetTotalPhysicalMemory()
@@ -544,7 +544,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取空闲的物理内存数，单位B
+        /// 获取空闲的物理内存数，单位B
         /// </summary>
         /// <returns></returns>
         public static double GetFreePhysicalMemory()
@@ -553,7 +553,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取已经使用了的物理内存数，单位B
+        /// 获取已经使用了的物理内存数，单位B
         /// </summary>
         /// <returns></returns>
         public static double GetUsedPhysicalMemory()
@@ -566,7 +566,7 @@ namespace IceInk
         #region 查询计算机系统信息
 
         /// <summary>
-        ///     获取计算机开机时间
+        /// 获取计算机开机时间
         /// </summary>
         /// <returns>datetime</returns>
         public static DateTime BootTime()
@@ -580,7 +580,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     查询计算机系统信息
+        /// 查询计算机系统信息
         /// </summary>
         /// <param name="type">类型名</param>
         /// <returns></returns>
@@ -606,7 +606,7 @@ namespace IceInk
         #region 获取磁盘空间
 
         /// <summary>
-        ///     获取磁盘可用空间
+        /// 获取磁盘可用空间
         /// </summary>
         /// <returns></returns>
         public static Dictionary<string, string> DiskFree()
@@ -634,7 +634,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取磁盘总空间
+        /// 获取磁盘总空间
         /// </summary>
         /// <returns></returns>
         public static Dictionary<string, string> DiskTotalSpace()
@@ -657,7 +657,7 @@ namespace IceInk
 
 
         /// <summary>
-        ///     获取磁盘已用空间
+        /// 获取磁盘已用空间
         /// </summary>
         /// <returns></returns>
         public static Dictionary<string, string> DiskUsedSpace()
@@ -689,7 +689,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取磁盘使用率
+        /// 获取磁盘使用率
         /// </summary>
         /// <returns></returns>
         public static Dictionary<string, double> DiskUsage()

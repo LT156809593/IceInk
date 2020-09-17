@@ -24,17 +24,17 @@ using System.Text.RegularExpressions;
 namespace IceInk
 {
     /// <summary>
-    ///     string类型扩展
+    /// string类型扩展
     /// </summary>
     public static class StringExtension
     {
         /// <summary>
-        ///     缓存
+        /// 缓存
         /// </summary>
         private static readonly char[] mCachedSplitCharArray = {'.'};
 
         /// <summary>
-        ///     分割
+        /// 分割
         /// </summary>
         /// <param name="selfStr"></param>
         /// <param name="splitSymbol"></param>
@@ -46,7 +46,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     首字母大写
+        /// 首字母大写
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
@@ -56,7 +56,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     首字母小写
+        /// 首字母小写
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
@@ -66,7 +66,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     有点不安全,编译器不会帮你排查错误。
+        /// 有点不安全,编译器不会帮你排查错误。
         /// </summary>
         /// <param name="selfStr"></param>
         /// <param name="args"></param>
@@ -77,7 +77,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     添加前缀
+        /// 添加前缀
         /// </summary>
         /// <param name="selfStr"></param>
         /// <param name="toAppend"></param>
@@ -88,7 +88,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     添加后缀
+        /// 添加后缀
         /// </summary>
         /// <param name="selfStr"></param>
         /// <param name="toPrefix"></param>
@@ -99,7 +99,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     格式化
+        /// 格式化
         /// </summary>
         /// <param name="selfStr"></param>
         /// <param name="toAppend"></param>
@@ -111,7 +111,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     最后一个单词
+        /// 最后一个单词
         /// </summary>
         /// <param name="selfUrl"></param>
         /// <returns></returns>
@@ -121,7 +121,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     判断字符串compare 在 input字符串中出现的次数
+        /// 判断字符串compare 在 input字符串中出现的次数
         /// </summary>
         /// <param name="input">源字符串</param>
         /// <param name="compare">用于比较的字符串</param>
@@ -136,7 +136,7 @@ namespace IceInk
 
 
         /// <summary>
-        ///     生成唯一短字符串
+        /// 生成唯一短字符串
         /// </summary>
         /// <param name="str"></param>
         /// <param name="chars">可用字符数数量，0-9,a-z,A-Z</param>
@@ -148,7 +148,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     将"\r\n  \r" 转换为Unix换行符 "\n"
+        /// 将"\r\n  \r" 转换为Unix换行符 "\n"
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
@@ -158,7 +158,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     根据正则替换
+        /// 根据正则替换
         /// </summary>
         /// <param name="input"></param>
         /// <param name="regex">正则表达式</param>
@@ -170,7 +170,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     字符串掩码
+        /// 字符串掩码
         /// </summary>
         /// <param name="s">字符串</param>
         /// <param name="mask">掩码符</param>
@@ -194,7 +194,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     是否存在中文字符
+        /// 是否存在中文字符
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
@@ -204,7 +204,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     是否存在空格
+        /// 是否存在空格
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
@@ -214,7 +214,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     删除特定字符
+        /// 删除特定字符
         /// </summary>
         /// <param name="str"></param>
         /// <param name="targets"></param>
@@ -228,7 +228,7 @@ namespace IceInk
         #region 两个字符串相似程度查询
 
         /// <summary>
-        ///     字符串相似程度查询(结果供参考)
+        /// 字符串相似程度查询(结果供参考)
         /// </summary>
         /// <param name="selfStr"></param>
         /// <param name="otherStr"></param>
@@ -275,7 +275,7 @@ namespace IceInk
         #region 转换到其他类型
 
         /// <summary>
-        ///     解析到 Int 类型
+        /// 解析到 Int 类型
         /// </summary>
         /// <param name="selfStr"></param>
         /// <returns></returns>
@@ -285,7 +285,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     解析到 Float 类型
+        /// 解析到 Float 类型
         /// </summary>
         /// <param name="selfStr"></param>
         /// <returns></returns>
@@ -295,7 +295,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     解析到 Double 类型
+        /// 解析到 Double 类型
         /// </summary>
         /// <param name="selfStr"></param>
         /// <returns></returns>
@@ -306,7 +306,7 @@ namespace IceInk
 
 
         /// <summary>
-        ///     解析到时间类型
+        /// 解析到时间类型
         /// </summary>
         /// <param name="selfStr"></param>
         /// <returns></returns>
@@ -316,7 +316,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     字符串转Guid
+        /// 字符串转Guid
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
@@ -326,7 +326,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     任意进制转十进制
+        /// 任意进制转十进制
         /// </summary>
         /// <param name="str"></param>
         /// <param name="bin">进制</param>
@@ -338,7 +338,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     任意进制转大数十进制
+        /// 任意进制转大数十进制
         /// </summary>
         /// <param name="str"></param>
         /// <param name="bin">进制</param>
@@ -350,7 +350,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     转换成字节数组
+        /// 转换成字节数组
         /// </summary>
         /// <param name="this"></param>
         /// <returns></returns>
@@ -360,7 +360,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     转换成 CSV
+        /// 转换成 CSV
         /// </summary>
         /// <param name="values"></param>
         /// <returns></returns>
@@ -374,7 +374,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     转换为CSV数组
+        /// 转换为CSV数组
         /// </summary>
         /// <param name="values"></param>
         /// <returns></returns>
@@ -409,7 +409,7 @@ namespace IceInk
             "11x22x35x44x53x12x23x36x45x54x13x31x37x46x61x14x32x41x50x62x15x33x42x51x63x21x34x43x52x64x65x71x81x82x91";
 
         /// <summary>
-        ///     根据GB11643-1999标准权威校验中国身份证号码的合法性
+        /// 根据GB11643-1999标准权威校验中国身份证号码的合法性
         /// </summary>
         /// <param name="s">源字符串</param>
         /// <returns>是否匹配成功</returns>
@@ -454,7 +454,7 @@ namespace IceInk
         #region IP地址
 
         /// <summary>
-        ///     校验IP地址的正确性，同时支持IPv4和IPv6
+        /// 校验IP地址的正确性，同时支持IPv4和IPv6
         /// </summary>
         /// <param name="s">源字符串</param>
         /// <param name="isMatch">是否匹配成功，若返回true，则会得到一个Match对象，否则为null</param>
@@ -466,7 +466,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     校验IP地址的正确性，同时支持IPv4和IPv6
+        /// 校验IP地址的正确性，同时支持IPv4和IPv6
         /// </summary>
         /// <param name="s">源字符串</param>
         /// <returns>是否匹配成功</returns>
@@ -477,7 +477,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     IP地址转换成数字
+        /// IP地址转换成数字
         /// </summary>
         /// <param name="addr">IP地址</param>
         /// <returns>数字,输入无效IP地址返回0</returns>
@@ -492,7 +492,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     判断IP地址在不在某个IP地址段
+        /// 判断IP地址在不在某个IP地址段
         /// </summary>
         /// <param name="input">需要判断的IP地址</param>
         /// <param name="begin">起始地址</param>
@@ -509,7 +509,7 @@ namespace IceInk
         #region 校验电话号码的正确性
 
         /// <summary>
-        ///     匹配手机号码
+        /// 匹配手机号码
         /// </summary>
         /// <param name="s">源字符串</param>
         /// <param name="isMatch">是否匹配成功，若返回true，则会得到一个Match对象，否则为null</param>
@@ -528,7 +528,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     匹配手机号码
+        /// 匹配手机号码
         /// </summary>
         /// <param name="s">源字符串</param>
         /// <returns>是否匹配成功</returns>
@@ -539,10 +539,10 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     匹配3位或4位区号的电话号码，其中区号可以用小括号括起来，
-        ///     也可以不用，区号与本地号间可以用连字号或空格间隔，
-        ///     也可以没有间隔
-        ///     \(0\d{2}\)[- ]?\d{8}|0\d{2}[- ]?\d{8}|\(0\d{3}\)[- ]?\d{7}|0\d{3}[- ]?\d{7}
+        /// 匹配3位或4位区号的电话号码，其中区号可以用小括号括起来，
+        /// 也可以不用，区号与本地号间可以用连字号或空格间隔，
+        /// 也可以没有间隔
+        /// \(0\d{2}\)[- ]?\d{8}|0\d{2}[- ]?\d{8}|\(0\d{3}\)[- ]?\d{7}|0\d{3}[- ]?\d{7}
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
@@ -562,7 +562,7 @@ namespace IceInk
             @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
 
         /// <summary>
-        ///     判断输入的字符串是否是一个合法的Email地址
+        /// 判断输入的字符串是否是一个合法的Email地址
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
@@ -577,7 +577,7 @@ namespace IceInk
         #region 其他判断
 
         /// <summary>
-        ///     检查字符串是否为空
+        /// 检查字符串是否为空
         /// </summary>
         /// <param name="selfStr"></param>
         /// <returns></returns>
@@ -587,7 +587,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     检查字符串是否不为空
+        /// 检查字符串是否不为空
         /// </summary>
         /// <param name="selfStr"></param>
         /// <returns></returns>
@@ -597,7 +597,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     检查字符串移除空字符后是否为空
+        /// 检查字符串移除空字符后是否为空
         /// </summary>
         /// <param name="selfStr"></param>
         /// <returns></returns>
@@ -608,7 +608,7 @@ namespace IceInk
 
 
         /// <summary>
-        ///     判断输入的字符串只包含汉字
+        /// 判断输入的字符串只包含汉字
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
@@ -619,9 +619,9 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     判断输入的字符串只包含数字
-        ///     可以匹配整数和浮点数
-        ///     ^-?\d+$|^(-?\d+)(\.\d+)?$
+        /// 判断输入的字符串只包含数字
+        /// 可以匹配整数和浮点数
+        /// ^-?\d+$|^(-?\d+)(\.\d+)?$
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
@@ -633,7 +633,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     匹配正整数
+        /// 匹配正整数
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
@@ -644,7 +644,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     判断输入的字符串只包含英文字母
+        /// 判断输入的字符串只包含英文字母
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
@@ -655,7 +655,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     判断输入的字符串是否只包含数字和英文字母
+        /// 判断输入的字符串是否只包含数字和英文字母
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>

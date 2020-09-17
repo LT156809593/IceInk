@@ -4,12 +4,12 @@ using System.Diagnostics;
 namespace IceInk
 {
     /// <summary>
-    ///     日期操作工具类
+    /// 日期操作工具类
     /// </summary>
     public static class DateUtil
     {
         /// <summary>
-        ///     返回相对于当前时间的相对天数
+        /// 返回相对于当前时间的相对天数
         /// </summary>
         /// <param name="dt"></param>
         /// <param name="relativeday">相对天数</param>
@@ -19,7 +19,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     返回标准时间格式string
+        /// 返回标准时间格式string
         /// </summary>
         public static string GetDateTimeF(this DateTime dt)
         {
@@ -27,7 +27,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     返回标准时间
+        /// 返回标准时间
         /// </summary>
         /// <param name="fDateTime">日期时间字符串</param>
         /// <param name="formatStr">格式</param>
@@ -40,7 +40,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     返回标准时间 yyyy-MM-dd HH:mm:ss
+        /// 返回标准时间 yyyy-MM-dd HH:mm:ss
         /// </summary>
         /// <param name="fDateTime">日期时间字符串</param>
         public static string GetStandardDateTime(this string fDateTime)
@@ -49,7 +49,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取该时间相对于1970-01-01 00:00:00的秒数
+        /// 获取该时间相对于1970-01-01 00:00:00的秒数
         /// </summary>
         /// <param name="dt"></param>
         /// <returns></returns>
@@ -59,7 +59,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取该时间相对于1970-01-01 00:00:00的毫秒数
+        /// 获取该时间相对于1970-01-01 00:00:00的毫秒数
         /// </summary>
         /// <param name="dt"></param>
         /// <returns></returns>
@@ -69,7 +69,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取该时间相对于1970-01-01 00:00:00的微秒时间戳
+        /// 获取该时间相对于1970-01-01 00:00:00的微秒时间戳
         /// </summary>
         /// <param name="dt"></param>
         /// <returns></returns>
@@ -79,7 +79,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取该时间相对于1970-01-01 00:00:00的纳秒时间戳
+        /// 获取该时间相对于1970-01-01 00:00:00的纳秒时间戳
         /// </summary>
         /// <param name="dt"></param>
         /// <returns></returns>
@@ -89,7 +89,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取该时间相对于1970-01-01 00:00:00的分钟数
+        /// 获取该时间相对于1970-01-01 00:00:00的分钟数
         /// </summary>
         /// <param name="dt"></param>
         /// <returns></returns>
@@ -99,7 +99,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取该时间相对于1970-01-01 00:00:00的小时数
+        /// 获取该时间相对于1970-01-01 00:00:00的小时数
         /// </summary>
         /// <param name="dt"></param>
         /// <returns></returns>
@@ -109,7 +109,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取该时间相对于1970-01-01 00:00:00的天数
+        /// 获取该时间相对于1970-01-01 00:00:00的天数
         /// </summary>
         /// <param name="dt"></param>
         /// <returns></returns>
@@ -119,7 +119,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     返回本年有多少天
+        /// 返回本年有多少天
         /// </summary>
         /// <param name="_"></param>
         /// <param name="iYear">年份</param>
@@ -236,7 +236,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     判断是否为合法日期，必须大于1800年1月1日
+        /// 判断是否为合法日期，必须大于1800年1月1日
         /// </summary>
         /// <param name="strDate">输入日期字符串</param>
         /// <returns>True/False</returns>

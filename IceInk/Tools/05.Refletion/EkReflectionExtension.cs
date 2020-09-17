@@ -19,7 +19,7 @@ using System.Reflection;
 namespace IceInk
 {
     /// <summary>
-    ///     反射扩展
+    /// 反射扩展
     /// </summary>
     public static class EkReflectionExtension
     {
@@ -52,7 +52,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     通过反射方式调用函数
+        /// 通过反射方式调用函数
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="methodName">方法名</param>
@@ -65,7 +65,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     通过反射方式获取域值
+        /// 通过反射方式获取域值
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="fieldName">域名</param>
@@ -77,7 +77,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     通过反射方式获取属性的值
+        /// 通过反射方式获取属性的值
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="propertyName">属性名</param>
@@ -89,7 +89,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     拥有特性
+        /// 拥有特性
         /// </summary>
         /// <returns></returns>
         public static bool HasAttribute(this PropertyInfo prop, Type attributeType, bool inherit)
@@ -98,7 +98,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     拥有特性
+        /// 拥有特性
         /// </summary>
         /// <returns></returns>
         public static bool HasAttribute(this FieldInfo field, Type attributeType, bool inherit)
@@ -107,7 +107,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     拥有特性
+        /// 拥有特性
         /// </summary>
         /// <returns></returns>
         public static bool HasAttribute(this Type type, Type attributeType, bool inherit)
@@ -116,7 +116,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     拥有特性
+        /// 拥有特性
         /// </summary>
         /// <returns></returns>
         public static bool HasAttribute(this MethodInfo method, Type attributeType, bool inherit)
@@ -126,7 +126,7 @@ namespace IceInk
 
 
         /// <summary>
-        ///     获取第一个特性
+        /// 获取第一个特性
         /// </summary>
         public static T GetFirstAttribute<T>(this MethodInfo method, bool inherit) where T : Attribute
         {
@@ -135,7 +135,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取第一个特性
+        /// 获取第一个特性
         /// </summary>
         public static T GetFirstAttribute<T>(this FieldInfo field, bool inherit) where T : Attribute
         {
@@ -144,7 +144,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取第一个特性
+        /// 获取第一个特性
         /// </summary>
         public static T GetFirstAttribute<T>(this PropertyInfo prop, bool inherit) where T : Attribute
         {
@@ -153,7 +153,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取第一个特性
+        /// 获取第一个特性
         /// </summary>
         public static T GetFirstAttribute<T>(this Type type, bool inherit) where T : Attribute
         {

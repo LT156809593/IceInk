@@ -37,7 +37,7 @@ using ICSharpCode.SharpZipLib.GZip;
 namespace IceInk
 {
     /// <summary>
-    ///     基于HttpClient封装的 帮助类
+    /// 基于HttpClient封装的 帮助类
     /// </summary>
     public static class EkHttpClientHelper
     {
@@ -66,7 +66,7 @@ namespace IceInk
         #endregion
 
         /// <summary>
-        ///     创建一个HttpContent
+        /// 创建一个HttpContent
         /// </summary>
         /// <param name="stringContent"></param>
         /// <param name="contentType">Http请求的数据提交方式(默认 "application/json" )</param>
@@ -111,7 +111,7 @@ namespace IceInk
         #region Get 请求
 
         /// <summary>
-        ///     使用Get方法异步请求
+        /// 使用Get方法异步请求
         /// </summary>
         /// <param name="url">目标链接</param>
         /// <param name="header"></param>
@@ -168,7 +168,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     使用Get方法异步请求，并返回反序列化对象
+        /// 使用Get方法异步请求，并返回反序列化对象
         /// </summary>
         /// <typeparam name="T">反序列化对象</typeparam>
         /// <param name="url">请求路径</param>
@@ -192,7 +192,7 @@ namespace IceInk
         #region Post 请求
 
         /// <summary>
-        ///     使用post方法异步请求
+        /// 使用post方法异步请求
         /// </summary>
         /// <param name="url">目标链接</param>
         /// <param name="data">发送的参数字符串</param>
@@ -255,7 +255,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     使用Post方法异步请求
+        /// 使用Post方法异步请求
         /// </summary>
         /// <typeparam name="T">请求对象类型,将会被序列化为Json字符串</typeparam>
         /// <param name="url">请求链接</param>
@@ -278,7 +278,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     使用post返回异步请求直接返回对象
+        /// 使用post返回异步请求直接返回对象
         /// </summary>
         /// <typeparam name="T1">请求对象类型</typeparam>
         /// <typeparam name="T2">返回对象类型</typeparam>
@@ -307,7 +307,7 @@ namespace IceInk
         #region Put 请求
 
         /// <summary>
-        ///     Put 请求
+        /// Put 请求
         /// </summary>
         /// <param name="url">请求路径</param>
         /// <param name="putData">请求数据(json)</param>
@@ -356,8 +356,8 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     Put请求
-        ///     自动将类型转换为json文件
+        /// Put请求
+        /// 自动将类型转换为json文件
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="url">请求路径</param>
@@ -378,9 +378,9 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     Put请求。
-        ///     自动将输入类型序列化为json文件。
-        ///     并且把请求返回数据反序列化为对应的类型。
+        /// Put请求。
+        /// 自动将输入类型序列化为json文件。
+        /// 并且把请求返回数据反序列化为对应的类型。
         /// </summary>
         /// <typeparam name="T1">输入类型</typeparam>
         /// <typeparam name="T2">反序列化类型</typeparam>
@@ -407,7 +407,7 @@ namespace IceInk
         #region 获取返回状态码的描述
 
         /// <summary>
-        ///     获取状态码的描述
+        /// 获取状态码的描述
         /// </summary>
         /// <param name="status"></param>
         /// <returns></returns>
@@ -426,7 +426,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     获取状态码的描述
+        /// 获取状态码的描述
         /// </summary>
         /// <param name="status"></param>
         /// <returns></returns>

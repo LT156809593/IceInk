@@ -24,16 +24,16 @@ using System.Text;
 namespace IceInk.Tools._03.Encrypt
 {
     /// <summary>
-    ///     RSA ECC
-    ///     可逆非对称加密
-    ///     非对称加密算法的优点是密钥管理很方便，缺点是速度慢。
+    /// RSA ECC
+    /// 可逆非对称加密
+    /// 非对称加密算法的优点是密钥管理很方便，缺点是速度慢。
     /// </summary>
     public class EkRsaEncrypt
     {
         /// <summary>
-        ///     获取加密/解密对
-        ///     给你一个，是无法推算出另外一个的
-        ///     Encrypt   Decrypt
+        /// 获取加密/解密对
+        /// 给你一个，是无法推算出另外一个的
+        /// Encrypt   Decrypt
         /// </summary>
         /// <returns>Encrypt   Decrypt</returns>
         public static KeyValuePair<string, string> GetKeyPair()
@@ -45,7 +45,7 @@ namespace IceInk.Tools._03.Encrypt
         }
 
         /// <summary>
-        ///     加密：内容+加密key
+        /// 加密：内容+加密key
         /// </summary>
         /// <param name="content"></param>
         /// <param name="encryptKey">加密key</param>
@@ -61,7 +61,7 @@ namespace IceInk.Tools._03.Encrypt
         }
 
         /// <summary>
-        ///     解密  内容+解密key
+        /// 解密  内容+解密key
         /// </summary>
         /// <param name="content"></param>
         /// <param name="decryptKey">解密key</param>
@@ -78,7 +78,7 @@ namespace IceInk.Tools._03.Encrypt
 
 
         /// <summary>
-        ///     可以合并在一起的，每次产生一组新的密钥
+        /// 可以合并在一起的，每次产生一组新的密钥
         /// </summary>
         /// <param name="content"></param>
         /// <param name="publicKey">加密key</param>

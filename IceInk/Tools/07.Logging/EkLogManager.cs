@@ -30,25 +30,25 @@ using static System.DateTime;
 namespace IceInk
 {
     /// <summary>
-    ///     日志组件
-    ///     默认日志放在当前应用程序运行目录下的logs文件夹中
+    /// 日志组件
+    /// 默认日志放在当前应用程序运行目录下的logs文件夹中
     /// </summary>
     public static class EkLogManager
     {
         /// <summary>
-        ///     日志文件大小
+        /// 日志文件大小
         /// </summary>
         private const int logFileInfoLen = 1 * 1024 * 1024;
 
         /// <summary>
-        ///     日志队列
-        ///     (日志路径，日志内容)
+        /// 日志队列
+        /// (日志路径，日志内容)
         /// </summary>
         private static readonly ConcurrentQueue<Tuple<string, string>> LogQueue =
             new ConcurrentQueue<Tuple<string, string>>();
 
         /// <summary>
-        ///     静态构造函数只会被执行一次
+        /// 静态构造函数只会被执行一次
         /// </summary>
         static EkLogManager()
         {
@@ -91,12 +91,12 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     AutoResetEvent 常常被用来在两个线程之间进行信号发送
+        /// AutoResetEvent 常常被用来在两个线程之间进行信号发送
         /// </summary>
         private static AutoResetEvent Pause => new AutoResetEvent(false);
 
         /// <summary>
-        ///     日志存放目录，默认日志放在当前应用程序运行目录下的logs文件夹中
+        /// 日志存放目录，默认日志放在当前应用程序运行目录下的logs文件夹中
         /// </summary>
         public static string LogDirectory
         {
@@ -107,12 +107,12 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     自定义事件
+        /// 自定义事件
         /// </summary>
         public static event Action<EkLogInfo> Event;
 
         /// <summary>
-        ///     获取Log日志文件路径
+        /// 获取Log日志文件路径
         /// </summary>
         /// <returns></returns>
         private static string GetLogPath()
@@ -163,7 +163,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     写入文本
+        /// 写入文本
         /// </summary>
         /// <param name="logPath">路径</param>
         /// <param name="logContent">写入内容</param>
@@ -185,7 +185,7 @@ namespace IceInk
         #region 写入Info级别日志
 
         /// <summary>
-        ///     写入Info级别的日志
+        /// 写入Info级别的日志
         /// </summary>
         /// <param name="info"></param>
         public static void Info(string info)
@@ -203,7 +203,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     写入Info级别的日志
+        /// 写入Info级别的日志
         /// </summary>
         /// <param name="source"></param>
         /// <param name="info"></param>
@@ -223,7 +223,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     写入Info级别的日志
+        /// 写入Info级别的日志
         /// </summary>
         /// <param name="source"></param>
         /// <param name="info"></param>
@@ -248,7 +248,7 @@ namespace IceInk
         #region 写入debug级别日志
 
         /// <summary>
-        ///     写入debug级别日志
+        /// 写入debug级别日志
         /// </summary>
         /// <param name="debug">异常对象</param>
         public static void Debug(string debug)
@@ -266,7 +266,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     写入debug级别日志
+        /// 写入debug级别日志
         /// </summary>
         /// <param name="source">异常源的类型</param>
         /// <param name="debug">异常对象</param>
@@ -286,7 +286,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     写入debug级别日志
+        /// 写入debug级别日志
         /// </summary>
         /// <param name="source">异常源的类型</param>
         /// <param name="debug">异常对象</param>
@@ -311,7 +311,7 @@ namespace IceInk
         #region 写入error级别日志
 
         /// <summary>
-        ///     写入error级别日志
+        /// 写入error级别日志
         /// </summary>
         /// <param name="error">异常对象</param>
         public static void Error(Exception error)
@@ -332,7 +332,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     写入error级别日志
+        /// 写入error级别日志
         /// </summary>
         /// <param name="source">异常源的类型</param>
         /// <param name="error">异常对象</param>
@@ -354,7 +354,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     写入error级别日志
+        /// 写入error级别日志
         /// </summary>
         /// <param name="source">异常源的类型</param>
         /// <param name="error">异常信息</param>
@@ -376,7 +376,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     写入error级别日志
+        /// 写入error级别日志
         /// </summary>
         /// <param name="source">异常源的类型</param>
         /// <param name="error">异常对象</param>
@@ -398,7 +398,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     写入error级别日志
+        /// 写入error级别日志
         /// </summary>
         /// <param name="source">异常源的类型</param>
         /// <param name="error">异常信息</param>
@@ -425,7 +425,7 @@ namespace IceInk
         #region 写入fatal级别日志
 
         /// <summary>
-        ///     写入fatal级别日志
+        /// 写入fatal级别日志
         /// </summary>
         /// <param name="fatal">异常对象</param>
         public static void Fatal(Exception fatal)
@@ -446,7 +446,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     写入fatal级别日志
+        /// 写入fatal级别日志
         /// </summary>
         /// <param name="source">异常源的类型</param>
         /// <param name="fatal">异常对象</param>
@@ -468,7 +468,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     写入fatal级别日志
+        /// 写入fatal级别日志
         /// </summary>
         /// <param name="source">异常源的类型</param>
         /// <param name="fatal">异常对象</param>
@@ -490,7 +490,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     写入fatal级别日志
+        /// 写入fatal级别日志
         /// </summary>
         /// <param name="source">异常源的类型</param>
         /// <param name="fatal">异常对象</param>
@@ -512,7 +512,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     写入fatal级别日志
+        /// 写入fatal级别日志
         /// </summary>
         /// <param name="source">异常源的类型</param>
         /// <param name="fatal">异常对象</param>

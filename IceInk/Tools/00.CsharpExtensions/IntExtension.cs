@@ -18,12 +18,12 @@ using System;
 namespace IceInk
 {
     /// <summary>
-    ///     Int类型扩展
+    /// Int类型扩展
     /// </summary>
     public static class IntExtension
     {
         /// <summary>
-        ///     转换为枚举类型
+        /// 转换为枚举类型
         /// </summary>
         /// <typeparam name="TEnum">目标枚举类型</typeparam>
         /// <param name="number"></param>
@@ -34,7 +34,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     转换为Byte
+        /// 转换为Byte
         /// </summary>
         /// <param name="number"></param>
         /// <returns></returns>
@@ -46,7 +46,7 @@ namespace IceInk
         #region 判断是否 质数 奇数 偶数
 
         /// <summary>
-        ///     是否为奇数
+        /// 是否为奇数
         /// </summary>
         /// <param name="number"></param>
         /// <returns></returns>
@@ -56,7 +56,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     是否为偶数
+        /// 是否为偶数
         /// </summary>
         /// <param name="number"></param>
         /// <returns></returns>
@@ -66,7 +66,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     是否为素数(质数)
+        /// 是否为素数(质数)
         /// </summary>
         /// <param name="number">(非负数)</param>
         /// <returns></returns>

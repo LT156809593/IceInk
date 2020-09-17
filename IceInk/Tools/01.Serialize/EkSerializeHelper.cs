@@ -28,12 +28,12 @@ using Newtonsoft.Json;
 namespace IceInk
 {
     /// <summary>
-    ///     序列化帮助类
+    /// 序列化帮助类
     /// </summary>
     public static class EkSerializeHelper
     {
         /// <summary>
-        ///     序列化为json
+        /// 序列化为json
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="obj"></param>
@@ -52,7 +52,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     将json反序列化为实体类
+        /// 将json反序列化为实体类
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="json"></param>
@@ -73,7 +73,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     序列化并保存json文件
+        /// 序列化并保存json文件
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="obj"></param>
@@ -87,7 +87,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     加载json文件并烦序列化为实体类
+        /// 加载json文件并烦序列化为实体类
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="path">json文件路径</param>

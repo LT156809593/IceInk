@@ -22,7 +22,7 @@ namespace IceInk.Extension
     public static class EkListExtension
     {
         /// <summary>
-        ///     倒序遍历
+        /// 倒序遍历
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="selfList"></param>
@@ -38,7 +38,7 @@ namespace IceInk.Extension
         }
 
         /// <summary>
-        ///     倒序遍历(可获取索引)
+        /// 倒序遍历(可获取索引)
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="selfList"></param>
@@ -55,7 +55,7 @@ namespace IceInk.Extension
         }
 
         /// <summary>
-        ///     遍历列表(可获得索引）
+        /// 遍历列表(可获得索引）
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="selfList"></param>

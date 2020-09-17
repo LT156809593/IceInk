@@ -43,7 +43,7 @@ namespace IceInk
     public class EkTypeEventSystem : ITypeEventSystem
     {
         /// <summary>
-        ///     全局注册事件
+        /// 全局注册事件
         /// </summary>
         private static readonly ITypeEventSystem mGlobalEventSystem = new EkTypeEventSystem();
 
@@ -124,7 +124,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     注册事件
+        /// 注册事件
         /// </summary>
         /// <param name="onReceive"></param>
         /// <typeparam name="T"></typeparam>
@@ -134,7 +134,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     注销事件
+        /// 注销事件
         /// </summary>
         /// <param name="onReceive"></param>
         /// <typeparam name="T"></typeparam>
@@ -144,7 +144,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     发送事件
+        /// 发送事件
         /// </summary>
         /// <param name="t"></param>
         /// <typeparam name="T"></typeparam>
@@ -154,7 +154,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     发送事件
+        /// 发送事件
         /// </summary>
         /// <typeparam name="T"></typeparam>
         public static void Send<T>() where T : new()
@@ -163,7 +163,7 @@ namespace IceInk
         }
 
         /// <summary>
-        ///     接口 只负责存储在字典中
+        /// 接口 只负责存储在字典中
         /// </summary>
         private interface IRegisterActions : IDisposable
         {
@@ -171,13 +171,13 @@ namespace IceInk
 
 
         /// <summary>
-        ///     多个注册
+        /// 多个注册
         /// </summary>
         private class RegisterActions<T> : IRegisterActions
         {
             /// <summary>
-            ///     接收Action
-            ///     因为委托本身就可以一对多注册
+            /// 接收Action
+            /// 因为委托本身就可以一对多注册
             /// </summary>
             public Action<T> OnReceives = obj => { };
 
