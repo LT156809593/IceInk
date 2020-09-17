@@ -65,6 +65,7 @@
         <option value="$PROJECT_DIR$/Tools/07.Logging/EkLogManager.cs" />
         <option value="$PROJECT_DIR$/Tools/06.HardwareInfo/EkMemoryInfo.cs" />
         <option value="$PROJECT_DIR$/Tools/06.HardwareInfo/EkSystemInfo.cs" />
+        <option value="$PROJECT_DIR$/Tools/01.Serialize/EkSerializeHelper.cs" />
       </list>
     </option>
   </component>
@@ -137,7 +138,7 @@
       <workItem from="1600241860213" duration="4479000" />
       <workItem from="1600305398482" duration="724000" />
       <workItem from="1600306466143" duration="2373000" />
-      <workItem from="1600309375677" duration="1607000" />
+      <workItem from="1600309375677" duration="3392000" />
     </task>
     <servers />
   </component>
@@ -279,6 +280,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="758" y="419" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1600051728905" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1600312700408">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1600312700408" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1600308612056">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
