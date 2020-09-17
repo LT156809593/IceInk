@@ -53,6 +53,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6DADD22E-0197-42CE-80AA-EFEF99855BE0/2d/0d7fbfef/Lazy`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6DADD22E-0197-42CE-80AA-EFEF99855BE0/57/0c876f6c/Lazy`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6DADD22E-0197-42CE-80AA-EFEF99855BE0/cf/764c1e7a/AutoResetEvent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/20735148-1523-4917-A5E8-F91B0B239405/5/JsonConvert.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -66,6 +67,8 @@
         <option value="$PROJECT_DIR$/Tools/06.HardwareInfo/EkMemoryInfo.cs" />
         <option value="$PROJECT_DIR$/Tools/06.HardwareInfo/EkSystemInfo.cs" />
         <option value="$PROJECT_DIR$/Tools/01.Serialize/EkSerializeHelper.cs" />
+        <option value="$PROJECT_DIR$/Tools/00.CsharpExtensions/Strings/StringExtension.cs" />
+        <option value="$PROJECT_DIR$/Tools/00.CsharpExtensions/Strings/ChineseString.cs" />
       </list>
     </option>
   </component>
@@ -138,7 +141,7 @@
       <workItem from="1600241860213" duration="4479000" />
       <workItem from="1600305398482" duration="724000" />
       <workItem from="1600306466143" duration="2373000" />
-      <workItem from="1600309375677" duration="3392000" />
+      <workItem from="1600309375677" duration="7001000" />
     </task>
     <servers />
   </component>

@@ -7,7 +7,7 @@
 // 文件版本：V1.0.0
 // ===============================================================
 // 功能描述：
-//		
+//		string类型扩展
 //
 //----------------------------------------------------------------*/
 
@@ -171,6 +171,9 @@ namespace IceInk
 
         /// <summary>
         /// 字符串掩码
+        /// <code>
+        /// 例如：12345678910 转换成 123****8910
+        /// </code>
         /// </summary>
         /// <param name="s">字符串</param>
         /// <param name="mask">掩码符</param>
@@ -193,25 +196,6 @@ namespace IceInk
             };
         }
 
-        /// <summary>
-        /// 是否存在中文字符
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        public static bool ContainsChinese(this string input)
-        {
-            return Regex.IsMatch(input, @"[\u4e00-\u9fa5]");
-        }
-
-        /// <summary>
-        /// 是否存在空格
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        public static bool ContainsSpace(this string input)
-        {
-            return input.Contains(" ");
-        }
 
         /// <summary>
         /// 删除特定字符
@@ -281,7 +265,9 @@ namespace IceInk
         /// <returns></returns>
         public static int ToInt(this string selfStr)
         {
-            return int.TryParse(selfStr, out var retValue) ? retValue : throw new Exception("该字符串不能转换为int类型");
+            return int.TryParse(selfStr, out var retValue)
+                ? retValue
+                : throw new Exception("该字符串不能转换为int类型");
         }
 
         /// <summary>
@@ -291,7 +277,9 @@ namespace IceInk
         /// <returns></returns>
         public static float ToFloat(this string selfStr)
         {
-            return float.TryParse(selfStr, out var retValue) ? retValue : throw new Exception("该字符串不能转换为float类型");
+            return float.TryParse(selfStr, out var retValue)
+                ? retValue
+                : throw new Exception("该字符串不能转换为float类型");
         }
 
         /// <summary>
@@ -301,7 +289,9 @@ namespace IceInk
         /// <returns></returns>
         public static double ToDouble(this string selfStr)
         {
-            return double.TryParse(selfStr, out var retValue) ? retValue : throw new Exception("该字符串不能转换为double类型");
+            return double.TryParse(selfStr, out var retValue)
+                ? retValue
+                : throw new Exception("该字符串不能转换为double类型");
         }
 
 
@@ -312,7 +302,9 @@ namespace IceInk
         /// <returns></returns>
         public static DateTime ToDateTime(this string selfStr)
         {
-            return DateTime.TryParse(selfStr, out var retValue) ? retValue : throw new Exception("该字符串不能转换为DateTime类型");
+            return DateTime.TryParse(selfStr, out var retValue)
+                ? retValue
+                : throw new Exception("该字符串不能转换为DateTime类型");
         }
 
         /// <summary>
@@ -322,7 +314,9 @@ namespace IceInk
         /// <returns></returns>
         public static Guid ToGuid(this string s)
         {
-            return Guid.Parse(s);
+            return Guid.TryParse(s, out Guid retValue)
+                ? retValue
+                : throw new Exception("该字符串不能转换为Guid类型");
         }
 
         /// <summary>
@@ -574,7 +568,42 @@ namespace IceInk
 
         #endregion
 
+        #region 包含中文判断
+
+        /// <summary>
+        /// 是否存在中文字符
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static bool IsContainsChinese(this string input)
+        {
+            return Regex.IsMatch(input, @"[\u4e00-\u9fa5]");
+        }
+
+        /// <summary>
+        /// 判断输入的字符串只包含汉字
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static bool IsContainsOnlyChinese(this string input)
+        {
+            Regex regex = new Regex("^[\u4e00-\u9fa5]+$");
+            return regex.IsMatch(input);
+        }
+
+        #endregion
+
         #region 其他判断
+
+        /// <summary>
+        /// 是否存在空格
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static bool IsContainsSpace(this string input)
+        {
+            return input.Contains(" ");
+        }
 
         /// <summary>
         /// 检查字符串是否为空
@@ -608,17 +637,6 @@ namespace IceInk
 
 
         /// <summary>
-        /// 判断输入的字符串只包含汉字
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        public static bool IsChineseCh(this string input)
-        {
-            var regex = new Regex("^[\u4e00-\u9fa5]+$");
-            return regex.IsMatch(input);
-        }
-
-        /// <summary>
         /// 判断输入的字符串只包含数字
         /// 可以匹配整数和浮点数
         /// ^-?\d+$|^(-?\d+)(\.\d+)?$
@@ -627,19 +645,19 @@ namespace IceInk
         /// <returns></returns>
         public static bool IsNumber(this string input)
         {
-            var pattern = "^-?\\d+$|^(-?\\d+)(\\.\\d+)?$";
-            var regex = new Regex(pattern);
+            string pattern = "^-?\\d+$|^(-?\\d+)(\\.\\d+)?$";
+            Regex regex = new Regex(pattern);
             return regex.IsMatch(input);
         }
 
         /// <summary>
-        /// 匹配正整数
+        /// 是否正整数
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
         public static bool IsUint(this string input)
         {
-            var regex = new Regex("^[0-9]*[1-9][0-9]*$");
+            Regex regex = new Regex("^[0-9]*[1-9][0-9]*$");
             return regex.IsMatch(input);
         }
 
@@ -650,7 +668,7 @@ namespace IceInk
         /// <returns></returns>
         public static bool IsEnglishCh(this string input)
         {
-            var regex = new Regex("^[A-Za-z]+$");
+            Regex regex = new Regex("^[A-Za-z]+$");
             return regex.IsMatch(input);
         }
 
@@ -661,8 +679,8 @@ namespace IceInk
         /// <returns></returns>
         public static bool IsNumAndEnCh(this string input)
         {
-            var pattern = @"^[A-Za-z0-9]+$";
-            var regex = new Regex(pattern);
+            string pattern = @"^[A-Za-z0-9]+$";
+            Regex regex = new Regex(pattern);
             return regex.IsMatch(input);
         }
 
