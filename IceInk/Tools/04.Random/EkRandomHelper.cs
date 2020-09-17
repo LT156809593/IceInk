@@ -1,4 +1,5 @@
 ﻿#region << 文 件 说 明 >>
+
 /*----------------------------------------------------------------
 // 文件名称：EkRandomHelper
 // 创 建 者：IceInk
@@ -16,6 +17,7 @@
 //      因为伪随机的数字，在Random的内部产生机制中还是有一定规律的，并非是真正意义上的完全随机。
 //
 //----------------------------------------------------------------*/
+
 #endregion
 
 using System;
@@ -24,56 +26,55 @@ using System.Threading;
 namespace IceInk
 {
     /// <summary>
-    /// 随机数生成帮助工具,极大概率保证生成的随机数不重复
+    ///     随机数生成帮助工具,极大概率保证生成的随机数不重复
     /// </summary>
     public static class EkRandomHelper
     {
         /// <summary>
-        /// 随机获取数字并等待1~2s
+        ///     随机获取数字并等待1~2s
         /// </summary>
         /// <returns></returns>
         public static int GetRandomNumberDelay(int min, int max)
         {
-            Thread.Sleep(GetRandomInt(500, 1000));//随机休息一下
+            Thread.Sleep(GetRandomInt(500, 1000)); //随机休息一下
             return GetRandomInt(min, max);
         }
 
         /// <summary>
-        /// 获取随机数(int)，解决重复问题
+        ///     获取随机数(int)，解决重复问题
         /// </summary>
         /// <param name="min">随机区间最小值(包含)</param>
         /// <param name="max">随机区间最大值(不包含)</param>
         /// <returns>返回随机数(int)</returns>
         public static int GetRandomInt(int min, int max)
         {
-            System.Random random = new System.Random(CreateSeed());
+            var random = new Random(CreateSeed());
             return random.Next(min, max);
         }
 
         /// <summary>
-        /// 获取随机数(double)，解决重复问题
+        ///     获取随机数(double)，解决重复问题
         /// </summary>
         /// <param name="min">随机区间最小值(包含)</param>
         /// <param name="max">随机区间最大值(不包含)</param>
         /// <returns>返回随机数(double)</returns>
         public static double GetRandomDouble(double min = 0.0, double max = 1.0)
         {
-            System.Random random = new System.Random(CreateSeed());
+            var random = new Random(CreateSeed());
             return random.NextDouble() * (max - min);
         }
 
         /// <summary>
-        /// 创建随机种子，极大概率保证同一时刻随机种子不相同
+        ///     创建随机种子，极大概率保证同一时刻随机种子不相同
         /// </summary>
         /// <returns></returns>
         private static int CreateSeed()
         {
-            Guid guid = Guid.NewGuid();//每次都是全新的ID  全球唯一Id
-            string sGuid = guid.ToString();
-            int seed = DateTime.Now.Millisecond;
+            var guid = Guid.NewGuid(); //每次都是全新的ID  全球唯一Id
+            var sGuid = guid.ToString();
+            var seed = DateTime.Now.Millisecond;
             //保证seed 在同一时刻 是不相同的
-            foreach (char t in sGuid)
-            {
+            foreach (var t in sGuid)
                 switch (t)
                 {
                     case 'a':
@@ -114,10 +115,8 @@ namespace IceInk
                         seed += 4;
                         break;
                 }
-            }
 
             return seed;
         }
     }
 }
-

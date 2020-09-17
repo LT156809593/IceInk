@@ -1,4 +1,5 @@
 ﻿#region << 文 件 说 明 >>
+
 /*----------------------------------------------------------------
 // 文件名称：EkSystemTimeInfo
 // 创 建 者：作者名称
@@ -9,6 +10,7 @@
 //		定义系统时间的信息结构
 //
 //----------------------------------------------------------------*/
+
 #endregion
 
 using System.Runtime.InteropServices;
@@ -16,7 +18,7 @@ using System.Runtime.InteropServices;
 namespace IceInk
 {
     /// <summary>
-    /// 定义系统时间的信息结构
+    ///     定义系统时间的信息结构
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct EkSystemTimeInfo
@@ -33,4 +35,3 @@ namespace IceInk
 #pragma warning restore 1591
     }
 }
-

@@ -1,4 +1,5 @@
 ﻿#region << 文 件 说 明 >>
+
 /*----------------------------------------------------------------
 // 文件名称：EkEventSystem
 // 创 建 者：IceInk
@@ -9,6 +10,7 @@
 //		事件系统
 //          使用 枚举 注册
 //----------------------------------------------------------------*/
+
 #endregion
 
 using System;
@@ -41,79 +43,13 @@ namespace IceInk
     public class EkTypeEventSystem : ITypeEventSystem
     {
         /// <summary>
-        /// 接口 只负责存储在字典中
-        /// </summary>
-        interface IRegisterActions : IDisposable
-        {
-
-        }
-
-
-        /// <summary>
-        /// 多个注册
-        /// </summary>
-        class RegisterActions<T> : IRegisterActions
-        {
-            /// <summary>
-            /// 接收Action
-            /// 因为委托本身就可以一对多注册
-            /// </summary>
-            public Action<T> OnReceives = obj => { };
-
-            public void Dispose()
-            {
-                OnReceives = null;
-            }
-        }
-
-        /// <summary>
-        /// 全局注册事件
+        ///     全局注册事件
         /// </summary>
         private static readonly ITypeEventSystem mGlobalEventSystem = new EkTypeEventSystem();
 
         /// <summary>
-        /// 
         /// </summary>
-        private Dictionary<Type, IRegisterActions> mTypeEventDic = new Dictionary<Type, IRegisterActions>();
-
-        /// <summary>
-        /// 注册事件
-        /// </summary>
-        /// <param name="onReceive"></param>
-        /// <typeparam name="T"></typeparam>
-        public static IDisposable Register<T>(System.Action<T> onReceive)
-        {
-            return mGlobalEventSystem.RegisterEvent<T>(onReceive);
-        }
-
-        /// <summary>
-        /// 注销事件
-        /// </summary>
-        /// <param name="onReceive"></param>
-        /// <typeparam name="T"></typeparam>
-        public static void UnRegister<T>(System.Action<T> onReceive)
-        {
-            mGlobalEventSystem.UnRegisterEvent<T>(onReceive);
-        }
-
-        /// <summary>
-        /// 发送事件
-        /// </summary>
-        /// <param name="t"></param>
-        /// <typeparam name="T"></typeparam>
-        public static void Send<T>(T t)
-        {
-            mGlobalEventSystem.SendEvent<T>(t);
-        }
-
-        /// <summary>
-        /// 发送事件
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        public static void Send<T>() where T : new()
-        {
-            mGlobalEventSystem.SendEvent<T>();
-        }
+        private readonly Dictionary<Type, IRegisterActions> mTypeEventDic = new Dictionary<Type, IRegisterActions>();
 
 
         public IDisposable RegisterEvent<T>(Action<T> onReceive)
@@ -129,12 +65,12 @@ namespace IceInk
             }
             else
             {
-                RegisterActions<T> reg = new RegisterActions<T>();
+                var reg = new RegisterActions<T>();
                 reg.OnReceives += onReceive;
                 mTypeEventDic.Add(type, reg);
             }
 
-            return new TypeEventUnRegister<T> { OnReceive = onReceive };
+            return new TypeEventUnRegister<T> {OnReceive = onReceive};
         }
 
         public void UnRegisterEvent<T>(Action<T> onReceive)
@@ -145,7 +81,7 @@ namespace IceInk
 
             if (mTypeEventDic.TryGetValue(type, out registerActions))
             {
-                RegisterActions<T> reg = registerActions as RegisterActions<T>;
+                var reg = registerActions as RegisterActions<T>;
                 if (reg != null) reg.OnReceives -= onReceive;
             }
         }
@@ -158,7 +94,7 @@ namespace IceInk
 
             if (mTypeEventDic.TryGetValue(type, out registerActions))
             {
-                RegisterActions<T> reg = registerActions as RegisterActions<T>;
+                var reg = registerActions as RegisterActions<T>;
                 reg?.OnReceives(new T());
             }
         }
@@ -171,24 +107,84 @@ namespace IceInk
 
             if (mTypeEventDic.TryGetValue(type, out registerActions))
             {
-                RegisterActions<T> reg = registerActions as RegisterActions<T>;
+                var reg = registerActions as RegisterActions<T>;
                 reg?.OnReceives(e);
             }
         }
 
         public void Clear()
         {
-            foreach (var keyValuePair in mTypeEventDic)
-            {
-                keyValuePair.Value.Dispose();
-            }
+            foreach (var keyValuePair in mTypeEventDic) keyValuePair.Value.Dispose();
 
             mTypeEventDic.Clear();
         }
 
         public void Dispose()
         {
+        }
 
+        /// <summary>
+        ///     注册事件
+        /// </summary>
+        /// <param name="onReceive"></param>
+        /// <typeparam name="T"></typeparam>
+        public static IDisposable Register<T>(Action<T> onReceive)
+        {
+            return mGlobalEventSystem.RegisterEvent(onReceive);
+        }
+
+        /// <summary>
+        ///     注销事件
+        /// </summary>
+        /// <param name="onReceive"></param>
+        /// <typeparam name="T"></typeparam>
+        public static void UnRegister<T>(Action<T> onReceive)
+        {
+            mGlobalEventSystem.UnRegisterEvent(onReceive);
+        }
+
+        /// <summary>
+        ///     发送事件
+        /// </summary>
+        /// <param name="t"></param>
+        /// <typeparam name="T"></typeparam>
+        public static void Send<T>(T t)
+        {
+            mGlobalEventSystem.SendEvent(t);
+        }
+
+        /// <summary>
+        ///     发送事件
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        public static void Send<T>() where T : new()
+        {
+            mGlobalEventSystem.SendEvent<T>();
+        }
+
+        /// <summary>
+        ///     接口 只负责存储在字典中
+        /// </summary>
+        private interface IRegisterActions : IDisposable
+        {
+        }
+
+
+        /// <summary>
+        ///     多个注册
+        /// </summary>
+        private class RegisterActions<T> : IRegisterActions
+        {
+            /// <summary>
+            ///     接收Action
+            ///     因为委托本身就可以一对多注册
+            /// </summary>
+            public Action<T> OnReceives = obj => { };
+
+            public void Dispose()
+            {
+                OnReceives = null;
+            }
         }
     }
 
@@ -199,7 +195,7 @@ namespace IceInk
 
     public class DisposableList : IDisposableList
     {
-        List<IDisposable> mDisposableList = new List<IDisposable>();
+        private List<IDisposable> mDisposableList = new List<IDisposable>();
 
         public void Add(IDisposable disposable)
         {
@@ -208,10 +204,7 @@ namespace IceInk
 
         public void Dispose()
         {
-            foreach (var disposable in mDisposableList)
-            {
-                disposable.Dispose();
-            }
+            foreach (var disposable in mDisposableList) disposable.Dispose();
 
             mDisposableList = null;
         }

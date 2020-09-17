@@ -1,4 +1,5 @@
 ﻿#region << 文 件 说 明 >>
+
 /*----------------------------------------------------------------
 // 文件名称：EkNetData
 // 创 建 者：作者名称
@@ -9,30 +10,30 @@
 //		
 //
 //----------------------------------------------------------------*/
+
 #endregion
 
 
 namespace IceInk
 {
     /// <summary>
-    /// 网络数据
+    ///     网络数据
     /// </summary>
     public enum EkNetData
     {
         /// <summary>
-        /// 收发
+        ///     收发
         /// </summary>
         ReceivedAndSent,
 
         /// <summary>
-        /// 收
+        ///     收
         /// </summary>
         Received,
 
         /// <summary>
-        /// 发
+        ///     发
         /// </summary>
         Sent
     }
 }
-

@@ -31,21 +31,8 @@ namespace IceInk.Tools._03.Encrypt
     /// </summary>
     public class EkDesEncrypt
     {
-        public static class Constant
-        {
-            public static string DesKey = AppSettings("DesKey", "IceInk");
-
-
-            private static T AppSettings<T>(string key, T defaultValue)
-            {
-                var v = ConfigurationManager.AppSettings[key];
-                return string.IsNullOrEmpty(v) ? defaultValue : (T)Convert.ChangeType(v, typeof(T));
-            }
-
-        }
-
-        private static byte[] _rgbKey = ASCIIEncoding.ASCII.GetBytes(Constant.DesKey.Substring(0, 8));
-        private static byte[] _rgbIV = ASCIIEncoding.ASCII.GetBytes(Constant.DesKey.Insert(0, "w").Substring(0, 8));
+        private static readonly byte[] _rgbKey = Encoding.ASCII.GetBytes(Constant.DesKey.Substring(0, 8));
+        private static readonly byte[] _rgbIV = Encoding.ASCII.GetBytes(Constant.DesKey.Insert(0, "w").Substring(0, 8));
 
         /// <summary>
         /// DES 加密
@@ -54,11 +41,11 @@ namespace IceInk.Tools._03.Encrypt
         /// <returns>加密后的结果</returns>
         public static string Encrypt(string text)
         {
-            DESCryptoServiceProvider dsp = new DESCryptoServiceProvider();
-            using (MemoryStream memStream = new MemoryStream())
+            var dsp = new DESCryptoServiceProvider();
+            using (var memStream = new MemoryStream())
             {
-                CryptoStream crypStream = new CryptoStream(memStream, dsp.CreateEncryptor(_rgbKey, _rgbIV), CryptoStreamMode.Write);
-                StreamWriter sWriter = new StreamWriter(crypStream);
+                var crypStream = new CryptoStream(memStream, dsp.CreateEncryptor(_rgbKey, _rgbIV), CryptoStreamMode.Write);
+                var sWriter = new StreamWriter(crypStream);
                 sWriter.Write(text);
                 sWriter.Flush();
                 crypStream.FlushFinalBlock();
@@ -74,15 +61,27 @@ namespace IceInk.Tools._03.Encrypt
         /// <returns>解密后的结果</returns>
         public static string Decrypt(string encryptText)
         {
-            DESCryptoServiceProvider dsp = new DESCryptoServiceProvider();
-            byte[] buffer = Convert.FromBase64String(encryptText);
+            var dsp = new DESCryptoServiceProvider();
+            var buffer = Convert.FromBase64String(encryptText);
 
-            using (MemoryStream memStream = new MemoryStream())
+            using (var memStream = new MemoryStream())
             {
-                CryptoStream crypStream = new CryptoStream(memStream, dsp.CreateDecryptor(_rgbKey, _rgbIV), CryptoStreamMode.Write);
+                var crypStream = new CryptoStream(memStream, dsp.CreateDecryptor(_rgbKey, _rgbIV), CryptoStreamMode.Write);
                 crypStream.Write(buffer, 0, buffer.Length);
                 crypStream.FlushFinalBlock();
                 return Encoding.UTF8.GetString(memStream.ToArray());
+            }
+        }
+
+        public static class Constant
+        {
+            public static string DesKey = AppSettings("DesKey", "IceInk");
+
+
+            private static T AppSettings<T>(string key, T defaultValue)
+            {
+                var v = ConfigurationManager.AppSettings[key];
+                return string.IsNullOrEmpty(v) ? defaultValue : (T)Convert.ChangeType(v, typeof(T));
             }
         }
     }

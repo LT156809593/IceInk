@@ -1,4 +1,5 @@
 ﻿#region << 文 件 说 明 >>
+
 /*----------------------------------------------------------------
 // 文件名称：CPU_INFO
 // 创 建 者：作者名称
@@ -9,6 +10,7 @@
 //		
 //
 //----------------------------------------------------------------*/
+
 #endregion
 
 using System.Runtime.InteropServices;
@@ -20,7 +22,7 @@ namespace IceInk
         #region 定义CPU的信息结构
 
         /// <summary>
-        /// 定义CPU的信息结构
+        ///     定义CPU的信息结构
         /// </summary>
         [StructLayout(LayoutKind.Sequential)]
         public struct CPU_INFO
@@ -43,4 +45,3 @@ namespace IceInk
         #endregion
     }
 }
-

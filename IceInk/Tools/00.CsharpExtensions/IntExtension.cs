@@ -1,4 +1,5 @@
 ﻿#region << 文 件 说 明 >>
+
 /*----------------------------------------------------------------
 // 文件名称：IntExtension
 // 创 建 者：IceInk
@@ -9,20 +10,20 @@
 //		Int类型扩展
 //
 //----------------------------------------------------------------*/
+
 #endregion
 
 using System;
 
-
 namespace IceInk
 {
     /// <summary>
-    /// Int类型扩展
+    ///     Int类型扩展
     /// </summary>
     public static class IntExtension
     {
         /// <summary>
-        /// 转换为枚举类型
+        ///     转换为枚举类型
         /// </summary>
         /// <typeparam name="TEnum">目标枚举类型</typeparam>
         /// <param name="number"></param>
@@ -33,7 +34,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 转换为Byte
+        ///     转换为Byte
         /// </summary>
         /// <param name="number"></param>
         /// <returns></returns>
@@ -45,7 +46,7 @@ namespace IceInk
         #region 判断是否 质数 奇数 偶数
 
         /// <summary>
-        /// 是否为奇数
+        ///     是否为奇数
         /// </summary>
         /// <param name="number"></param>
         /// <returns></returns>
@@ -55,7 +56,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 是否为偶数
+        ///     是否为偶数
         /// </summary>
         /// <param name="number"></param>
         /// <returns></returns>
@@ -65,36 +66,25 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 是否为素数(质数)
+        ///     是否为素数(质数)
         /// </summary>
         /// <param name="number">(非负数)</param>
         /// <returns></returns>
         public static bool IsPrime(this int number)
         {
-            if (number <= 3)
-            {
-                return number > 1;
-            }
+            if (number <= 3) return number > 1;
 
             // 不在6的倍数两侧的一定不是质数
-            if (number % 6 != 1 && number % 6 != 5)
-            {
-                return false;
-            }
+            if (number % 6 != 1 && number % 6 != 5) return false;
 
-            int sqrt = (int)Math.Sqrt(number);
-            for (int i = 5; i <= sqrt; i += 6)
-            {
+            var sqrt = (int) Math.Sqrt(number);
+            for (var i = 5; i <= sqrt; i += 6)
                 if (number % i == 0 || number % (i + 2) == 0)
-                {
                     return false;
-                }
-            }
 
             return true;
         }
 
         #endregion
     }
-
 }

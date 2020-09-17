@@ -1,4 +1,5 @@
 ﻿#region << 文 件 说 明 >>
+
 /*----------------------------------------------------------------
 // 文件名称：DiskData
 // 创 建 者：作者名称
@@ -9,29 +10,29 @@
 //		磁盘数据
 //
 //----------------------------------------------------------------*/
+
 #endregion
 
 namespace IceInk
 {
     /// <summary>
-    /// 磁盘数据
+    ///     磁盘数据
     /// </summary>
     public enum DiskData
     {
         /// <summary>
-        /// 读写
+        ///     读写
         /// </summary>
         ReadAndWrite,
 
         /// <summary>
-        /// 读
+        ///     读
         /// </summary>
         Read,
 
         /// <summary>
-        /// 写
+        ///     写
         /// </summary>
         Write
     }
 }
-

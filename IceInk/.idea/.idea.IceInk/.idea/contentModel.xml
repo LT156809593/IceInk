@@ -91,19 +91,5 @@
         </e>
       </e>
     </e>
-    <e p="E:\_LT_Projects\_VSProjects\Test\TestIceInk" t="IncludeRecursive">
-      <e p="bin" t="ExcludeRecursive" />
-      <e p="obj" t="ExcludeRecursive">
-        <e p="Debug" t="Include">
-          <e p="netcoreapp3.1" t="Include">
-            <e p="TestIceInk.AssemblyInfo.cs" t="Include" />
-          </e>
-        </e>
-      </e>
-      <e p="Person.cs" t="Include" />
-      <e p="Program.cs" t="Include" />
-      <e p="SingletonTest.cs" t="Include" />
-      <e p="TestIceInk.csproj" t="IncludeRecursive" />
-    </e>
   </component>
 </project>

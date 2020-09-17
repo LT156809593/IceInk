@@ -12,14 +12,228 @@ namespace IceInk
     /// </remarks>
     public class ChineseCalendar
     {
+        private readonly DateTime _datetime;
+
+        /// <summary>
+        /// 用一个标准的公历日期来初使化
+        /// </summary>
+        /// <param name="dt"></param>
+        public ChineseCalendar(DateTime dt)
+        {
+            int i;
+            Date = dt.Date;
+            _datetime = dt;
+            //农历日期计算部分
+            var temp = 0;
+            var ts = Date - MinDay; //计算两天的基本差距
+            var offset = ts.Days;
+            for (i = MinYear; i <= MaxYear; i++)
+            {
+                temp = GetChineseYearDays(i); //求当年农历年天数
+                if (offset - temp < 1) break;
+
+                offset = offset - temp;
+            }
+
+            ChineseYear = i;
+            var leap = GetChineseLeapMonth(ChineseYear);
+            //设定当年是否有闰月
+            IsChineseLeapYear = leap > 0;
+            IsChineseLeapMonth = false;
+            for (i = 1; i <= 12; i++)
+            {
+                //闰月
+                if (leap > 0 && i == leap + 1 && IsChineseLeapMonth == false)
+                {
+                    IsChineseLeapMonth = true;
+                    i = i - 1;
+                    temp = GetChineseLeapMonthDays(ChineseYear); //计算闰月天数
+                }
+                else
+                {
+                    IsChineseLeapMonth = false;
+                    temp = GetChineseMonthDays(ChineseYear, i); //计算非闰月天数
+                }
+
+                offset = offset - temp;
+                if (offset <= 0) break;
+            }
+
+            offset = offset + temp;
+            ChineseMonth = i;
+            ChineseDay = offset;
+        }
+
+        /// <summary>
+        /// 用农历的日期来初使化
+        /// </summary>
+        /// <param name="cy">农历年</param>
+        /// <param name="cm">农历月</param>
+        /// <param name="cd">农历日</param>
+        /// <param name="leapMonthFlag">闰月标志</param>
+        public ChineseCalendar(int cy, int cm, int cd, bool leapMonthFlag)
+        {
+            int i, temp;
+            CheckChineseDateLimit(cy, cm, cd, leapMonthFlag);
+            ChineseYear = cy;
+            ChineseMonth = cm;
+            ChineseDay = cd;
+            var offset = 0;
+            for (i = MinYear; i < cy; i++)
+            {
+                temp = GetChineseYearDays(i); //求当年农历年天数
+                offset = offset + temp;
+            }
+
+            var leap = GetChineseLeapMonth(cy);
+            IsChineseLeapYear = leap != 0;
+            IsChineseLeapMonth = cm == leap && leapMonthFlag;
+            if (IsChineseLeapYear == false || cm < leap) //当年没有闰月||计算月份小于闰月     
+            {
+                for (i = 1; i < cm; i++)
+                {
+                    temp = GetChineseMonthDays(cy, i); //计算非闰月天数
+                    offset = offset + temp;
+                }
+
+                //检查日期是否大于最大天
+                if (cd > GetChineseMonthDays(cy, cm)) throw new ChineseCalendarException("不合法的农历日期");
+
+                offset = offset + cd; //加上当月的天数
+            }
+            else //是闰年，且计算月份大于或等于闰月
+            {
+                for (i = 1; i < cm; i++)
+                {
+                    temp = GetChineseMonthDays(cy, i); //计算非闰月天数
+                    offset = offset + temp;
+                }
+
+                if (cm > leap) //计算月大于闰月
+                {
+                    temp = GetChineseLeapMonthDays(cy); //计算闰月天数
+                    offset = offset + temp; //加上闰月天数
+                    if (cd > GetChineseMonthDays(cy, cm)) throw new ChineseCalendarException("不合法的农历日期");
+
+                    offset = offset + cd;
+                }
+                else //计算月等于闰月
+                {
+                    //如果需要计算的是闰月，则应首先加上与闰月对应的普通月的天数
+                    if (IsChineseLeapMonth) //计算月为闰月
+                    {
+                        temp = GetChineseMonthDays(cy, cm); //计算非闰月天数
+                        offset = offset + temp;
+                    }
+
+                    if (cd > GetChineseLeapMonthDays(cy)) throw new ChineseCalendarException("不合法的农历日期");
+
+                    offset = offset + cd;
+                }
+            }
+
+            Date = MinDay.AddDays(offset);
+        }
+
+        #region 星座
+
+        /// <summary>
+        /// 计算指定日期的星座序号 
+        /// </summary>
+        /// <returns></returns>
+        public string Constellation
+        {
+            get
+            {
+                int index;
+                var m = Date.Month;
+                var d = Date.Day;
+                var y = m * 100 + d;
+                if (y >= 321 && y <= 419)
+                    index = 0;
+                else if (y >= 420 && y <= 520)
+                    index = 1;
+                else if (y >= 521 && y <= 620)
+                    index = 2;
+                else if (y >= 621 && y <= 722)
+                    index = 3;
+                else if (y >= 723 && y <= 822)
+                    index = 4;
+                else if (y >= 823 && y <= 922)
+                    index = 5;
+                else if (y >= 923 && y <= 1022)
+                    index = 6;
+                else if (y >= 1023 && y <= 1121)
+                    index = 7;
+                else if (y >= 1122 && y <= 1221)
+                    index = 8;
+                else if (y >= 1222 || y <= 119)
+                    index = 9;
+                else if (y >= 120 && y <= 218)
+                    index = 10;
+                else if (y >= 219 && y <= 320)
+                    index = 11;
+                else
+                    index = 0;
+
+                return ConstellationName[index];
+            }
+        }
+
+        #endregion
+
+        /// <summary>
+        /// 取下一天
+        /// </summary>
+        /// <returns></returns>
+        public ChineseCalendar NextDay => new ChineseCalendar(Date.AddDays(1));
+
+        /// <summary>
+        /// 取前一天
+        /// </summary>
+        /// <returns></returns>
+        public ChineseCalendar PervDay => new ChineseCalendar(Date.AddDays(-1));
+
+        /// <summary>
+        /// 取下n天
+        /// </summary>
+        /// <returns></returns>
+        public ChineseCalendar AddDays(int days)
+        {
+            return new ChineseCalendar(Date.AddDays(days));
+        }
+
+        /// <summary>
+        /// 取下n天
+        /// </summary>
+        /// <returns></returns>
+        public ChineseCalendar AddWorkDays(int days)
+        {
+            var cc = new ChineseCalendar(Date);
+            while (true)
+            {
+                cc = cc.AddDays(1);
+                if (cc.IsWorkDay) days--;
+
+                if (days == 0) return cc;
+            }
+        }
+
+        /// <summary>
+        /// 加n月
+        /// </summary>
+        /// <returns></returns>
+        public ChineseCalendar AddMonths(int months)
+        {
+            return new ChineseCalendar(Date.AddMonths(months));
+        }
+
         private class ChineseCalendarException : Exception
         {
             public ChineseCalendarException(string msg) : base(msg)
             {
             }
         }
-
-        private readonly DateTime _datetime;
 
         #region 基础数据
 
@@ -453,7 +667,7 @@ namespace IceInk
             new DateInfoStruct(9, 9, 0, "重阳节"),
             new DateInfoStruct(12, 8, 0, "腊八节"),
             new DateInfoStruct(12, 23, 0, "北方小年(扫房)"),
-            new DateInfoStruct(12, 24, 0, "南方小年(掸尘)"),
+            new DateInfoStruct(12, 24, 0, "南方小年(掸尘)")
             //new HolidayStruct(12, 30, 0, "除夕")  //注意除夕需要其它方法进行计算
         };
 
@@ -473,142 +687,6 @@ namespace IceInk
         #endregion
 
         #endregion
-
-        /// <summary>
-        /// 用一个标准的公历日期来初使化
-        /// </summary>
-        /// <param name="dt"></param>
-        public ChineseCalendar(DateTime dt)
-        {
-            int i;
-            Date = dt.Date;
-            _datetime = dt;
-            //农历日期计算部分
-            var temp = 0;
-            var ts = Date - MinDay; //计算两天的基本差距
-            var offset = ts.Days;
-            for (i = MinYear; i <= MaxYear; i++)
-            {
-                temp = GetChineseYearDays(i); //求当年农历年天数
-                if (offset - temp < 1)
-                {
-                    break;
-                }
-
-                offset = offset - temp;
-            }
-
-            ChineseYear = i;
-            var leap = GetChineseLeapMonth(ChineseYear);
-            //设定当年是否有闰月
-            IsChineseLeapYear = leap > 0;
-            IsChineseLeapMonth = false;
-            for (i = 1; i <= 12; i++)
-            {
-                //闰月
-                if (leap > 0 && i == leap + 1 && IsChineseLeapMonth == false)
-                {
-                    IsChineseLeapMonth = true;
-                    i = i - 1;
-                    temp = GetChineseLeapMonthDays(ChineseYear); //计算闰月天数
-                }
-                else
-                {
-                    IsChineseLeapMonth = false;
-                    temp = GetChineseMonthDays(ChineseYear, i); //计算非闰月天数
-                }
-
-                offset = offset - temp;
-                if (offset <= 0)
-                {
-                    break;
-                }
-            }
-
-            offset = offset + temp;
-            ChineseMonth = i;
-            ChineseDay = offset;
-        }
-
-        /// <summary>
-        /// 用农历的日期来初使化
-        /// </summary>
-        /// <param name="cy">农历年</param>
-        /// <param name="cm">农历月</param>
-        /// <param name="cd">农历日</param>
-        /// <param name="leapMonthFlag">闰月标志</param>
-        public ChineseCalendar(int cy, int cm, int cd, bool leapMonthFlag)
-        {
-            int i, temp;
-            CheckChineseDateLimit(cy, cm, cd, leapMonthFlag);
-            ChineseYear = cy;
-            ChineseMonth = cm;
-            ChineseDay = cd;
-            var offset = 0;
-            for (i = MinYear; i < cy; i++)
-            {
-                temp = GetChineseYearDays(i); //求当年农历年天数
-                offset = offset + temp;
-            }
-
-            var leap = GetChineseLeapMonth(cy);
-            IsChineseLeapYear = leap != 0;
-            IsChineseLeapMonth = cm == leap && leapMonthFlag;
-            if (IsChineseLeapYear == false || cm < leap) //当年没有闰月||计算月份小于闰月     
-            {
-                for (i = 1; i < cm; i++)
-                {
-                    temp = GetChineseMonthDays(cy, i); //计算非闰月天数
-                    offset = offset + temp;
-                }
-
-                //检查日期是否大于最大天
-                if (cd > GetChineseMonthDays(cy, cm))
-                {
-                    throw new ChineseCalendarException("不合法的农历日期");
-                }
-
-                offset = offset + cd; //加上当月的天数
-            }
-            else //是闰年，且计算月份大于或等于闰月
-            {
-                for (i = 1; i < cm; i++)
-                {
-                    temp = GetChineseMonthDays(cy, i); //计算非闰月天数
-                    offset = offset + temp;
-                }
-
-                if (cm > leap) //计算月大于闰月
-                {
-                    temp = GetChineseLeapMonthDays(cy); //计算闰月天数
-                    offset = offset + temp; //加上闰月天数
-                    if (cd > GetChineseMonthDays(cy, cm))
-                    {
-                        throw new ChineseCalendarException("不合法的农历日期");
-                    }
-
-                    offset = offset + cd;
-                }
-                else //计算月等于闰月
-                {
-                    //如果需要计算的是闰月，则应首先加上与闰月对应的普通月的天数
-                    if (IsChineseLeapMonth) //计算月为闰月
-                    {
-                        temp = GetChineseMonthDays(cy, cm); //计算非闰月天数
-                        offset = offset + temp;
-                    }
-
-                    if (cd > GetChineseLeapMonthDays(cy))
-                    {
-                        throw new ChineseCalendarException("不合法的农历日期");
-                    }
-
-                    offset = offset + cd;
-                }
-            }
-
-            Date = MinDay.AddDays(offset);
-        }
 
         #region 私有函数
 
@@ -654,13 +732,10 @@ namespace IceInk
             var i = 0x8000;
             var info = LunarDateArray[year - MinYear] & 0x0FFFF;
             //计算12个月中有多少天为30天
-            for (int m = 0; m < 12; m++)
+            for (var m = 0; m < 12; m++)
             {
                 var f = info & i;
-                if (f != 0)
-                {
-                    sumDay++;
-                }
+                if (f != 0) sumDay++;
 
                 i >>= 1;
             }
@@ -679,16 +754,10 @@ namespace IceInk
             //计算时辰的地支
             var hour = dt.Hour;
             var minute = dt.Minute;
-            if (minute != 0)
-            {
-                hour += 1;
-            }
+            if (minute != 0) hour += 1;
 
             var offset = hour / 2;
-            if (offset >= 12)
-            {
-                offset = 0;
-            }
+            if (offset >= 12) offset = 0;
 
             //计算天干
             var ts = Date - GanZhiStartDay;
@@ -707,26 +776,15 @@ namespace IceInk
         /// <param name="leapMonth"></param>
         private void CheckChineseDateLimit(int year, int month, int day, bool leapMonth)
         {
-            if (year < MinYear || year > MaxYear)
-            {
-                throw new ChineseCalendarException("非法农历日期");
-            }
+            if (year < MinYear || year > MaxYear) throw new ChineseCalendarException("非法农历日期");
 
-            if (month < 1 || month > 12)
-            {
-                throw new ChineseCalendarException("非法农历日期");
-            }
+            if (month < 1 || month > 12) throw new ChineseCalendarException("非法农历日期");
 
             if (day < 1 || day > 30) //中国的月最多30天
-            {
                 throw new ChineseCalendarException("非法农历日期");
-            }
 
-            int leap = GetChineseLeapMonth(year); // 计算该年应该闰哪个月
-            if (leapMonth && month != leap)
-            {
-                throw new ChineseCalendarException("非法农历日期");
-            }
+            var leap = GetChineseLeapMonth(year); // 计算该年应该闰哪个月
+            if (leapMonth && month != leap) throw new ChineseCalendarException("非法农历日期");
         }
 
         /// <summary>
@@ -736,10 +794,7 @@ namespace IceInk
         /// <returns></returns>
         private string ConvertNumToChineseNum(char n)
         {
-            if (n < '0' || n > '9')
-            {
-                return default;
-            }
+            if (n < '0' || n > '9') return default;
 
             return n switch
             {
@@ -765,12 +820,9 @@ namespace IceInk
         /// <returns></returns>
         private bool BitTest32(int num, int bitpostion)
         {
-            if (bitpostion > 31 || bitpostion < 0)
-            {
-                throw new ArgumentException("参数错误: 取值范围0-31", nameof(bitpostion));
-            }
+            if (bitpostion > 31 || bitpostion < 0) throw new ArgumentException("参数错误: 取值范围0-31", nameof(bitpostion));
 
-            int bit = 1 << bitpostion;
+            var bit = 1 << bitpostion;
             return (num & bit) != 0;
         }
 
@@ -804,30 +856,22 @@ namespace IceInk
         /// <returns></returns>
         private bool CompareWeekDayHoliday(DateTime date, int month, int week, int day)
         {
-            bool result = false;
+            var result = false;
             if (date.Month == month) //月份相同
-            {
                 if (ConvertDayOfWeek(date.DayOfWeek) == day) //星期几相同
                 {
-                    DateTime firstDay = new DateTime(date.Year, date.Month, 1); //生成当月第一天
-                    int i = ConvertDayOfWeek(firstDay.DayOfWeek);
-                    int firWeekDays = 7 - ConvertDayOfWeek(firstDay.DayOfWeek) + 1; //计算第一周剩余天数
+                    var firstDay = new DateTime(date.Year, date.Month, 1); //生成当月第一天
+                    var i = ConvertDayOfWeek(firstDay.DayOfWeek);
+                    var firWeekDays = 7 - ConvertDayOfWeek(firstDay.DayOfWeek) + 1; //计算第一周剩余天数
                     if (i > day)
                     {
-                        if ((week - 1) * 7 + day + firWeekDays == date.Day)
-                        {
-                            result = true;
-                        }
+                        if ((week - 1) * 7 + day + firWeekDays == date.Day) result = true;
                     }
                     else
                     {
-                        if (day + firWeekDays + (week - 2) * 7 == date.Day)
-                        {
-                            result = true;
-                        }
+                        if (day + firWeekDays + (week - 2) * 7 == date.Day) result = true;
                     }
                 }
-            }
 
             return result;
         }
@@ -843,35 +887,24 @@ namespace IceInk
         {
             get
             {
-                string tempStr = "";
-                if (IsChineseLeapMonth)
-                {
-                    return tempStr;
-                }
+                var tempStr = "";
+                if (IsChineseLeapMonth) return tempStr;
 
                 foreach (var date in LunarHolidayInfo)
                 {
                     var end = date.Recess > 0 ? date.Day + date.Recess - 1 : date.Day + date.Recess;
-                    if (date.Month != ChineseMonth || ChineseDay < date.Day || ChineseDay > end)
-                    {
-                        continue;
-                    }
+                    if (date.Month != ChineseMonth || ChineseDay < date.Day || ChineseDay > end) continue;
 
                     tempStr = date.HolidayName;
                     break;
                 }
 
                 //对除夕进行特别处理
-                if (ChineseMonth != 12)
-                {
-                    return tempStr;
-                }
+                if (ChineseMonth != 12) return tempStr;
 
-                int i = GetChineseMonthDays(ChineseYear, 12); //计算当年农历12月的总天数
+                var i = GetChineseMonthDays(ChineseYear, 12); //计算当年农历12月的总天数
                 if (ChineseDay == i) //如果为最后一天
-                {
                     tempStr = "除夕";
-                }
 
                 return tempStr;
             }
@@ -884,13 +917,10 @@ namespace IceInk
         {
             get
             {
-                string tempStr = "";
+                var tempStr = "";
                 foreach (var wh in WHolidayInfo)
                 {
-                    if (!CompareWeekDayHoliday(Date, wh.Month, wh.WeekAtMonth, wh.WeekDay))
-                    {
-                        continue;
-                    }
+                    if (!CompareWeekDayHoliday(Date, wh.Month, wh.WeekAtMonth, wh.WeekDay)) continue;
 
                     tempStr = wh.HolidayName;
                     break;
@@ -907,11 +937,11 @@ namespace IceInk
         {
             get
             {
-                string tempStr = "";
-                foreach (DateInfoStruct sh in SolarHolidayInfo)
+                var tempStr = "";
+                foreach (var sh in SolarHolidayInfo)
                 {
                     var end = sh.Recess > 0 ? sh.Day + sh.Recess - 1 : sh.Day + sh.Recess;
-                    if ((sh.Month == Date.Month) && Date.Day >= sh.Day && Date.Day <= end)
+                    if (sh.Month == Date.Month && Date.Day >= sh.Day && Date.Day <= end)
                     {
                         tempStr = sh.HolidayName;
                         break;
@@ -940,11 +970,11 @@ namespace IceInk
         {
             get
             {
-                bool isHoliday = false;
+                var isHoliday = false;
                 foreach (var date in SolarHolidayInfo)
                 {
                     var end = date.Recess > 0 ? date.Day + date.Recess - 1 : date.Day + date.Recess;
-                    if ((date.Month == Date.Month) && Date.Day >= date.Day && Date.Day <= end && date.Recess > 0)
+                    if (date.Month == Date.Month && Date.Day >= date.Day && Date.Day <= end && date.Recess > 0)
                     {
                         isHoliday = true;
                         break;
@@ -959,7 +989,7 @@ namespace IceInk
 
                 if (!isHoliday)
                 {
-                    foreach (DateInfoStruct lh in LunarHolidayInfo)
+                    foreach (var lh in LunarHolidayInfo)
                     {
                         var end = lh.Recess > 0 ? lh.Day + lh.Recess - 1 : lh.Day + lh.Recess;
                         if (lh.Month == ChineseMonth && ChineseDay >= lh.Day && ChineseDay <= end && lh.Recess > 0)
@@ -972,11 +1002,9 @@ namespace IceInk
                     //对除夕进行特别处理
                     if (ChineseMonth == 12)
                     {
-                        int i = GetChineseMonthDays(ChineseYear, 12); //计算当年农历12月的总天数
+                        var i = GetChineseMonthDays(ChineseYear, 12); //计算当年农历12月的总天数
                         if (ChineseDay == i) //如果为最后一天
-                        {
                             isHoliday = true;
-                        }
                     }
                 }
 
@@ -1041,7 +1069,7 @@ namespace IceInk
                 var ts = Date - ChineseConstellationReferDay;
                 var offset = ts.Days;
                 var modStarDay = offset % 28;
-                return (modStarDay >= 0 ? ChineseConstellationName[modStarDay] : ChineseConstellationName[27 + modStarDay]);
+                return modStarDay >= 0 ? ChineseConstellationName[modStarDay] : ChineseConstellationName[27 + modStarDay];
             }
         }
 
@@ -1062,17 +1090,17 @@ namespace IceInk
         /// <summary>
         /// 是否闰月
         /// </summary>
-        public bool IsChineseLeapMonth { get; private set; }
+        public bool IsChineseLeapMonth { get; }
 
         /// <summary>
         /// 当年是否有闰月
         /// </summary>
-        public bool IsChineseLeapYear { get; private set; }
+        public bool IsChineseLeapYear { get; }
 
         /// <summary>
         /// 农历日
         /// </summary>
-        public int ChineseDay { get; private set; }
+        public int ChineseDay { get; }
 
         /// <summary>
         /// 农历日中文表示
@@ -1083,13 +1111,13 @@ namespace IceInk
             10 => "初十",
             20 => "二十",
             30 => "三十",
-            _ => (NStr2[ChineseDay / 10] + NStr1[ChineseDay % 10].ToString())
+            _ => NStr2[ChineseDay / 10] + NStr1[ChineseDay % 10].ToString()
         };
 
         /// <summary>
         /// 农历的月份
         /// </summary>
-        public int ChineseMonth { get; private set; }
+        public int ChineseMonth { get; }
 
         /// <summary>
         /// 农历月份字符串
@@ -1099,7 +1127,7 @@ namespace IceInk
         /// <summary>
         /// 取农历年份
         /// </summary>
-        public int ChineseYear { get; private set; }
+        public int ChineseYear { get; }
 
         /// <summary>
         /// 取农历年字符串如，一九九七年
@@ -1108,12 +1136,9 @@ namespace IceInk
         {
             get
             {
-                string tempStr = "";
-                string num = ChineseYear.ToString();
-                for (int i = 0; i < 4; i++)
-                {
-                    tempStr += ConvertNumToChineseNum(num[i]);
-                }
+                var tempStr = "";
+                var num = ChineseYear.ToString();
+                for (var i = 0; i < 4; i++) tempStr += ConvertNumToChineseNum(num[i]);
 
                 return tempStr + "年";
             }
@@ -1126,10 +1151,7 @@ namespace IceInk
         {
             get
             {
-                if (IsChineseLeapMonth)
-                {
-                    return ChineseYearString + "闰" + ChineseMonthString + ChineseDayString;
-                }
+                if (IsChineseLeapMonth) return ChineseYearString + "闰" + ChineseMonthString + ChineseDayString;
 
                 return ChineseYearString + ChineseMonthString + ChineseDayString;
             }
@@ -1151,16 +1173,13 @@ namespace IceInk
             get
             {
                 var baseDateAndTime = new DateTime(1900, 1, 6, 2, 5, 0); //#1/6/1900 2:05:00 AM#
-                string tempStr = "";
+                var tempStr = "";
                 var y = Date.Year;
-                for (int i = 1; i <= 24; i++)
+                for (var i = 1; i <= 24; i++)
                 {
                     var num = 525948.76 * (y - 1900) + STermInfo[i - 1];
                     var newDate = baseDateAndTime.AddMinutes(num);
-                    if (newDate.DayOfYear != Date.DayOfYear)
-                    {
-                        continue;
-                    }
+                    if (newDate.DayOfYear != Date.DayOfYear) continue;
 
                     tempStr = SolarTerm[i - 1];
                     break;
@@ -1177,10 +1196,10 @@ namespace IceInk
         {
             get
             {
-                DateTime baseDateAndTime = new DateTime(1900, 1, 6, 2, 5, 0); //#1/6/1900 2:05:00 AM#
-                string tempStr = "";
+                var baseDateAndTime = new DateTime(1900, 1, 6, 2, 5, 0); //#1/6/1900 2:05:00 AM#
+                var tempStr = "";
                 var y = Date.Year;
-                for (int i = 24; i >= 1; i--)
+                for (var i = 24; i >= 1; i--)
                 {
                     var num = 525948.76 * (y - 1900) + STermInfo[i - 1];
                     var newDate = baseDateAndTime.AddMinutes(num);
@@ -1203,9 +1222,9 @@ namespace IceInk
             get
             {
                 var baseDateAndTime = new DateTime(1900, 1, 6, 2, 5, 0); //#1/6/1900 2:05:00 AM#
-                string tempStr = "";
+                var tempStr = "";
                 var y = Date.Year;
-                for (int i = 1; i <= 24; i++)
+                for (var i = 1; i <= 24; i++)
                 {
                     var num = 525948.76 * (y - 1900) + STermInfo[i - 1];
                     var newDate = baseDateAndTime.AddMinutes(num);
@@ -1222,79 +1241,6 @@ namespace IceInk
 
         #endregion
 
-        #region 星座
-
-        /// <summary>
-        /// 计算指定日期的星座序号 
-        /// </summary>
-        /// <returns></returns>
-        public string Constellation
-        {
-            get
-            {
-                int index;
-                var m = Date.Month;
-                var d = Date.Day;
-                var y = m * 100 + d;
-                if (y >= 321 && y <= 419)
-                {
-                    index = 0;
-                }
-                else if (y >= 420 && y <= 520)
-                {
-                    index = 1;
-                }
-                else if (y >= 521 && y <= 620)
-                {
-                    index = 2;
-                }
-                else if (y >= 621 && y <= 722)
-                {
-                    index = 3;
-                }
-                else if (y >= 723 && y <= 822)
-                {
-                    index = 4;
-                }
-                else if (y >= 823 && y <= 922)
-                {
-                    index = 5;
-                }
-                else if (y >= 923 && y <= 1022)
-                {
-                    index = 6;
-                }
-                else if (y >= 1023 && y <= 1121)
-                {
-                    index = 7;
-                }
-                else if (y >= 1122 && y <= 1221)
-                {
-                    index = 8;
-                }
-                else if (y >= 1222 || y <= 119)
-                {
-                    index = 9;
-                }
-                else if (y >= 120 && y <= 218)
-                {
-                    index = 10;
-                }
-                else if (y >= 219 && y <= 320)
-                {
-                    index = 11;
-                }
-                else
-                {
-                    index = 0;
-                }
-
-                return ConstellationName[index];
-            }
-        }
-
-        #endregion
-
         #region 生肖
 
         /// <summary>
@@ -1305,7 +1251,7 @@ namespace IceInk
         {
             get
             {
-                int offset = Date.Year - AnimalStartYear;
+                var offset = Date.Year - AnimalStartYear;
                 return offset % 12 + 1;
             }
         }
@@ -1317,7 +1263,7 @@ namespace IceInk
         {
             get
             {
-                int offset = Date.Year - AnimalStartYear; //阳历计算
+                var offset = Date.Year - AnimalStartYear; //阳历计算
                 return AnimalStr[offset % 12].ToString();
             }
         }
@@ -1333,7 +1279,7 @@ namespace IceInk
         {
             get
             {
-                int i = (ChineseYear - GanZhiStartYear) % 60; //计算干支
+                var i = (ChineseYear - GanZhiStartYear) % 60; //计算干支
                 var tempStr = TianGan[i % 10] + DiZhi[i % 12].ToString() + "年";
                 return tempStr;
             }
@@ -1349,18 +1295,14 @@ namespace IceInk
                 //每个月的地支总是固定的,而且总是从寅月开始
                 int zhiIndex;
                 if (ChineseMonth > 10)
-                {
                     zhiIndex = ChineseMonth - 10;
-                }
                 else
-                {
                     zhiIndex = ChineseMonth + 2;
-                }
 
                 var zhi = DiZhi[zhiIndex - 1].ToString();
                 //根据当年的干支年的干来计算月干的第一个
-                int ganIndex = 1;
-                int i = (ChineseYear - GanZhiStartYear) % 60; //计算干支
+                var ganIndex = 1;
+                var i = (ChineseYear - GanZhiStartYear) % 60; //计算干支
                 ganIndex = (i % 10) switch
                 {
                     0 => 3, //甲
@@ -1401,57 +1343,5 @@ namespace IceInk
         public string GanZhiDateString => GanZhiYearString + GanZhiMonthString + GanZhiDayString;
 
         #endregion
-
-        /// <summary>
-        /// 取下一天
-        /// </summary>
-        /// <returns></returns>
-        public ChineseCalendar NextDay => new ChineseCalendar(Date.AddDays(1));
-
-        /// <summary>
-        /// 取前一天
-        /// </summary>
-        /// <returns></returns>
-        public ChineseCalendar PervDay => new ChineseCalendar(Date.AddDays(-1));
-
-        /// <summary>
-        /// 取下n天
-        /// </summary>
-        /// <returns></returns>
-        public ChineseCalendar AddDays(int days)
-        {
-            return new ChineseCalendar(Date.AddDays(days));
-        }
-
-        /// <summary>
-        /// 取下n天
-        /// </summary>
-        /// <returns></returns>
-        public ChineseCalendar AddWorkDays(int days)
-        {
-            var cc = new ChineseCalendar(Date);
-            while (true)
-            {
-                cc = cc.AddDays(1);
-                if (cc.IsWorkDay)
-                {
-                    days--;
-                }
-
-                if (days == 0)
-                {
-                    return cc;
-                }
-            }
-        }
-
-        /// <summary>
-        /// 加n月
-        /// </summary>
-        /// <returns></returns>
-        public ChineseCalendar AddMonths(int months)
-        {
-            return new ChineseCalendar(Date.AddMonths(months));
-        }
     }
 }

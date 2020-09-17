@@ -1,4 +1,5 @@
 ﻿#region << 文 件 说 明 >>
+
 /*----------------------------------------------------------------
 // 文件名称：EkRedisHelper
 // 创 建 者：IceInk
@@ -47,6 +48,7 @@
 //        Sorted Set(有序集合)	将Set中的元素增加一个权重参数score,元素按score有序排列	数据插入集合时,已经进行天然排序	
                 [使用场景]1、排行榜 2、带权重的消息队列
 //----------------------------------------------------------------*/
+
 #endregion
 
 using System;
@@ -61,61 +63,72 @@ using StackExchange.Redis;
 namespace IceInk
 {
     /// <summary>
-    /// Redis操作帮助
+    ///     Redis操作帮助
     /// </summary>
     public class EkRedisHelper : IDisposable
     {
-        private int DbNum { get; }
         private ConnectionMultiplexer _conn;
 
         /// <summary>
-        /// 自定义键
+        ///     自定义键
         /// </summary>
         public string CustomKey;
 
-        public static string DefaultConnectionString { get; set; } = ConfigurationManager.ConnectionStrings["RedisHosts"]?.ConnectionString ?? "127.0.0.1:6379,allowadmin=true,abortConnect=false,connectTimeout=1000,connectRetry=1,syncTimeout=20000";
+        private int DbNum { get; }
+
+        public static string DefaultConnectionString { get; set; } =
+            ConfigurationManager.ConnectionStrings["RedisHosts"]?.ConnectionString ??
+            "127.0.0.1:6379,allowadmin=true,abortConnect=false,connectTimeout=1000,connectRetry=1,syncTimeout=20000";
 
         /// <summary>
-        /// 静态连接池
+        ///     静态连接池
         /// </summary>
-        public static ConcurrentDictionary<string, ConnectionMultiplexer> ConnectionCache { get; set; } = new ConcurrentDictionary<string, ConnectionMultiplexer>();
+        public static ConcurrentDictionary<string, ConnectionMultiplexer> ConnectionCache { get; set; } =
+            new ConcurrentDictionary<string, ConnectionMultiplexer>();
+
+        //public override void Dispose(bool disposing)
+        //{
+
+        //}
+
+        public void Dispose()
+        {
+            _conn?.Dispose();
+            _conn = null;
+        }
 
 
         #region 自定义事件
 
-
-
         /// <summary>
-        /// 连接失败 ， 如果重新连接成功你将不会收到这个通知
+        ///     连接失败 ， 如果重新连接成功你将不会收到这个通知
         /// </summary>
         public event EventHandler<ConnectionFailedEventArgs> ConnectionFailed;
 
         /// <summary>
-        /// 重新建立连接之前的错误
+        ///     重新建立连接之前的错误
         /// </summary>
         public event EventHandler<ConnectionFailedEventArgs> ConnectionRestored;
 
         /// <summary>
-        /// 发生错误时
+        ///     发生错误时
         /// </summary>
         public event EventHandler<RedisErrorEventArgs> ErrorMessage;
 
         /// <summary>
-        /// 配置更改时
+        ///     配置更改时
         /// </summary>
         public event EventHandler<EndPointEventArgs> ConfigurationChanged;
 
         /// <summary>
-        /// 更改集群时
+        ///     更改集群时
         /// </summary>
         public event EventHandler<HashSlotMovedEventArgs> HashSlotMoved;
 
         /// <summary>
-        /// redis类库错误时
+        ///     redis类库错误时
         /// </summary>
         public event EventHandler<InternalErrorEventArgs> InternalError;
-
-
 
         #endregion
 
@@ -123,23 +136,28 @@ namespace IceInk
         #region 构造函数
 
         /// <summary>
-        /// 构造函数，使用该构造函数需要先在config中配置链接字符串，连接字符串在config配置文件中的ConnectionStrings节下配置，name固定为RedisHosts，值的格式：127.0.0.1:6379,allowadmin=true，若未正确配置，将按默认值“127.0.0.1:6379,allowadmin=true,abortConnect=false”进行操作，如：<br/>
-        /// &lt;connectionStrings&gt;<br/>
-        ///      &lt;add name = "RedisHosts" connectionString="127.0.0.1:6379,allowadmin=true,abortConnect=false"/&gt;<br/>
-        /// &lt;/connectionStrings&gt;
+        ///     构造函数，使用该构造函数需要先在config中配置链接字符串，连接字符串在config配置文件中的ConnectionStrings节下配置，name固定为RedisHosts，值的格式：127.0.0.1:6379,allowadmin=true，若未正确配置，将按默认值“127.0.0.1:6379,allowadmin=true,abortConnect=false”进行操作，如：
+        ///     <br />
+        ///     &lt;connectionStrings&gt;<br />
+        ///     &lt;add name = "RedisHosts" connectionString="127.0.0.1:6379,allowadmin=true,abortConnect=false"/&gt;<br />
+        ///     &lt;/connectionStrings&gt;
         /// </summary>
         /// <param name="dbNum">数据库编号</param>
-        public EkRedisHelper(int dbNum = 0) : this(null, dbNum) { }
+        public EkRedisHelper(int dbNum = 0) : this(null, dbNum)
+        {
+        }
 
         /// <summary>
-        /// 构造函数
+        ///     构造函数
         /// </summary>
         /// <param name="readWriteHosts">Redis服务器连接字符串，格式：127.0.0.1:6379,allowadmin=true,abortConnect=false</param>
         /// <param name="dbNum">数据库的编号</param>
         public EkRedisHelper(string readWriteHosts, int dbNum = 0)
         {
             DbNum = dbNum;
-            _conn = string.IsNullOrWhiteSpace(readWriteHosts) ? ConnectionMultiplexer.Connect(ConfigurationOptions.Parse(DefaultConnectionString)) : ConnectionMultiplexer.Connect(ConfigurationOptions.Parse(readWriteHosts));
+            _conn = string.IsNullOrWhiteSpace(readWriteHosts)
+                ? ConnectionMultiplexer.Connect(ConfigurationOptions.Parse(DefaultConnectionString))
+                : ConnectionMultiplexer.Connect(ConfigurationOptions.Parse(readWriteHosts));
             //_conn.ConfigurationChanged += MuxerConfigurationChanged;
             _conn.ConfigurationChanged += ConfigurationChanged;
             //_conn.ConnectionFailed += MuxerConnectionFailed;
@@ -155,7 +173,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 构造函数
+        ///     构造函数
         /// </summary>
         /// <param name="readWriteHosts">Redis服务器连接字符串，格式：127.0.0.1:6379,allowadmin=true,abortConnect=false</param>
         /// <param name="dbNum">数据库的编号</param>
@@ -164,7 +182,8 @@ namespace IceInk
         {
             DbNum = dbNum;
             readWriteHosts = string.IsNullOrWhiteSpace(readWriteHosts) ? DefaultConnectionString : readWriteHosts;
-            _conn = ConnectionCache.GetOrAdd(readWriteHosts, ConnectionMultiplexer.Connect(ConfigurationOptions.Parse(readWriteHosts)));
+            _conn = ConnectionCache.GetOrAdd(readWriteHosts,
+                ConnectionMultiplexer.Connect(ConfigurationOptions.Parse(readWriteHosts)));
             ////_conn.ConfigurationChanged += MuxerConfigurationChanged;
             //_conn.ConfigurationChanged += ConfigurationChanged;
             ////_conn.ConnectionFailed += MuxerConnectionFailed;
@@ -180,7 +199,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 获取新实例
+        ///     获取新实例
         /// </summary>
         /// <param name="db">数据库的编号</param>
         /// <returns></returns>
@@ -190,7 +209,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 获取单例
+        ///     获取单例
         /// </summary>
         /// <param name="db">数据库的编号</param>
         /// <returns></returns>
@@ -200,7 +219,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 从对象池获取默认实例
+        ///     从对象池获取默认实例
         /// </summary>
         /// <param name="conn">Redis服务器连接字符串，格式：127.0.0.1:6379,allowadmin=true,abortConnect=false</param>
         /// <param name="db">数据库的编号</param>
@@ -211,7 +230,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 获取单例
+        ///     获取单例
         /// </summary>
         /// <param name="conn">Redis服务器连接字符串，格式：127.0.0.1:6379,allowadmin=true,abortConnect=false</param>
         /// <param name="db">数据库的编号</param>
@@ -228,46 +247,47 @@ namespace IceInk
         #region 同步方法
 
         /// <summary>
-        /// 保存单个key value
+        ///     保存单个key value
         /// </summary>
         /// <param name="key">Redis Key</param>
         /// <param name="value">保存的值</param>
         /// <param name="expiry">过期时间</param>
         /// <returns>是否保存成功</returns>
-        public bool SetString(string key, string value, TimeSpan? expiry = default(TimeSpan?))
+        public bool SetString(string key, string value, TimeSpan? expiry = default)
         {
             key = AddSysCustomKey(key);
             return Do(db => db.StringSet(key, value, expiry));
         }
 
         /// <summary>
-        /// 保存多个key value
+        ///     保存多个key value
         /// </summary>
         /// <param name="keyValues">键值对</param>
         /// <returns>是否保存成功</returns>
         public bool SetString(List<KeyValuePair<RedisKey, RedisValue>> keyValues)
         {
-            List<KeyValuePair<RedisKey, RedisValue>> newkeyValues = keyValues.Select(p => new KeyValuePair<RedisKey, RedisValue>(AddSysCustomKey(p.Key), p.Value)).ToList();
+            var newkeyValues = keyValues
+                .Select(p => new KeyValuePair<RedisKey, RedisValue>(AddSysCustomKey(p.Key), p.Value)).ToList();
             return Do(db => db.StringSet(newkeyValues.ToArray()));
         }
 
         /// <summary>
-        /// 保存一个对象
+        ///     保存一个对象
         /// </summary>
         /// <typeparam name="T">对象类型</typeparam>
         /// <param name="key">键</param>
         /// <param name="obj">值</param>
         /// <param name="expiry">过期时间</param>
         /// <returns>是否保存成功</returns>
-        public bool SetString<T>(string key, T obj, TimeSpan? expiry = default(TimeSpan?))
+        public bool SetString<T>(string key, T obj, TimeSpan? expiry = default)
         {
             key = AddSysCustomKey(key);
-            string json = ConvertJson(obj);
+            var json = ConvertJson(obj);
             return Do(db => db.StringSet(key, json, expiry));
         }
 
         /// <summary>
-        /// 获取单个key的值
+        ///     获取单个key的值
         /// </summary>
         /// <param name="key">键</param>
         /// <returns>值</returns>
@@ -283,18 +303,18 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 获取多个Key
+        ///     获取多个Key
         /// </summary>
         /// <param name="listKey">键集合</param>
         /// <returns>值集合</returns>
         public RedisValue[] GetString(List<string> listKey)
         {
-            List<string> newKeys = listKey.Select(AddSysCustomKey).ToList();
+            var newKeys = listKey.Select(AddSysCustomKey).ToList();
             return Do(db => db.StringGet(ConvertRedisKeys(newKeys)));
         }
 
         /// <summary>
-        /// 获取一个key的对象
+        ///     获取一个key的对象
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -307,11 +327,11 @@ namespace IceInk
                 return Do(db => ConvertObj<T>(db.StringGet(key)));
             }
 
-            return default(T);
+            return default;
         }
 
         /// <summary>
-        /// 为数字增长val
+        ///     为数字增长val
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="val">可以为负</param>
@@ -323,7 +343,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 为数字减少val
+        ///     为数字减少val
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="val">可以为负</param>
@@ -339,46 +359,47 @@ namespace IceInk
         #region 异步方法
 
         /// <summary>
-        /// 保存单个key value
+        ///     保存单个key value
         /// </summary>
         /// <param name="key">Redis Key</param>
         /// <param name="value">保存的值</param>
         /// <param name="expiry">过期时间</param>
         /// <returns>是否保存成功</returns>
-        public async Task<bool> SetStringAsync(string key, string value, TimeSpan? expiry = default(TimeSpan?))
+        public async Task<bool> SetStringAsync(string key, string value, TimeSpan? expiry = default)
         {
             key = AddSysCustomKey(key);
             return await Do(async db => await db.StringSetAsync(key, value, expiry));
         }
 
         /// <summary>
-        /// 保存多个key value
+        ///     保存多个key value
         /// </summary>
         /// <param name="keyValues">键值对</param>
         /// <returns>是否保存成功</returns>
         public async Task<bool> SetStringAsync(List<KeyValuePair<RedisKey, RedisValue>> keyValues)
         {
-            var newkeyValues = keyValues.Select(p => new KeyValuePair<RedisKey, RedisValue>(AddSysCustomKey(p.Key), p.Value)).ToList();
+            var newkeyValues = keyValues
+                .Select(p => new KeyValuePair<RedisKey, RedisValue>(AddSysCustomKey(p.Key), p.Value)).ToList();
             return await Do(async db => await db.StringSetAsync(newkeyValues.ToArray()));
         }
 
         /// <summary>
-        /// 保存一个对象
+        ///     保存一个对象
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
         /// <param name="obj">需要被缓存的对象</param>
         /// <param name="expiry">过期时间</param>
         /// <returns>是否保存成功</returns>
-        public async Task<bool> SetStringAsync<T>(string key, T obj, TimeSpan? expiry = default(TimeSpan?))
+        public async Task<bool> SetStringAsync<T>(string key, T obj, TimeSpan? expiry = default)
         {
             key = AddSysCustomKey(key);
-            string json = ConvertJson(obj);
+            var json = ConvertJson(obj);
             return await Do(async db => await db.StringSetAsync(key, json, expiry));
         }
 
         /// <summary>
-        /// 获取单个key的值
+        ///     获取单个key的值
         /// </summary>
         /// <param name="key">键</param>
         /// <returns>值</returns>
@@ -394,18 +415,18 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 获取多个Key
+        ///     获取多个Key
         /// </summary>
         /// <param name="listKey">键集合</param>
         /// <returns>值集合</returns>
         public async Task<RedisValue[]> GetStringAsync(List<string> listKey)
         {
-            List<string> newKeys = listKey.Select(AddSysCustomKey).ToList();
+            var newKeys = listKey.Select(AddSysCustomKey).ToList();
             return await Do(async db => await db.StringGetAsync(ConvertRedisKeys(newKeys)));
         }
 
         /// <summary>
-        /// 获取一个key的对象
+        ///     获取一个key的对象
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -419,11 +440,11 @@ namespace IceInk
                 return ConvertObj<T>(result);
             }
 
-            return default(T);
+            return default;
         }
 
         /// <summary>
-        /// 为数字增长val
+        ///     为数字增长val
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="val">可以为负</param>
@@ -435,7 +456,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 为数字减少val
+        ///     为数字减少val
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="val">可以为负</param>
@@ -455,7 +476,7 @@ namespace IceInk
         #region 同步方法
 
         /// <summary>
-        /// 判断某个数据是否已经被缓存
+        ///     判断某个数据是否已经被缓存
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="dataKey">对象的字段</param>
@@ -467,7 +488,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 存储数据到hash表
+        ///     存储数据到hash表
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -479,13 +500,13 @@ namespace IceInk
             key = AddSysCustomKey(key);
             return Do(db =>
             {
-                string json = ConvertJson(t);
+                var json = ConvertJson(t);
                 return db.HashSet(key, dataKey, json);
             });
         }
 
         /// <summary>
-        /// 存储数据到hash表
+        ///     存储数据到hash表
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -495,13 +516,13 @@ namespace IceInk
         /// <returns>是否存储成功</returns>
         public bool SetHash<T>(string key, string dataKey, T t, TimeSpan expire)
         {
-            bool b = SetHash(key, dataKey, t);
+            var b = SetHash(key, dataKey, t);
             Expire(key, expire);
             return b;
         }
 
         /// <summary>
-        /// 移除hash中的某值
+        ///     移除hash中的某值
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="dataKey">对象的字段</param>
@@ -513,7 +534,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 移除hash中的多个值
+        ///     移除hash中的多个值
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="dataKeys">对象的字段集合</param>
@@ -525,7 +546,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 从hash表获取数据
+        ///     从hash表获取数据
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -543,11 +564,11 @@ namespace IceInk
                 });
             }
 
-            return default(T);
+            return default;
         }
 
         /// <summary>
-        /// 为数字增长val
+        ///     为数字增长val
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="dataKey">对象的字段</param>
@@ -560,7 +581,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 为数字减少val
+        ///     为数字减少val
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="dataKey">对象的字段</param>
@@ -573,7 +594,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 获取hashkey所有Redis key
+        ///     获取hashkey所有Redis key
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -583,7 +604,7 @@ namespace IceInk
             key = AddSysCustomKey(key);
             return Do(db =>
             {
-                RedisValue[] values = db.HashKeys(key);
+                var values = db.HashKeys(key);
                 return ConvetList<T>(values);
             });
         }
@@ -593,7 +614,7 @@ namespace IceInk
         #region 异步方法
 
         /// <summary>
-        /// 判断某个数据是否已经被缓存
+        ///     判断某个数据是否已经被缓存
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="dataKey">对象的字段</param>
@@ -605,7 +626,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 存储数据到hash表
+        ///     存储数据到hash表
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -617,13 +638,13 @@ namespace IceInk
             key = AddSysCustomKey(key);
             return await Do(async db =>
             {
-                string json = ConvertJson(t);
+                var json = ConvertJson(t);
                 return await db.HashSetAsync(key, dataKey, json);
             });
         }
 
         /// <summary>
-        /// 存储数据到hash表
+        ///     存储数据到hash表
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -639,7 +660,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 移除hash中的某值
+        ///     移除hash中的某值
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="dataKey">对象的字段</param>
@@ -651,7 +672,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 移除hash中的多个值
+        ///     移除hash中的多个值
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="dataKeys">对象的字段集合</param>
@@ -663,7 +684,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 从hash表获取数据
+        ///     从hash表获取数据
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -678,11 +699,11 @@ namespace IceInk
                 return ConvertObj<T>(value);
             }
 
-            return default(T);
+            return default;
         }
 
         /// <summary>
-        /// 为数字增长val
+        ///     为数字增长val
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="dataKey">对象的字段</param>
@@ -695,7 +716,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 为数字减少val
+        ///     为数字减少val
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="dataKey">对象的字段</param>
@@ -708,7 +729,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 获取hashkey所有Redis key
+        ///     获取hashkey所有Redis key
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -716,7 +737,7 @@ namespace IceInk
         public async Task<List<T>> HashKeysAsync<T>(string key)
         {
             key = AddSysCustomKey(key);
-            RedisValue[] values = await Do(async db => await db.HashKeysAsync(key));
+            var values = await Do(async db => await db.HashKeysAsync(key));
             return ConvetList<T>(values);
         }
 
@@ -729,7 +750,7 @@ namespace IceInk
         #region 同步方法
 
         /// <summary>
-        /// 移除指定ListId的内部List的值
+        ///     移除指定ListId的内部List的值
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -741,7 +762,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 获取指定key的List
+        ///     获取指定key的List
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -762,7 +783,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 入队
+        ///     入队
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -774,7 +795,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 出队
+        ///     出队
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -791,11 +812,11 @@ namespace IceInk
                 });
             }
 
-            return default(T);
+            return default;
         }
 
         /// <summary>
-        /// 入栈
+        ///     入栈
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -807,7 +828,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 出栈
+        ///     出栈
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -824,11 +845,11 @@ namespace IceInk
                 });
             }
 
-            return default(T);
+            return default;
         }
 
         /// <summary>
-        /// 获取集合中的数量
+        ///     获取集合中的数量
         /// </summary>
         /// <param name="key">键</param>
         /// <returns>数量</returns>
@@ -843,7 +864,7 @@ namespace IceInk
         #region 异步方法
 
         /// <summary>
-        /// 移除指定ListId的内部List的值
+        ///     移除指定ListId的内部List的值
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="value">值</param>
@@ -854,7 +875,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 获取指定key的List
+        ///     获取指定key的List
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -872,7 +893,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 入队
+        ///     入队
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -884,7 +905,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 出队
+        ///     出队
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -898,11 +919,11 @@ namespace IceInk
                 return ConvertObj<T>(value);
             }
 
-            return default(T);
+            return default;
         }
 
         /// <summary>
-        /// 入栈
+        ///     入栈
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -914,7 +935,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 出栈
+        ///     出栈
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
@@ -928,11 +949,11 @@ namespace IceInk
                 return ConvertObj<T>(value);
             }
 
-            return default(T);
+            return default;
         }
 
         /// <summary>
-        /// 获取集合中的数量
+        ///     获取集合中的数量
         /// </summary>
         /// <param name="key">键</param>
         /// <returns>数量</returns>
@@ -951,7 +972,7 @@ namespace IceInk
         #region 同步方法
 
         /// <summary>
-        /// 添加
+        ///     添加
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="value">值</param>
@@ -963,7 +984,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 删除
+        ///     删除
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="value">值</param>
@@ -974,7 +995,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 获取全部
+        ///     获取全部
         /// </summary>
         /// <param name="key">键</param>
         /// <returns>数据集合</returns>
@@ -994,7 +1015,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 获取集合中的数量
+        ///     获取集合中的数量
         /// </summary>
         /// <param name="key">键</param>
         /// <returns>数量</returns>
@@ -1009,7 +1030,7 @@ namespace IceInk
         #region 异步方法
 
         /// <summary>
-        /// 添加
+        ///     添加
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="value">值</param>
@@ -1021,7 +1042,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 删除
+        ///     删除
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="value">值</param>
@@ -1032,7 +1053,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 获取全部
+        ///     获取全部
         /// </summary>
         /// <param name="key">键</param>
         /// <returns>数据集合</returns>
@@ -1049,7 +1070,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 获取集合中的数量
+        ///     获取集合中的数量
         /// </summary>
         /// <param name="key">键</param>
         /// <returns>数量</returns>
@@ -1066,7 +1087,7 @@ namespace IceInk
         #region key
 
         /// <summary>
-        /// 删除单个key
+        ///     删除单个key
         /// </summary>
         /// <param name="key">redis key</param>
         /// <returns>是否删除成功</returns>
@@ -1077,7 +1098,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 删除单个key
+        ///     删除单个key
         /// </summary>
         /// <param name="key">redis key</param>
         /// <returns>是否删除成功</returns>
@@ -1088,18 +1109,18 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 删除多个key
+        ///     删除多个key
         /// </summary>
         /// <param name="keys">rediskey</param>
         /// <returns>成功删除的个数</returns>
         public long DeleteKey(List<string> keys)
         {
-            List<string> newKeys = keys.Select(AddSysCustomKey).ToList();
+            var newKeys = keys.Select(AddSysCustomKey).ToList();
             return Do(db => db.KeyDelete(ConvertRedisKeys(newKeys)));
         }
 
         /// <summary>
-        /// 判断key是否存储
+        ///     判断key是否存储
         /// </summary>
         /// <param name="key">键</param>
         /// <returns>是否存储成功</returns>
@@ -1110,7 +1131,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 重新命名key
+        ///     重新命名key
         /// </summary>
         /// <param name="key">旧的键</param>
         /// <param name="newKey">新的键</param>
@@ -1122,24 +1143,24 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 设置Key的过期时间
+        ///     设置Key的过期时间
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="expiry">过期时间</param>
         /// <returns>处理结果</returns>
-        public bool Expire(string key, TimeSpan? expiry = default(TimeSpan?))
+        public bool Expire(string key, TimeSpan? expiry = default)
         {
             key = AddSysCustomKey(key);
             return Do(db => db.KeyExpire(key, expiry));
         }
 
         /// <summary>
-        /// 设置Key的过期时间
+        ///     设置Key的过期时间
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="expiry">过期时间</param>
         /// <returns>处理结果</returns>
-        public async Task<bool> ExpireAsync(string key, TimeSpan? expiry = default(TimeSpan?))
+        public async Task<bool> ExpireAsync(string key, TimeSpan? expiry = default)
         {
             key = AddSysCustomKey(key);
             return await Do(async db => await db.KeyExpireAsync(key, expiry));
@@ -1150,28 +1171,24 @@ namespace IceInk
         #region 发布订阅
 
         /// <summary>
-        /// Redis发布订阅  订阅
+        ///     Redis发布订阅  订阅
         /// </summary>
         /// <param name="subChannel">订阅频道</param>
         /// <param name="handler">处理过程</param>
         public void Subscribe(string subChannel, Action<RedisChannel, RedisValue> handler = null)
         {
-            ISubscriber sub = _conn.GetSubscriber();
+            var sub = _conn.GetSubscriber();
             sub.Subscribe(subChannel, (channel, message) =>
             {
                 if (handler == null)
-                {
                     Console.WriteLine(subChannel + " 订阅收到消息：" + message);
-                }
                 else
-                {
                     handler(channel, message);
-                }
             });
         }
 
         /// <summary>
-        /// Redis发布订阅  发布
+        ///     Redis发布订阅  发布
         /// </summary>
         /// <typeparam name="T">消息对象</typeparam>
         /// <param name="channel">发布频道</param>
@@ -1179,26 +1196,26 @@ namespace IceInk
         /// <returns>消息的数量</returns>
         public long Publish<T>(string channel, T msg)
         {
-            ISubscriber sub = _conn.GetSubscriber();
+            var sub = _conn.GetSubscriber();
             return sub.Publish(channel, ConvertJson(msg));
         }
 
         /// <summary>
-        /// Redis发布订阅  取消订阅
+        ///     Redis发布订阅  取消订阅
         /// </summary>
         /// <param name="channel">频道</param>
         public void Unsubscribe(string channel)
         {
-            ISubscriber sub = _conn.GetSubscriber();
+            var sub = _conn.GetSubscriber();
             sub.Unsubscribe(channel);
         }
 
         /// <summary>
-        /// Redis发布订阅  取消全部订阅
+        ///     Redis发布订阅  取消全部订阅
         /// </summary>
         public void UnsubscribeAll()
         {
-            ISubscriber sub = _conn.GetSubscriber();
+            var sub = _conn.GetSubscriber();
             sub.UnsubscribeAll();
         }
 
@@ -1207,7 +1224,7 @@ namespace IceInk
         #region 其他
 
         /// <summary>
-        /// 创建一个事务
+        ///     创建一个事务
         /// </summary>
         /// <returns>事务对象</returns>
         public ITransaction CreateTransaction()
@@ -1216,7 +1233,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 获得一个数据库实例
+        ///     获得一个数据库实例
         /// </summary>
         /// <returns>数据库实例</returns>
         public IDatabase GetDatabase()
@@ -1225,7 +1242,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 获得一个服务器实例
+        ///     获得一个服务器实例
         /// </summary>
         /// <param name="hostAndPort">服务器地址</param>
         /// <returns>服务器实例</returns>
@@ -1236,7 +1253,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 设置前缀
+        ///     设置前缀
         /// </summary>
         /// <param name="customKey">前缀</param>
         public void SetSysCustomKey(string customKey)
@@ -1260,7 +1277,7 @@ namespace IceInk
             return func(database);
         }
 
-        #region  序列化 饭序列化
+        #region 序列化 饭序列化
 
         private string ConvertJson<T>(T value)
         {
@@ -1281,7 +1298,7 @@ namespace IceInk
 
         private RedisKey[] ConvertRedisKeys(List<string> redisKeys)
         {
-            return redisKeys.Select(redisKey => (RedisKey)redisKey).ToArray();
+            return redisKeys.Select(redisKey => (RedisKey) redisKey).ToArray();
         }
 
         #endregion 辅助方法
@@ -1349,17 +1366,5 @@ namespace IceInk
         //}
 
         #endregion 事件
-
-        //public override void Dispose(bool disposing)
-        //{
-
-        //}
-
-        public void Dispose()
-        {
-            _conn?.Dispose();
-            _conn = null;
-        }
     }
-
 }

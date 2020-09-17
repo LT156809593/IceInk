@@ -1,4 +1,5 @@
 ﻿#region << 文 件 说 明 >>
+
 /*----------------------------------------------------------------
 // 文件名称：EkRamInfo
 // 创 建 者：作者名称
@@ -9,50 +10,50 @@
 //		EkRamInfo
 //
 //----------------------------------------------------------------*/
+
 #endregion
 
 
 namespace IceInk
 {
     /// <summary>
-    /// 内存条模型
+    ///     内存条模型
     /// </summary>
     public class EkRamInfo
     {
         /// <summary>
-        /// 可用物理内存
+        ///     可用物理内存
         /// </summary>
         public double MemoryAvailable { get; set; }
 
         /// <summary>
-        /// 物理总内存
+        ///     物理总内存
         /// </summary>
         public double PhysicalMemory { get; set; }
 
         /// <summary>
-        /// 分页内存总数
+        ///     分页内存总数
         /// </summary>
         public double TotalPageFile { get; set; }
 
         /// <summary>
-        /// 分页内存可用
+        ///     分页内存可用
         /// </summary>
         public double AvailablePageFile { get; set; }
 
         /// <summary>
-        /// 虚拟内存总数
+        ///     虚拟内存总数
         /// </summary>
         public double TotalVirtual { get; set; }
 
         /// <summary>
-        /// 虚拟内存可用
+        ///     虚拟内存可用
         /// </summary>
         public double AvailableVirtual { get; set; }
 
         /// <summary>
-        /// 内存使用率
+        ///     内存使用率
         /// </summary>
         public double MemoryUsage => (1 - MemoryAvailable / PhysicalMemory) * 100;
     }
 }
-

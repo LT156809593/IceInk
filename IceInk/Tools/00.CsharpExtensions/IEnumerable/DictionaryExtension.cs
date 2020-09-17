@@ -17,12 +17,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+
 namespace IceInk.Extension
 {
     public static class DictionaryExtension
     {
         /// <summary>
-        /// 合并字典
+        ///     合并字典
         /// </summary>
         /// <typeparam name="TKey"></typeparam>
         /// <typeparam name="TValue"></typeparam>
@@ -33,13 +34,13 @@ namespace IceInk.Extension
             params Dictionary<TKey, TValue>[] dictionaries)
         {
             return dictionaries.Aggregate(dictionary,
-                (current, self) 
+                (current, self)
                     => current.Union(self)
                         .ToDictionary(kv => kv.Key, kv => kv.Value));
         }
 
         /// <summary>
-        /// 遍历字典
+        ///     遍历字典
         /// </summary>
         /// <typeparam name="K"></typeparam>
         /// <typeparam name="V"></typeparam>
@@ -58,14 +59,15 @@ namespace IceInk.Extension
         }
 
         /// <summary>
-        /// 字典添加新的词典
+        ///     字典添加新的词典
         /// </summary>
         /// <typeparam name="K"></typeparam>
         /// <typeparam name="V"></typeparam>
         /// <param name="self"></param>
         /// <param name="addInDict"></param>
         /// <param name="isOverride"></param>
-        public static void EkAddRange<K, V>(this Dictionary<K, V> self, Dictionary<K, V> addInDict, bool isOverride = false)
+        public static void EkAddRange<K, V>(this Dictionary<K, V> self, Dictionary<K, V> addInDict,
+            bool isOverride = false)
         {
             var dictE = addInDict.GetEnumerator();
 
@@ -84,6 +86,5 @@ namespace IceInk.Extension
 
             dictE.Dispose();
         }
-
     }
 }

@@ -4,12 +4,12 @@ using System.Diagnostics;
 namespace IceInk
 {
     /// <summary>
-    /// 日期操作工具类
+    ///     日期操作工具类
     /// </summary>
     public static class DateUtil
     {
         /// <summary>
-        /// 返回相对于当前时间的相对天数
+        ///     返回相对于当前时间的相对天数
         /// </summary>
         /// <param name="dt"></param>
         /// <param name="relativeday">相对天数</param>
@@ -19,28 +19,28 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 返回标准时间格式string
+        ///     返回标准时间格式string
         /// </summary>
-        public static string GetDateTimeF(this DateTime dt) => dt.ToString("yyyy-MM-dd HH:mm:ss:fffffff");
+        public static string GetDateTimeF(this DateTime dt)
+        {
+            return dt.ToString("yyyy-MM-dd HH:mm:ss:fffffff");
+        }
 
         /// <summary>
-        /// 返回标准时间 
+        ///     返回标准时间
         /// </summary>
         /// <param name="fDateTime">日期时间字符串</param>
         /// <param name="formatStr">格式</param>
         public static string GetStandardDateTime(this string fDateTime, string formatStr)
         {
-            if (fDateTime == "0000-0-0 0:00:00")
-            {
-                return fDateTime;
-            }
+            if (fDateTime == "0000-0-0 0:00:00") return fDateTime;
 
             var s = Convert.ToDateTime(fDateTime);
             return s.ToString(formatStr);
         }
 
         /// <summary>
-        /// 返回标准时间 yyyy-MM-dd HH:mm:ss
+        ///     返回标准时间 yyyy-MM-dd HH:mm:ss
         /// </summary>
         /// <param name="fDateTime">日期时间字符串</param>
         public static string GetStandardDateTime(this string fDateTime)
@@ -49,56 +49,77 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 获取该时间相对于1970-01-01 00:00:00的秒数
+        ///     获取该时间相对于1970-01-01 00:00:00的秒数
         /// </summary>
         /// <param name="dt"></param>
         /// <returns></returns>
-        public static double GetTotalSeconds(this DateTime dt) => new DateTimeOffset(dt).ToUnixTimeSeconds();
+        public static double GetTotalSeconds(this DateTime dt)
+        {
+            return new DateTimeOffset(dt).ToUnixTimeSeconds();
+        }
 
         /// <summary>
-        /// 获取该时间相对于1970-01-01 00:00:00的毫秒数
+        ///     获取该时间相对于1970-01-01 00:00:00的毫秒数
         /// </summary>
         /// <param name="dt"></param>
         /// <returns></returns>
-        public static double GetTotalMilliseconds(this DateTime dt) => new DateTimeOffset(dt).ToUnixTimeMilliseconds();
+        public static double GetTotalMilliseconds(this DateTime dt)
+        {
+            return new DateTimeOffset(dt).ToUnixTimeMilliseconds();
+        }
 
         /// <summary>
-        /// 获取该时间相对于1970-01-01 00:00:00的微秒时间戳
+        ///     获取该时间相对于1970-01-01 00:00:00的微秒时间戳
         /// </summary>
         /// <param name="dt"></param>
         /// <returns></returns>
-        public static long GetTotalMicroseconds(this DateTime dt) => new DateTimeOffset(dt).Ticks / 10;
+        public static long GetTotalMicroseconds(this DateTime dt)
+        {
+            return new DateTimeOffset(dt).Ticks / 10;
+        }
 
         /// <summary>
-        /// 获取该时间相对于1970-01-01 00:00:00的纳秒时间戳
+        ///     获取该时间相对于1970-01-01 00:00:00的纳秒时间戳
         /// </summary>
         /// <param name="dt"></param>
         /// <returns></returns>
-        public static long GetTotalNanoseconds(this DateTime dt) => new DateTimeOffset(dt).Ticks * 100 + Stopwatch.GetTimestamp() % 100;
+        public static long GetTotalNanoseconds(this DateTime dt)
+        {
+            return new DateTimeOffset(dt).Ticks * 100 + Stopwatch.GetTimestamp() % 100;
+        }
 
         /// <summary>
-        /// 获取该时间相对于1970-01-01 00:00:00的分钟数
+        ///     获取该时间相对于1970-01-01 00:00:00的分钟数
         /// </summary>
         /// <param name="dt"></param>
         /// <returns></returns>
-        public static double GetTotalMinutes(this DateTime dt) => new DateTimeOffset(dt).Offset.TotalMinutes;
+        public static double GetTotalMinutes(this DateTime dt)
+        {
+            return new DateTimeOffset(dt).Offset.TotalMinutes;
+        }
 
         /// <summary>
-        /// 获取该时间相对于1970-01-01 00:00:00的小时数
+        ///     获取该时间相对于1970-01-01 00:00:00的小时数
         /// </summary>
         /// <param name="dt"></param>
         /// <returns></returns>
-        public static double GetTotalHours(this DateTime dt) => new DateTimeOffset(dt).Offset.TotalHours;
+        public static double GetTotalHours(this DateTime dt)
+        {
+            return new DateTimeOffset(dt).Offset.TotalHours;
+        }
 
         /// <summary>
-        /// 获取该时间相对于1970-01-01 00:00:00的天数
+        ///     获取该时间相对于1970-01-01 00:00:00的天数
         /// </summary>
         /// <param name="dt"></param>
         /// <returns></returns>
-        public static double GetTotalDays(this DateTime dt) => new DateTimeOffset(dt).Offset.TotalDays;
+        public static double GetTotalDays(this DateTime dt)
+        {
+            return new DateTimeOffset(dt).Offset.TotalDays;
+        }
 
         /// <summary>
-        /// 返回本年有多少天
+        ///     返回本年有多少天
         /// </summary>
         /// <param name="_"></param>
         /// <param name="iYear">年份</param>
@@ -114,7 +135,7 @@ namespace IceInk
         public static int GetDaysOfYear(this DateTime dt)
         {
             //取得传入参数的年份部分，用来判断是否是闰年
-            int n = dt.Year;
+            var n = dt.Year;
             return IsRuYear(n) ? 366 : 365;
         }
 
@@ -128,7 +149,7 @@ namespace IceInk
             return month switch
             {
                 1 => 31,
-                2 => (IsRuYear(iYear) ? 29 : 28),
+                2 => IsRuYear(iYear) ? 29 : 28,
                 3 => 31,
                 4 => 30,
                 5 => 31,
@@ -152,7 +173,7 @@ namespace IceInk
             return dt.Month switch
             {
                 1 => 31,
-                2 => (IsRuYear(dt.Year) ? 29 : 28),
+                2 => IsRuYear(dt.Year) ? 29 : 28,
                 3 => 31,
                 4 => 30,
                 5 => 31,
@@ -215,7 +236,7 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 判断是否为合法日期，必须大于1800年1月1日
+        ///     判断是否为合法日期，必须大于1800年1月1日
         /// </summary>
         /// <param name="strDate">输入日期字符串</param>
         /// <returns>True/False</returns>

@@ -20,7 +20,7 @@ using System;
 namespace IceInk
 {
     /// <summary>
-    /// 单例模式父类，需要使用单利模式的类继承此类即可
+    ///     单例模式父类，需要使用单利模式的类继承此类即可
     /// </summary>
     public class EkSingletonBase<T> where T : class, new()
     {
@@ -29,10 +29,10 @@ namespace IceInk
         //Lazy 对象初始化默认是线程安全的，在多线程环境下，
         //第一个访问 Lazy 对象的 Value 属性的线程将初始化 Lazy 对象，
         //以后访问的线程都将使用第一次初始化的数据。
-        private static Lazy<T> _lazy = null;
+        private static Lazy<T> _lazy;
 
         /// <summary>
-        /// 单例
+        ///     单例
         /// </summary>
         /// <param name="forceInit">强制更新实例</param>
         /// <returns></returns>
@@ -48,13 +48,13 @@ namespace IceInk
             _lazy = new Lazy<T>(() => new T());
 
             #region 控制台输出创建单例的名称
-            
+
             Console.WriteLine("----------------------------------------------------------------");
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine($"创建单例: {typeof(T).FullName}");
             Console.ResetColor();
             Console.WriteLine("----------------------------------------------------------------");
-            
+
             #endregion
         }
 
