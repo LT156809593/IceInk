@@ -243,8 +243,8 @@ namespace IceInk
         /// </summary>
         /// <param name="dtStar">起始时间</param>
         /// <param name="dtEnd">终止时间</param>
-        /// <returns>小时差</returns>
-        public static string GetTimeDelay(this DateTime dtStar, DateTime dtEnd)
+        /// <returns>小时差(string)</returns>
+        public static string GetTimeDelayString(this DateTime dtStar, DateTime dtEnd)
         {
             var lTicks = (dtEnd.Ticks - dtStar.Ticks) / 10000000;
             var sTemp = (lTicks / 3600).ToString().PadLeft(2, '0') + ":";
@@ -252,6 +252,20 @@ namespace IceInk
             sTemp += (lTicks % 3600 % 60).ToString().PadLeft(2, '0');
             return sTemp;
         }
+        
+        /// <summary>
+        /// 获得一段时间内有多少小时
+        /// </summary>
+        /// <param name="dtStar">起始时间</param>
+        /// <param name="dtEnd">终止时间</param>
+        /// <returns>小时差(flost)</returns>
+        public static float GetTimeDelayFloat(this DateTime dtStar, DateTime dtEnd)
+        {
+            var lTicks = (dtEnd.Ticks - dtStar.Ticks) / 10000000;
+            var sTemp = (lTicks / 3600f);//小时
+            return sTemp;
+        }
+        
 
         /// <summary>
         /// 获得8位时间整型数字
