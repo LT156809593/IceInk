@@ -626,12 +626,14 @@ namespace IceInk
         }
 
         /// <summary>
-        /// 检查字符串移除空字符后是否为空
+        /// 检查字符串移除空字符后是否不为空
         /// </summary>
         /// <param name="selfStr"></param>
         /// <returns></returns>
         public static bool IsTrimNotNullAndEmpty(this string selfStr)
         {
+            if (string.IsNullOrEmpty(selfStr))
+                return false;
             return !string.IsNullOrEmpty(selfStr.Trim());
         }
 

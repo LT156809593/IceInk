@@ -42,38 +42,26 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6DADD22E-0197-42CE-80AA-EFEF99855BE0/05/a4a51aba/WaitHandle.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6DADD22E-0197-42CE-80AA-EFEF99855BE0/50/4793aa8e/String.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/31F94AF4-0455-4C4C-BD4F-AB58A9F2D1BF/7d/7d7db714/Enumerable.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Tools/08.Singleton/EkSingletonBase.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8B5ACF9F-E1FE-4B8E-9CF7-2399012BD56E/90/e85dc1ef/Regex.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/28935DDA-2822-48FE-B003-5F96D5D90AA3/d3/3d918d03/AuthenticationLevel.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6DADD22E-0197-42CE-80AA-EFEF99855BE0/85/43b5237d/DateTime.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AD61CA47-F8B7-4CC6-93A0-BA44CC73B5C7/73/7e582aa1/DateTime.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6DADD22E-0197-42CE-80AA-EFEF99855BE0/8f/a1327e05/ConcurrentQueue`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6DADD22E-0197-42CE-80AA-EFEF99855BE0/7a/709b1f04/Tuple`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/42F9CCC8-A8E2-4583-8562-AC6B7554193A/2c/e10175bd/Console.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6DADD22E-0197-42CE-80AA-EFEF99855BE0/2d/0d7fbfef/Lazy`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6DADD22E-0197-42CE-80AA-EFEF99855BE0/57/0c876f6c/Lazy`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Tools/08.Singleton/EkSingletonBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6DADD22E-0197-42CE-80AA-EFEF99855BE0/50/4793aa8e/String.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6DADD22E-0197-42CE-80AA-EFEF99855BE0/05/a4a51aba/WaitHandle.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6DADD22E-0197-42CE-80AA-EFEF99855BE0/cf/764c1e7a/AutoResetEvent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/31F94AF4-0455-4C4C-BD4F-AB58A9F2D1BF/7d/7d7db714/Enumerable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/20735148-1523-4917-A5E8-F91B0B239405/5/JsonConvert.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6DADD22E-0197-42CE-80AA-EFEF99855BE0/85/43b5237d/DateTime.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/28935DDA-2822-48FE-B003-5F96D5D90AA3/d3/3d918d03/AuthenticationLevel.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6DADD22E-0197-42CE-80AA-EFEF99855BE0/8f/a1327e05/ConcurrentQueue`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6DADD22E-0197-42CE-80AA-EFEF99855BE0/7a/709b1f04/Tuple`2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8B5ACF9F-E1FE-4B8E-9CF7-2399012BD56E/90/e85dc1ef/Regex.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AD61CA47-F8B7-4CC6-93A0-BA44CC73B5C7/73/7e582aa1/DateTime.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6DADD22E-0197-42CE-80AA-EFEF99855BE0/57/0c876f6c/Lazy`1.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/../../../_LT_Projects/_VSProjects/Test/TestIceInk/SingletonTest.cs" />
-        <option value="$PROJECT_DIR$/Tools/08.Singleton/EkSingletonBase.cs" />
-        <option value="$PROJECT_DIR$/NoSql/EkRedisHelper.cs" />
-        <option value="$PROJECT_DIR$/Tools/07.Logging/EkLogInfo.cs" />
-        <option value="$PROJECT_DIR$/../../../_LT_Projects/_VSProjects/Test/TestIceInk/Program.cs" />
-        <option value="$PROJECT_DIR$/Tools/07.Logging/EkLogManager.cs" />
-        <option value="$PROJECT_DIR$/Tools/06.HardwareInfo/EkMemoryInfo.cs" />
-        <option value="$PROJECT_DIR$/Tools/06.HardwareInfo/EkSystemInfo.cs" />
-        <option value="$PROJECT_DIR$/Tools/01.Serialize/EkSerializeHelper.cs" />
-        <option value="$PROJECT_DIR$/Tools/00.CsharpExtensions/Strings/StringExtension.cs" />
-        <option value="$PROJECT_DIR$/Tools/00.CsharpExtensions/Strings/ChineseString.cs" />
-      </list>
-    </option>
+    <changedPaths>
+      <option value="$PROJECT_DIR$/Tools/00.CsharpExtensions/Strings/StringExtension.cs" />
+    </changedPaths>
   </component>
   <component name="ProjectId" id="1hJMCxho8zdQOPA1cgFTfGftUgN" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -147,6 +135,7 @@
       <workItem from="1600309375677" duration="7494000" />
       <workItem from="1600522971643" duration="628000" />
       <workItem from="1600523652839" duration="758000" />
+      <workItem from="1616500397155" duration="178000" />
     </task>
     <servers />
   </component>
