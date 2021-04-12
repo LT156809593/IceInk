@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml.Serialization;
 
-namespace IceInk.Extension
+namespace IceInk
 {
     public static class ObjectExtension
     {

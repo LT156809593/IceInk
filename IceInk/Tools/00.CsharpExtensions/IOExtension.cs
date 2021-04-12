@@ -145,7 +145,7 @@ namespace IceInk
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns></returns>
-        public static string GetDirectoryName(string fileName)
+        public static string GetDirectoryName(this string fileName)
         {
             fileName = MakePathStandard(fileName);
             return fileName.Substring(0, fileName.LastIndexOf('/'));
@@ -157,7 +157,7 @@ namespace IceInk
         /// <param name="path"></param>
         /// <param name="separator"></param>
         /// <returns></returns>
-        public static string GetFileName(string path, char separator = '/')
+        public static string GetFileName(this string path, char separator = '/')
         {
             path = MakePathStandard(path);
             return path.Substring(path.LastIndexOf(separator) + 1);
@@ -169,7 +169,7 @@ namespace IceInk
         /// <param name="fileName"></param>
         /// <param name="separator"></param>
         /// <returns></returns>
-        public static string GetFileNameWithoutExtension(string fileName, char separator = '/')
+        public static string GetFileNameWithoutExtension(this string fileName, char separator = '/')
         {
             return GetFilePathWithoutExtension(GetFileName(fileName, separator));
         }
@@ -179,7 +179,7 @@ namespace IceInk
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns></returns>
-        public static string GetFilePathWithoutExtension(string fileName)
+        public static string GetFilePathWithoutExtension(this string fileName)
         {
             return fileName.Contains(".") ? fileName.Substring(0, fileName.LastIndexOf('.')) : fileName;
         }
@@ -188,7 +188,7 @@ namespace IceInk
         /// 使目录存在,Path可以是目录名必须是文件名
         /// </summary>
         /// <param name="path"></param>
-        public static void MakeFileDirectoryExist(string path)
+        public static void MakeFileDirectoryExist(this string path)
         {
             var root = Path.GetDirectoryName(path);
             if (!Directory.Exists(root)) Directory.CreateDirectory(root);
@@ -198,7 +198,7 @@ namespace IceInk
         /// 使目录存在
         /// </summary>
         /// <param name="path"></param>
-        public static void MakeDirectoryExist(string path)
+        public static void MakeDirectoryExist(this string path)
         {
             if (!Directory.Exists(path)) Directory.CreateDirectory(path);
         }
@@ -222,7 +222,7 @@ namespace IceInk
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static string GetPathParentFolder(string path)
+        public static string GetPathParentFolder(this string path)
         {
             return string.IsNullOrEmpty(path) ? string.Empty : Path.GetDirectoryName(path);
         }
@@ -233,7 +233,7 @@ namespace IceInk
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static string MakePathStandard(string path)
+        public static string MakePathStandard(this string path)
         {
             return path.Trim().Replace("\\", "/");
         }
