@@ -31,14 +31,14 @@ namespace IceInk
     /// 硬件信息，部分功能需要C++支持
     /// 仅支持windows
     /// </summary>
-    public static partial class SystemInfo
+    public static partial class EkSystemInfo
     {
         #region 构造函数
 
         /// <summary>
         /// 静态构造函数
         /// </summary>
-        static SystemInfo()
+        static EkSystemInfo()
         {
             //初始化CPU计数器 
             PcCpuLoad = new PerformanceCounter("Processor", "% Processor Time", "_Total")

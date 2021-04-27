@@ -17,7 +17,7 @@ using System.Runtime.InteropServices;
 
 namespace IceInk
 {
-    public static partial class SystemInfo
+    public static partial class EkSystemInfo
     {
         #region 定义CPU的信息结构
 
