@@ -38,7 +38,7 @@ namespace IceInk
         /// <summary>
         /// 日志文件大小
         /// </summary>
-        private const int logFileInfoLen = 1 * 1024 * 1024;
+        private const int logFileInfoLen = 5 * 1024 * 1024;
 
         /// <summary>
         /// 日志队列
@@ -253,8 +253,7 @@ namespace IceInk
         /// <param name="debug">异常对象</param>
         public static void Debug(string debug)
         {
-            LogQueue.Enqueue(new Tuple<string, string>(GetLogPath(),
-                $"{Now}   [{Thread.CurrentThread.ManagedThreadId}]   {nameof(debug).ToUpper()}   {debug}"));
+            LogQueue.Enqueue(new Tuple<string, string>(GetLogPath(), $"{Now}   [{Thread.CurrentThread.ManagedThreadId}]   {nameof(debug).ToUpper()}   {debug}"));
             var log = new EkLogInfo
             {
                 EkLogLevel = EkLogLevel.Debug,

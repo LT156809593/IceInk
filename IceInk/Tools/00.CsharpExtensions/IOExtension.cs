@@ -84,9 +84,17 @@ namespace IceInk
         /// <returns> 是否进行了删除操作 </returns>
         public static bool DeleteFileIfExists(this string fileFullPath)
         {
-            if (!File.Exists(fileFullPath)) return false;
-            File.Delete(fileFullPath);
-            return true;
+            try
+            {
+                if (!File.Exists(fileFullPath)) return false;
+                File.Delete(fileFullPath);
+                return true;
+            }
+            catch (Exception e)
+            {
+                //Console.WriteLine(e);
+            }
+          
         }
 
         /// <summary>
