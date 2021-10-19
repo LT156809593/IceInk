@@ -94,7 +94,9 @@ namespace IceInk
             {
                 //Console.WriteLine(e);
             }
-          
+
+            return false;
+
         }
 
         /// <summary>
